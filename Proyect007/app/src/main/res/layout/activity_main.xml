@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/resultado2"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="128dp"
+        android:hint="Resultado:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/iBtnSuma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="40dp"
+        android:src="@mipmap/mas"
+        app:layout_constraintBottom_toTopOf="@+id/iBtnDiv"
+        app:layout_constraintEnd_toStartOf="@+id/iBtnMenos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et1" />
+
+    <ImageButton
+        android:id="@+id/iBtnMenos"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="38dp"
+        android:src="@mipmap/menos"
+        app:layout_constraintBottom_toTopOf="@+id/iBtnDiv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iBtnSuma" />
+
+    <ImageButton
+        android:id="@+id/iBtnMulti"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="83dp"
+        android:src="@mipmap/multiplicar"
+        app:layout_constraintEnd_toStartOf="@+id/iBtnDiv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iBtnSuma" />
+
+    <ImageButton
+        android:id="@+id/iBtnDiv"
+        android:layout_width="69dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/dividir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="78dp"
+        android:layout_marginBottom="201dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/iBtnSuma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.325" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
