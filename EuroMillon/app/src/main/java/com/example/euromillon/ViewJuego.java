@@ -1,5 +1,6 @@
 package com.example.euromillon;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +43,14 @@ public class ViewJuego extends AppCompatActivity {
         btnVolver.setOnClickListener(v -> volver(v));
         btnNum.setOnClickListener(v -> elegirNumeros(v));
 
+        Intent intent = getIntent();
+        numElegidos = intent.getStringArrayListExtra("NUMEROS_ELEGIDOS");
+        if (numElegidos != null && !numElegidos.isEmpty()) {
+            tvNum.setText(numElegidos.toString());
+        } else {
+            tvNum.setText("No se han seleccionado números.");
+        }
+
     }
 
     public void elegirNumeros(View view){
@@ -55,11 +64,4 @@ public class ViewJuego extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void setNumElegidos(ArrayList<String> numElegidos) {
-        this.numElegidos = numElegidos;
-    }
-
-    public void setEstrellasElegidas(ArrayList<String> estrellasElegidas) {
-        this.estrellasElegidas = estrellasElegidas;
-    }
 }

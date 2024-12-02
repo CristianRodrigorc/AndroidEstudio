@@ -44,6 +44,7 @@ public class ViewNumeros extends AppCompatActivity {
 
         btnVolverNum.setOnClickListener(v -> volverViewJuego());
         btnResetNum.setOnClickListener(v -> activarBotones());
+        btnGuardarNum.setOnClickListener(v -> guardarNum());
 
         pintarBotones();
 
@@ -140,8 +141,13 @@ public class ViewNumeros extends AppCompatActivity {
     }
 
     public void guardarNum(){
-
-        volverViewJuego();
+        if(contador == 5) {
+            Intent intent = new Intent(ViewNumeros.this, ViewJuego.class);
+            intent.putStringArrayListExtra("NUMEROS_ELEGIDOS", numElegidos);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "DEBE SELECCIONAR 5 NÚMEROS", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
