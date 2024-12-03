@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ViewJuego extends AppCompatActivity {
 
@@ -22,8 +23,12 @@ public class ViewJuego extends AppCompatActivity {
     private Button btnNum;
     private Button btnEstrellas;
     private TextView tvEstrellas;
+    private TextView tvEstrellasGanadoras;
     private TextView tvNum;
+    private TextView tvNumGanadores;
     private ArrayList<String> numElegidos = new ArrayList();
+    private int [] numGanadores = new int [5];
+    private int [] estrGanadores = new int [2];
     private ArrayList<String> estrellasElegidas = new ArrayList();
 
     @Override
@@ -37,7 +42,9 @@ public class ViewJuego extends AppCompatActivity {
         btnNum = findViewById(R.id.btnNum);
         btnEstrellas = findViewById(R.id.btnEstrellas);
         tvEstrellas = findViewById(R.id.tvEstrellas);
+        tvEstrellasGanadoras = findViewById(R.id.tvEstrellasGanadoras);
         tvNum = findViewById(R.id.tvNum);
+        tvNumGanadores = findViewById(R.id.tvNumGanadores);
 
 
         btnVolver.setOnClickListener(v -> volver(v));
@@ -50,6 +57,12 @@ public class ViewJuego extends AppCompatActivity {
         } else {
             tvNum.setText("No se han seleccionado números.");
         }
+
+        numJuego(numGanadores);
+        numJuego(estrGanadores);
+        tvEstrellasGanadoras.setText(imprimirNum(estrGanadores));
+        tvNumGanadores.setText(imprimirNum(numGanadores));
+
 
     }
 
@@ -64,4 +77,68 @@ public class ViewJuego extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void numJuego(int[] numGanadores) {
+        Random random = new Random();
+        int longitud = numGanadores.length;
+        int cantNum = 0;
+        int count = 0;
+        if(longitud == 5){
+            cantNum = 50;
+        }else if (longitud == 2){
+            cantNum = 12;
+        }
+
+        while (count < longitud) {
+            int num = random.nextInt(cantNum) + 1; // Genera un número entre 1 y 50
+            boolean exists = false;
+
+            // Verificar si ya existe en el array
+            for (int i = 0; i < count; i++) {
+                if (numGanadores[i] == num) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            // Si no existe, añadir al array
+            if (!exists) {
+                numGanadores[count] = num;
+                count++;
+            }
+        }
+    }
+
+    public void estrJuego(int[] numGanadores) {
+        Random random = new Random();
+        int count = 0;
+
+        while (count < 2) {
+            int num = random.nextInt(12) + 1; // Genera un número entre 1 y 50
+            boolean exists = false;
+
+            // Verificar si ya existe en el array
+            for (int i = 0; i < count; i++) {
+                if (numGanadores[i] == num) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            // Si no existe, añadir al array
+            if (!exists) {
+                numGanadores[count] = num;
+                count++;
+            }
+        }
+    }
+
+    public String imprimirNum (int [] num){
+        StringBuilder sb = new StringBuilder("[");
+        for(int numeros : num){
+            sb.append(numeros).append(",");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.append("]");
+                return sb.toString();
+    }
 }
