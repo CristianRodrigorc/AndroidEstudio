@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvSecEstrella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Estrella 2"
+        tools:layout_editor_absoluteX="224dp"
+        tools:layout_editor_absoluteY="296dp" />
+
+    <TextView
+        android:id="@+id/tvNum3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Tercero"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <TextView
+        android:id="@+id/tvNum4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Cuarto"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <TextView
+        android:id="@+id/tvNum5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Quinto"
+        tools:layout_editor_absoluteX="315dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <TextView
+        android:id="@+id/tvNum2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="segundo"
+        tools:layout_editor_absoluteX="104dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <EditText
+        android:id="@+id/etEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="111dp" />
+
+    <TextView
+        android:id="@+id/tvNum1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Primero"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="250dp" />
+
+    <TextView
+        android:id="@+id/tvPrimEstrella"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Estrella 1"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="296dp" />
+
+    <Button
+        android:id="@+id/jugarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jugar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
+
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Premio ganado:"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="582dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,6 +49,7 @@ public class ViewJuego extends AppCompatActivity {
 
         btnVolver.setOnClickListener(v -> volver(v));
         btnNum.setOnClickListener(v -> elegirNumeros(v));
+        btnEstrellas.setOnClickListener(v -> elegirEstrellas(v));
 
         Intent intent = getIntent();
         numElegidos = intent.getStringArrayListExtra("NUMEROS_ELEGIDOS");
@@ -68,6 +69,11 @@ public class ViewJuego extends AppCompatActivity {
 
     public void elegirNumeros(View view){
         Intent i = new Intent(this, ViewNumeros.class);
+        startActivity(i);
+    }
+
+    public void elegirEstrellas(View view){
+        Intent i = new Intent(this, ViewEstrellas.class);
         startActivity(i);
     }
 
