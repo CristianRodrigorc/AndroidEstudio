@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewNumeros2">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="414dp"
+        android:layout_height="487dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:columnCount="5"
+            android:padding="8dp"
+            android:useDefaultMargins="true">
+
+            <ImageButton
+                android:id="@+id/num1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num48"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/num50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/num1"
+                tools:ignore="MissingConstraints" />
+
+        </GridLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvTituloNum2"
+        android:layout_width="143dp"
+        android:layout_height="22dp"
+        android:text="Ventana Números"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <Button
+        android:id="@+id/btnGuardarNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
+
+    <Button
+        android:id="@+id/btnVolverNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92"  />
+
+    <Button
+        android:id="@+id/btnResetNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92"  />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
