@@ -28,65 +28,74 @@
             android:useDefaultMargins="true">
 
             <ImageButton
-                android:id="@+id/num1"
+                android:id="@+id/num01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num1"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num2"
+                android:id="@+id/num02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num2"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num3"
+                android:id="@+id/num03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num3"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num4"
+                android:id="@+id/num04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num4"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num5"
+                android:id="@+id/num05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num5"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num6"
+                android:id="@+id/num06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num6"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num7"
+                android:id="@+id/num07"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num7"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num8"
+                android:id="@+id/num08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num8"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/num9"
+                android:id="@+id/num09"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num9"
                 tools:ignore="MissingConstraints" />
 
@@ -94,6 +103,7 @@
                 android:id="@+id/num10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num10"
                 tools:ignore="MissingConstraints" />
 
@@ -101,6 +111,7 @@
                 android:id="@+id/num11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num11"
                 tools:ignore="MissingConstraints" />
 
@@ -108,6 +119,7 @@
                 android:id="@+id/num12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num12"
                 tools:ignore="MissingConstraints" />
 
@@ -115,6 +127,7 @@
                 android:id="@+id/num13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num13"
                 tools:ignore="MissingConstraints" />
 
@@ -122,6 +135,7 @@
                 android:id="@+id/num14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num14"
                 tools:ignore="MissingConstraints" />
 
@@ -129,6 +143,7 @@
                 android:id="@+id/num15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num15"
                 tools:ignore="MissingConstraints" />
 
@@ -136,6 +151,7 @@
                 android:id="@+id/num16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num16"
                 tools:ignore="MissingConstraints" />
 
@@ -143,6 +159,7 @@
                 android:id="@+id/num17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num17"
                 tools:ignore="MissingConstraints" />
 
@@ -150,6 +167,7 @@
                 android:id="@+id/num18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num18"
                 tools:ignore="MissingConstraints" />
 
@@ -157,6 +175,7 @@
                 android:id="@+id/num19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num19"
                 tools:ignore="MissingConstraints" />
 
@@ -164,6 +183,7 @@
                 android:id="@+id/num20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num20"
                 tools:ignore="MissingConstraints" />
 
@@ -171,6 +191,7 @@
                 android:id="@+id/num21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num21"
                 tools:ignore="MissingConstraints" />
 
@@ -178,6 +199,7 @@
                 android:id="@+id/num22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num22"
                 tools:ignore="MissingConstraints" />
 
@@ -185,6 +207,7 @@
                 android:id="@+id/num23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num23"
                 tools:ignore="MissingConstraints" />
 
@@ -192,6 +215,7 @@
                 android:id="@+id/num24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num24"
                 tools:ignore="MissingConstraints" />
 
@@ -199,6 +223,7 @@
                 android:id="@+id/num25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num25"
                 tools:ignore="MissingConstraints" />
 
@@ -206,6 +231,7 @@
                 android:id="@+id/num26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num26"
                 tools:ignore="MissingConstraints" />
 
@@ -213,6 +239,7 @@
                 android:id="@+id/num27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num27"
                 tools:ignore="MissingConstraints" />
 
@@ -220,6 +247,7 @@
                 android:id="@+id/num28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num28"
                 tools:ignore="MissingConstraints" />
 
@@ -227,6 +255,7 @@
                 android:id="@+id/num29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num29"
                 tools:ignore="MissingConstraints" />
 
@@ -234,6 +263,7 @@
                 android:id="@+id/num30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num30"
                 tools:ignore="MissingConstraints" />
 
@@ -241,6 +271,7 @@
                 android:id="@+id/num31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num31"
                 tools:ignore="MissingConstraints" />
 
@@ -248,6 +279,7 @@
                 android:id="@+id/num32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num32"
                 tools:ignore="MissingConstraints" />
 
@@ -255,6 +287,7 @@
                 android:id="@+id/num33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num33"
                 tools:ignore="MissingConstraints" />
 
@@ -262,6 +295,7 @@
                 android:id="@+id/num34"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num34"
                 tools:ignore="MissingConstraints" />
 
@@ -269,6 +303,7 @@
                 android:id="@+id/num35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num35"
                 tools:ignore="MissingConstraints" />
 
@@ -276,6 +311,7 @@
                 android:id="@+id/num36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num36"
                 tools:ignore="MissingConstraints" />
 
@@ -283,6 +319,7 @@
                 android:id="@+id/num37"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num37"
                 tools:ignore="MissingConstraints" />
 
@@ -290,6 +327,7 @@
                 android:id="@+id/num38"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num38"
                 tools:ignore="MissingConstraints" />
 
@@ -297,6 +335,7 @@
                 android:id="@+id/num39"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num39"
                 tools:ignore="MissingConstraints" />
 
@@ -304,6 +343,7 @@
                 android:id="@+id/num40"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num40"
                 tools:ignore="MissingConstraints" />
 
@@ -311,6 +351,7 @@
                 android:id="@+id/num41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num41"
                 tools:ignore="MissingConstraints" />
 
@@ -318,6 +359,7 @@
                 android:id="@+id/num42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num42"
                 tools:ignore="MissingConstraints" />
 
@@ -325,6 +367,7 @@
                 android:id="@+id/num43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num43"
                 tools:ignore="MissingConstraints" />
 
@@ -332,6 +375,7 @@
                 android:id="@+id/num44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num44"
                 tools:ignore="MissingConstraints" />
 
@@ -339,6 +383,7 @@
                 android:id="@+id/num45"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num45"
                 tools:ignore="MissingConstraints" />
 
@@ -346,6 +391,7 @@
                 android:id="@+id/num46"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num46"
                 tools:ignore="MissingConstraints" />
 
@@ -353,6 +399,7 @@
                 android:id="@+id/num47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num47"
                 tools:ignore="MissingConstraints" />
 
@@ -360,6 +407,7 @@
                 android:id="@+id/num48"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num48"
                 tools:ignore="MissingConstraints" />
 
@@ -367,6 +415,7 @@
                 android:id="@+id/num49"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num49"
                 tools:ignore="MissingConstraints" />
 
@@ -374,6 +423,7 @@
                 android:id="@+id/num50"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClick"
                 app:srcCompat="@mipmap/num50"
                 tools:ignore="MissingConstraints" />
 
@@ -401,65 +451,74 @@
             android:useDefaultMargins="true">
 
             <ImageButton
-                android:id="@+id/estr1"
+                android:id="@+id/estr01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr1"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr2"
+                android:id="@+id/estr02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr2"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr3"
+                android:id="@+id/estr03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr3"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr4"
+                android:id="@+id/estr04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr4"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr5"
+                android:id="@+id/estr05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr5"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr6"
+                android:id="@+id/estr06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr6"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr7"
+                android:id="@+id/estr07"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr7"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr8"
+                android:id="@+id/estr08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr8"
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/estr9"
+                android:id="@+id/estr09"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr9"
                 tools:ignore="MissingConstraints" />
 
@@ -467,6 +526,7 @@
                 android:id="@+id/estr10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr10"
                 tools:ignore="MissingConstraints" />
 
@@ -474,6 +534,7 @@
                 android:id="@+id/estr11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr11"
                 tools:ignore="MissingConstraints" />
 
@@ -481,6 +542,7 @@
                 android:id="@+id/estr12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="botonClickEstrellas"
                 app:srcCompat="@mipmap/estr12"
                 tools:ignore="MissingConstraints" />
         </GridLayout>
@@ -547,10 +609,10 @@
         app:layout_constraintVertical_bias="0.83" />
 
     <Button
-        android:id="@+id/btnGuardarNum"
+        android:id="@+id/btnJugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
+        android:text="Jugar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
@@ -570,7 +632,7 @@
         app:layout_constraintVertical_bias="0.92"  />
 
     <Button
-        android:id="@+id/btnResetNum"
+        android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset"

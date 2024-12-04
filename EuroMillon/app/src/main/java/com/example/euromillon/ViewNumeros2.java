@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,10 +19,11 @@ import java.util.Random;
 public class ViewNumeros2 extends AppCompatActivity {
 
     private GridLayout gridLayout;
+    private GridLayout gridLayout2;
 
-    private Button btnGuardarNum;
+    private Button btnJugar;
     private Button btnVolverNum;
-    private Button btnResetNum;
+    private Button btnReset;
 
     private TextView tvTituloNum2;
     private TextView tvNumElegidos;
@@ -33,11 +31,14 @@ public class ViewNumeros2 extends AppCompatActivity {
     private TextView tvNumGanadores;
     private TextView tvEstrellasGanadoras;
 
-    private ArrayList<String> numElegidos = new ArrayList<>();
+    private ArrayList<Integer> numElegidos = new ArrayList<>();
+    private ArrayList<Integer> estrElegidas = new ArrayList<>();
 
-    private int contador = 0;
+    private int contadorNum = 0;
+    private int contadorEstrellas = 0;
 
     private StringBuilder sbTV = new StringBuilder();
+    private StringBuilder sbEstrTV = new StringBuilder();
 
     private int[] numGanadores = new int[5];
     private int[] estrGanadores = new int[2];
@@ -56,13 +57,15 @@ public class ViewNumeros2 extends AppCompatActivity {
         tvNumGanadores = findViewById(R.id.tvNumGanadores);
         tvEstrellasGanadoras = findViewById(R.id.tvEstrellasGanadoras);
         gridLayout = findViewById(R.id.gridLayout);
-        btnGuardarNum = findViewById(R.id.btnGuardarNum);
+        gridLayout2 = findViewById(R.id.gridLayout2);
+        btnJugar = findViewById(R.id.btnJugar);
         btnVolverNum = findViewById(R.id.btnVolverNum);
-        btnResetNum = findViewById(R.id.btnResetNum);
+        btnReset = findViewById(R.id.btnReset);
 
         btnVolverNum.setOnClickListener(v -> volverViewJuego());
+        btnReset.setOnClickListener(v -> activarBotones());
+        btnJugar.setOnClickListener(v -> compararResultados());
 
-        asignarBotonesNum();
 
         //Asignamos los numeros y estrellas ganadoras
         numJuego(numGanadores);
@@ -72,81 +75,200 @@ public class ViewNumeros2 extends AppCompatActivity {
     }
 
     public void volverViewJuego() {
-        Intent i = new Intent(this, ViewJuego.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void asignarBotonesNum() {
-        // Recorremos todos los hijos del GridLayout
-        for (int i = 0; i < gridLayout.getChildCount(); i++) {
-            // Obtenemos cada hijo del GridLayout, que puede ser un Button
-            View child = gridLayout.getChildAt(i);
+    public void botonClick(View view) {
+        if (contadorNum >= 5) {
+            Toast.makeText(this, "Ya seleccionaste 5 botones", Toast.LENGTH_SHORT).show();
+            return; // Evita procesar más clics
+        }
 
-            // Comprobamos si el hijo es un Button (ya que pueden haber otros tipos de vistas)
-            if (child instanceof Button) {
-                Button btn = (Button) child;
+        if (view instanceof ImageButton) {
+            ImageButton imgBtn = (ImageButton) view;
 
-                // Asignamos el evento de click a cada botón
-                btn.setOnClickListener(v -> handleButtonClick(btn));
+            // Desactiva el botón
+            imgBtn.setEnabled(false);
+
+            // Cambiar apariencia
+            imgBtn.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+
+            // Obtén el nombre del recurso
+            String resourceName = getResources().getResourceEntryName(view.getId());
+
+            // Extrae solo los últimos dos caracteres
+            String lastTwoChars = resourceName.substring(Math.max(resourceName.length() - 2, 0));
+
+
+            // Incrementa el contador
+            contadorNum++;
+
+            // Añade el nombre al array y actualiza el TextView
+            // Convierte el número del botón (String) a Integer y añade al array
+            numElegidos.add(Integer.parseInt(lastTwoChars));
+            actualizarNumTV(Integer.parseInt(lastTwoChars));
+
+
+            // Desactiva los botones si es el quinto clic
+            if (contadorNum == 5) {
+                deshabilitarBotones(gridLayout);
             }
         }
     }
 
-    private void handleButtonClick(Button btn) {
-        // Desactivar el botón
-        btn.setEnabled(false);
-
-        // Cambiar la apariencia
-        btn.setBackgroundColor(ContextCompat.getColor(this, android.R.color.darker_gray));
-        btn.setTextColor(ContextCompat.getColor(this, android.R.color.white));
-
-        // Agregar número al array y actualizar TextView
-        contador++;
-        numElegidos.add(btn.getText().toString());
-        actualizarNumTV(btn.getText().toString());
-
-        // Deshabilitar botones si ya se eligieron 5 números
-        if (contador >= 5) {
-            deshabilitarBotones();
+    public void botonClickEstrellas(View view) {
+        if (contadorEstrellas >= 2) {
+            Toast.makeText(this, "Ya seleccionaste 2 botones", Toast.LENGTH_SHORT).show();
+            return; // Evita procesar más clics
         }
 
-        Toast.makeText(this, "Botón " + btn.getText() + " pulsado", Toast.LENGTH_SHORT).show();
-    }
+        if (view instanceof ImageButton) {
+            ImageButton imgBtn = (ImageButton) view;
 
-    public void guardarNum() {
-        if (contador == 5) {
-            Intent intent = new Intent(this, ViewJuego.class);
-            intent.putStringArrayListExtra("NUMEROS_ELEGIDOS", numElegidos);
-            startActivity(intent);
-        } else {
-            Toast.makeText(this, "DEBE SELECCIONAR 5 NÚMEROS", Toast.LENGTH_SHORT).show();
+            // Desactiva el botón
+            imgBtn.setEnabled(false);
+
+            // Cambiar apariencia
+            imgBtn.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+
+            // Obtén el nombre del recurso
+            String resourceName = getResources().getResourceEntryName(view.getId());
+
+            // Extrae solo los últimos dos caracteres
+            String lastTwoChars = resourceName.substring(Math.max(resourceName.length() - 2, 0));
+
+
+            // Incrementa el contador
+            contadorEstrellas++;
+
+            // Añade el nombre al array y actualiza el TextView
+            // Convierte el número del botón (String) a Integer y añade al array
+            estrElegidas.add(Integer.parseInt(lastTwoChars));
+            actualizarEstrTV(Integer.parseInt(lastTwoChars));
+
+            // Desactiva los botones si es el quinto clic
+            if (contadorEstrellas == 2) {
+                deshabilitarBotones(gridLayout2);
+            }
         }
     }
 
-    public void actualizarNumTV(String num) {
-        if (contador < 5) {
+
+    public void compararResultados() {
+        // Comparar los números ganadores con los elegidos
+        int coincidenciasNumeros = 0;
+        for (Integer numElegido : numElegidos) {
+            for (int numGanador : numGanadores) {
+                if (numElegido == numGanador) {
+                    coincidenciasNumeros++;
+                }
+            }
+        }
+
+        // Comparar las estrellas ganadoras con las elegidas
+        int coincidenciasEstrellas = 0;
+        for (Integer estrellaElegida : estrElegidas) {
+            for (int estrellaGanadora : estrGanadores) {
+                if (estrellaElegida == estrellaGanadora) {
+                    coincidenciasEstrellas++;
+                }
+            }
+        }
+
+        // Mostrar las coincidencias en los TextViews
+        String resultados = "Coincidencias en los números: " + coincidenciasNumeros + "\n" +
+                "Coincidencias en las estrellas: " + coincidenciasEstrellas;
+
+        // Calcular el porcentaje de ganancia basado en las coincidencias
+        int porcentaje = calcularPorcentaje(coincidenciasNumeros, coincidenciasEstrellas);
+
+        // Pozo de dinero
+        double pozoDinero = 5000000;
+
+        // Calcular el dinero ganado
+        double dineroGanado = pozoDinero * (porcentaje / 100.0);
+
+        // Mostrar el resultado con el dinero ganado
+        resultados += "\nDinero ganado: " + dineroGanado + " unidades.";
+
+        Toast.makeText(this, resultados, Toast.LENGTH_LONG).show();
+    }
+
+    private int calcularPorcentaje(int aciertosNumeros, int aciertosEstrellas) {
+        // Lógica del porcentaje basado en los aciertos
+        if (aciertosNumeros == 5 && aciertosEstrellas == 2) return 100;
+        if (aciertosNumeros == 5 && aciertosEstrellas == 1) return 95;
+        if (aciertosNumeros == 5 && aciertosEstrellas == 0) return 80;
+        if (aciertosNumeros == 4 && aciertosEstrellas == 2) return 75;
+        if (aciertosNumeros == 4 && aciertosEstrellas == 1) return 60;
+        if (aciertosNumeros == 3 && aciertosEstrellas == 2) return 50;
+        if (aciertosNumeros == 4 && aciertosEstrellas == 0) return 40;
+        if (aciertosNumeros == 2 && aciertosEstrellas == 2) return 30;
+        if (aciertosNumeros == 3 && aciertosEstrellas == 1) return 20;
+        if (aciertosNumeros == 3 && aciertosEstrellas == 0) return 10;
+        if (aciertosNumeros == 1 && aciertosEstrellas == 2) return 5;
+        if (aciertosNumeros == 2 && aciertosEstrellas == 1) return 3;
+        if (aciertosNumeros == 2 && aciertosEstrellas == 0) return 0;
+        if (aciertosNumeros == 1 && aciertosEstrellas == 0) return 0;
+        if (aciertosNumeros == 0 && aciertosEstrellas == 0) return 0;
+
+        return 0; // En caso de que no haya coincidencias, no se gana nada
+    }
+
+
+
+
+    public void actualizarNumTV(Integer num) {
+        if (contadorNum < 5) {
             sbTV.append(num).append(", ");
-            tvNumElegidos.setText(sbTV);
         } else {
             sbTV.append(num);
-            tvNumElegidos.setText(sbTV);
         }
+        tvNumElegidos.setText(sbTV);
     }
 
+    public void actualizarEstrTV(Integer num) {
+        if (contadorEstrellas < 2) {
+            sbEstrTV.append(num).append(", ");
+        } else {
+            sbEstrTV.append(num);
+        }
+        tvEstrellasElegidas.setText(sbEstrTV.toString());
+    }
+
+
     public void activarBotones() {
+        // Habilitar botones en gridLayout
         for (int i = 0; i < gridLayout.getChildCount(); i++) {
             View child = gridLayout.getChildAt(i);
-            if (child instanceof Button) {
+            if (child instanceof Button || child instanceof ImageButton) {
                 child.setEnabled(true);
-                child.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light)); // Color original
-                ((Button) child).setTextColor(getResources().getColor(android.R.color.black)); // Texto negro original
+                child.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
             }
         }
-        contador = 0;
+
+        contadorNum = 0;
 
         sbTV.delete(0, sbTV.length());
         numElegidos.clear();
         tvNumElegidos.setText(sbTV);
+
+        // Habilitar botones en gridLayout2
+        for (int i = 0; i < gridLayout2.getChildCount(); i++) {
+            View child = gridLayout2.getChildAt(i);
+            if (child instanceof Button || child instanceof ImageButton) {
+                child.setEnabled(true);
+                child.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            }
+        }
+
+        contadorEstrellas = 0;
+
+        sbEstrTV.delete(0,sbEstrTV.length());
+        estrElegidas.clear();
+        tvEstrellasElegidas.setText(sbEstrTV);
+
     }
 
     public void numJuego(int[] numGanadores) {
@@ -180,13 +302,14 @@ public class ViewNumeros2 extends AppCompatActivity {
         }
     }
 
-    // Método para deshabilitar todos los botones
-    public void deshabilitarBotones() {
-        for (int i = 0; i < gridLayout.getChildCount(); i++) {
-            Button btn = (Button) gridLayout.getChildAt(i);
-            btn.setEnabled(false); // Deshabilitar el botón
-            btn.setBackgroundColor(getResources().getColor(android.R.color.darker_gray)); // Cambiar el color de fondo
-            btn.setTextColor(getResources().getColor(android.R.color.white)); // Cambiar el color del texto
+    // Método para deshabilitar todos los botones del GridLayout
+    public void deshabilitarBotones(GridLayout targetGridLayout) {
+        for (int i = 0; i < targetGridLayout.getChildCount(); i++) {
+            View child = targetGridLayout.getChildAt(i);
+            if (child instanceof Button || child instanceof ImageButton) {
+                child.setEnabled(false);
+                child.setBackgroundColor(getResources().getColor(android.R.color.darker_gray)); // Cambia apariencia
+            }
         }
     }
 
