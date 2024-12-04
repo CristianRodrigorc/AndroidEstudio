@@ -68,7 +68,7 @@ public class ViewJuego extends AppCompatActivity {
     }
 
     public void elegirNumeros(View view){
-        Intent i = new Intent(this, ViewNumeros.class);
+        Intent i = new Intent(this, ViewNumeros2.class);
         startActivity(i);
     }
 
