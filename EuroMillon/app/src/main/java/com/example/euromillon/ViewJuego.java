@@ -114,30 +114,6 @@ public class ViewJuego extends AppCompatActivity {
         }
     }
 
-    public void estrJuego(int[] numGanadores) {
-        Random random = new Random();
-        int count = 0;
-
-        while (count < 2) {
-            int num = random.nextInt(12) + 1; // Genera un número entre 1 y 50
-            boolean exists = false;
-
-            // Verificar si ya existe en el array
-            for (int i = 0; i < count; i++) {
-                if (numGanadores[i] == num) {
-                    exists = true;
-                    break;
-                }
-            }
-
-            // Si no existe, añadir al array
-            if (!exists) {
-                numGanadores[count] = num;
-                count++;
-            }
-        }
-    }
-
     public String imprimirNum (int [] num){
         StringBuilder sb = new StringBuilder("[");
         for(int numeros : num){
