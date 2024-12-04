@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv1;
     private Button btnJugar;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewJuego(View view) {
+
         Intent i = new Intent(this, ViewNumeros2.class);
         startActivity(i);
     }

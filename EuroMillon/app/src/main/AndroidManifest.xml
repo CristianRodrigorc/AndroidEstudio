@@ -16,16 +16,6 @@
             android:name=".ViewNumeros2"
             android:exported="false" />
         <activity
-            android:name=".ViewEstrellas"
-            android:exported="false" />
-        <activity
-            android:name=".ViewNumeros"
-            android:exported="false"
-            android:theme="@style/Theme.EuroMillon" />
-        <activity
-            android:name=".ViewJuego"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

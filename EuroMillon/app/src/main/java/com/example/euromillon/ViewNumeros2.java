@@ -18,6 +18,7 @@ import java.util.Random;
 
 public class ViewNumeros2 extends AppCompatActivity {
 
+    private double pozoDinero;
     private GridLayout gridLayout;
     private GridLayout gridLayout2;
 
@@ -25,7 +26,7 @@ public class ViewNumeros2 extends AppCompatActivity {
     private Button btnVolverNum;
     private Button btnReset;
 
-    private TextView tvTituloNum2;
+    private TextView tvTitulo;
     private TextView tvNumElegidos;
     private TextView tvEstrellasElegidas;
     private TextView tvNumGanadores;
@@ -51,7 +52,7 @@ public class ViewNumeros2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_view_numeros2);
 
-        tvTituloNum2 = findViewById(R.id.tvTituloNum2);
+        tvTitulo = findViewById(R.id.tvTitulo);
         tvNumElegidos = findViewById(R.id.tvNumElegidos);
         tvEstrellasElegidas = findViewById(R.id.tvEstrellasElegidas);
         tvNumGanadores = findViewById(R.id.tvNumGanadores);
@@ -65,6 +66,11 @@ public class ViewNumeros2 extends AppCompatActivity {
         btnVolverNum.setOnClickListener(v -> volverViewJuego());
         btnReset.setOnClickListener(v -> activarBotones());
         btnJugar.setOnClickListener(v -> compararResultados());
+
+        //Asignamos el valor del pozo
+        asignarPozo();
+
+        tvTitulo.setText("El pozo es de: "+ pozoDinero + "€");
 
 
         //Asignamos los numeros y estrellas ganadoras
@@ -177,22 +183,22 @@ public class ViewNumeros2 extends AppCompatActivity {
         }
 
         // Mostrar las coincidencias en los TextViews
-        String resultados = "Coincidencias en los números: " + coincidenciasNumeros + "\n" +
-                "Coincidencias en las estrellas: " + coincidenciasEstrellas;
+        String resultados = "Coincidencias números: " + coincidenciasNumeros + "\n" +
+                "Coincidencias estrellas: " + coincidenciasEstrellas;
+
+        Toast.makeText(this, resultados, Toast.LENGTH_LONG).show();
 
         // Calcular el porcentaje de ganancia basado en las coincidencias
         int porcentaje = calcularPorcentaje(coincidenciasNumeros, coincidenciasEstrellas);
 
-        // Pozo de dinero
-        double pozoDinero = 5000000;
 
         // Calcular el dinero ganado
         double dineroGanado = pozoDinero * (porcentaje / 100.0);
 
         // Mostrar el resultado con el dinero ganado
-        resultados += "\nDinero ganado: " + dineroGanado + " unidades.";
+        String resultados2 = "Dinero ganado: " + dineroGanado + " unidades.";
 
-        Toast.makeText(this, resultados, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, resultados2, Toast.LENGTH_LONG).show();
     }
 
     private int calcularPorcentaje(int aciertosNumeros, int aciertosEstrellas) {
@@ -321,5 +327,23 @@ public class ViewNumeros2 extends AppCompatActivity {
         sb.deleteCharAt(sb.length() - 1);
         sb.append("]");
         return sb.toString();
+    }
+
+
+    public void asignarPozo(){
+        Random rd = new Random();
+        int valorPozo = rd.nextInt(5);
+        switch (valorPozo){
+            case 0 : pozoDinero = 2000000.00;
+            break;
+            case 1 : pozoDinero = 1500000.00;
+            break;
+            case 2: pozoDinero = 1000000.00;
+            break;
+            case 3: pozoDinero = 500000.00;
+            break;
+            case 4: pozoDinero = 250000.00;
+            break;
+        }
     }
 }
