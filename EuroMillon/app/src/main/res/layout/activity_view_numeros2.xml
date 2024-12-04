@@ -383,7 +383,7 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="414dp"
-        android:layout_height="146dp"
+        android:layout_height="140dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -397,7 +397,7 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:columnCount="5"
-            android:padding="8dp"
+            android:padding="10dp"
             android:useDefaultMargins="true">
 
             <ImageButton
@@ -490,13 +490,61 @@
         android:id="@+id/tvTituloNum2"
         android:layout_width="143dp"
         android:layout_height="22dp"
-        android:text="Ventana Números"
+        android:text="Pantalla de Juego"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038" />
+
+    <TextView
+        android:id="@+id/tvNumElegidos"
+        android:layout_width="220dp"
+        android:layout_height="22dp"
+        android:hint="Elige 5 números"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <TextView
+        android:id="@+id/tvNumGanadores"
+        android:layout_width="220dp"
+        android:layout_height="22dp"
+        android:hint="Números ganadores"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <TextView
+        android:id="@+id/tvEstrellasElegidas"
+        android:layout_width="220dp"
+        android:layout_height="22dp"
+        android:hint="Elige 2 estrellas"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.79" />
+
+    <TextView
+        android:id="@+id/tvEstrellasGanadoras"
+        android:layout_width="220dp"
+        android:layout_height="22dp"
+        android:hint="Estrellas ganadoras"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83" />
 
     <Button
         android:id="@+id/btnGuardarNum"
