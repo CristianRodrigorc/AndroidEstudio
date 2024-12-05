@@ -13,20 +13,23 @@
         android:theme="@style/Theme.PracticasExamen"
         tools:targetApi="31">
         <activity
+            android:name=".radiogroup.EjemploRadioGroup"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".pasardatos.RecibirDatos1"
             android:exported="false" />
         <activity
             android:name=".pasardatos.PasarDatos1"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Login1"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".CalculadoraCompleja"
             android:exported="true" />
