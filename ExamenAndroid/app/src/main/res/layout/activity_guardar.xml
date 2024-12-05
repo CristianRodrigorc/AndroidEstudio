@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guardar">
+
+    <LinearLayout
+        android:layout_width="417dp"
+        android:layout_height="436dp"
+        android:layout_marginTop="72dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/eTNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="Ingrese el Nombre:"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/eTNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="Ingrese el Número:"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/eTEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="Ingrese el Email:"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Contacto" />
+
+        <Button
+            android:id="@+id/btnVerContacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Contacto" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         btnAplicar.setOnClickListener(this::aplicarBoton);
 
         //Creamos un SharedPreference que guarda datos clave-valor
-        //Context.MODE_PRIVATE: Este modo indica que el archivo de preferencias será accesible solo
-        // por la aplicación que lo creó. Otros programas no podrán leer o modificar este archivo.
         // Creamos o accedemos a un archivo de SharedPreferences llamado "datos"
         SharedPreferences shared = getSharedPreferences("datos", Context.MODE_PRIVATE);
 
