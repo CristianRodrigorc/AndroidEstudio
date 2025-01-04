@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="txtBtnRegistro" >Registrarse</string>
+    <string name="hintRegistroUsuario">Registre un Usuario</string>
+    <string name="hintRegistroPass">Ingrese una Contraseña</string>
+    <string name="tituloRegistro">Ventana de Creación de Usuarios</string>
+    <string name="confirmPassRegistro">Confirme su contraseña</string>
+    <string name="hintEmailRegistro">Ingrese su Email</string>
+    <string name="createButtonRegister">Crear Cuenta</string>
+    <string name="resetRecordsRegister">Limpiar Registro</string>
+    <string name="volverMain">Inicio</string>
+    <string name="btn_login_local">Sesión Local</string>
+</resources>

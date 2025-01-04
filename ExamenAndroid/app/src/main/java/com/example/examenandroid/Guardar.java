@@ -57,7 +57,7 @@ public class Guardar extends AppCompatActivity {
         SharedPreferences.Editor editorEmail = prefEmail.edit();
         String nuevoContactoEmail = eTEmail.getText().toString();
         editorEmail.putString("contactoEmail",nuevoContactoEmail );
-        ListarContactos.agregarContacto();
+        //ListarContactos.agregarContacto();
 
     }
 
