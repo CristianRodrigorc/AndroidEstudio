@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewJuego(View view) {
-
         Intent i = new Intent(this, ViewNumeros2.class);
         startActivity(i);
     }
