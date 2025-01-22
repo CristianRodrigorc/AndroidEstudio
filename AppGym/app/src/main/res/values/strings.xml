@@ -18,11 +18,13 @@
     <string name="btnVolver">Back</string>
     <string name="btnRegistrar">Register</string>
 
-
-
-
-
-
+    <!-- Strings used for DataUserScreen -->
+    <string name="tvSizeDU">Size</string>
+    <string name="tvWeight">Weight</string>
+    <string name="tvActividadFisica">How often do you exercise currently?</string>
+    <string name="tvDiasEntrenar">How many days a week would you like to train?</string>
+    <string name="tvMotivacion">Motivation</string>
+    <string name="btnGuardar">Save</string>
 
 
     <!-- Strings used for fragments for navigation -->
