@@ -11,6 +11,7 @@
     <string name="tvName">Name</string>
     <string name="tvLastName">Last Name</string>
     <string name="tvEmail">Email</string>
+    <string name="tvUser">Username</string>
     <string name="tvContra">Password</string>
     <string name="tvDate">Date of Birth</string>
     <string name="btnMale">Male</string>
