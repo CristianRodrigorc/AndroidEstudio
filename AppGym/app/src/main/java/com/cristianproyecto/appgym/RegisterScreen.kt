@@ -16,9 +16,10 @@ class RegisterScreen : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_register_screen2)
 
+        val btnRegisterSS = findViewById<Button>(R.id.btnRegisterSS)
         val btnBackSS = findViewById<Button>(R.id.btnBackSS)
 
-
+        navigationMethods.cambiarScreen(btnRegisterSS,this,UserDataScreen::class.java)
         navigationMethods.cambiarScreen(btnBackSS,this,MainActivity::class.java)
     }
 }
