@@ -13,17 +13,17 @@
         android:theme="@style/Theme.AppGym"
         tools:targetApi="31">
         <activity
-            android:name=".LoginScreen"
+            android:name=".screens.LoginScreen"
             android:exported="false" />
         <activity
-            android:name=".UserDataScreen"
+            android:name=".screens.UserDataScreen"
             android:exported="false" />
         <activity
-            android:name=".RegisterScreen"
+            android:name=".screens.RegisterScreen"
             android:exported="false"
             android:theme="@style/Theme.AppGym" />
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

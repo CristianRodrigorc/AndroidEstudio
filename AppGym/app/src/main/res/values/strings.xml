@@ -14,6 +14,7 @@
     <string name="tvUser">Username</string>
     <string name="tvContra">Password</string>
     <string name="tvDate">Date of Birth</string>
+    <string name="etDate">Select your date of birth</string>
     <string name="btnMale">Male</string>
     <string name="btnFemale">Female</string>
     <string name="btnGroup">Sex</string>
@@ -24,10 +25,34 @@
     <string name="tvSizeDU">Size</string>
     <string name="tvWeight">Weight</string>
     <string name="tvActividadFisica">How often do you exercise currently?</string>
+    <string-array name="niveles_actividad">
+        <item>Daily</item>
+        <item>Several times a week</item>
+        <item>Weekly</item>
+        <item>Occasionally</item>
+        <item>Never</item>
+    </string-array>
     <string name="tvDiasEntrenar">How many days a week would you like to train?</string>
+    <string-array name="dias_entrenar">
+        <item>1-2 days</item>
+        <item>3-4 days</item>
+        <item>5-6 days</item>
+        <item>7 days</item>
+    </string-array>
     <string name="tvProblemaSalud">Do you have any health conditions we should know about?</string>
     <string name="tvPreferenciaHorario">What times do you prefer to train?</string>
-    <string name="tvMotivacion">Motivation</string>
+    <string-array name="preferencia_Horario">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+    </string-array>
+    <string name="tvMotivacion">What motivates you to keep training?</string>
+    <string-array name="motivaciones">
+        <item>Improve my health</item>
+        <item>Achieve a physical goal</item>
+        <item>Aesthetics / Physical changes</item>
+        <item>Socialize / Create a routine</item>
+    </string-array>
     <string name="btnGuardar">Save</string>
 
 

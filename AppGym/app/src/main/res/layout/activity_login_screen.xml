@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginScreen">
+    tools:context=".screens.LoginScreen">
 
     <Button
         android:id="@+id/btnHomeLoginS"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etUsernameLoginS"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/etPassLoginS"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"

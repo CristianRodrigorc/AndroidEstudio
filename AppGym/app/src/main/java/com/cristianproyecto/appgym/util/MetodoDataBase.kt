@@ -1,12 +1,12 @@
-package com.cristianproyecto.appgym
+package com.cristianproyecto.appgym.util
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class MetodoDataBase(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         const val DATABASE_NAME = "GymApp.db"
         const val DATABASE_VERSION = 1
@@ -58,7 +58,7 @@ class MetodoDataBase(context: Context) :
                 $COLUMN_HEALTH_PROBLEMS TEXT,
                 $COLUMN_PREFERENCE_SCHEDULE TEXT,
                 $COLUMN_MOTIVATION TEXT,
-                FOREING KEY ($COLUMN_USER_DATA_ID) REFERENCES $TABLE_USERS($COLUMN_USER_ID)
+                FOREIGN KEY ($COLUMN_USER_DATA_ID) REFERENCES $TABLE_USERS($COLUMN_USER_ID)
             )
         """
         db.execSQL(createUserDataTableQuery)
@@ -100,17 +100,30 @@ class MetodoDataBase(context: Context) :
         problemaSalud: String,
         preferenciaHorario: String,
         motivacion: String
-    ): Long{
-        val db =this.writableDatabase
+    ): Long {
+        val db = this.writableDatabase
         val valores = ContentValues()
-        valores.put(COLUMN_USER_ID,idUser)
-        valores.put(COLUMN_SIZE,size)
-        valores.put(COLUMN_WEIGTH,weigth)
-        valores.put(COLUMN_PHYSICAL_ACTIVITY,actividadFisica)
-        valores.put(COLUMN_DAYS_TRAINING,diasEntrenar)
-        valores.put(COLUMN_HEALTH_PROBLEMS,problemaSalud)
-        valores.put(COLUMN_PREFERENCE_SCHEDULE,preferenciaHorario)
-        valores.put(COLUMN_MOTIVATION,motivacion)
-        return db.insert(TABLE_USER_DATA,null,valores)
+        valores.put(COLUMN_USER_ID, idUser)
+        valores.put(COLUMN_SIZE, size)
+        valores.put(COLUMN_WEIGTH, weigth)
+        valores.put(COLUMN_PHYSICAL_ACTIVITY, actividadFisica)
+        valores.put(COLUMN_DAYS_TRAINING, diasEntrenar)
+        valores.put(COLUMN_HEALTH_PROBLEMS, problemaSalud)
+        valores.put(COLUMN_PREFERENCE_SCHEDULE, preferenciaHorario)
+        valores.put(COLUMN_MOTIVATION, motivacion)
+        return db.insert(TABLE_USER_DATA, null, valores)
+    }
+
+    fun getAllUser(): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $TABLE_USERS", null)
+    }
+
+    fun getUserData(idUser: Int): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery(
+            "SELECT * FROM $TABLE_USER_DATA WHERE $COLUMN_USER_DATA_ID = ?",
+            arrayOf(idUser.toString())
+        )
     }
 }
