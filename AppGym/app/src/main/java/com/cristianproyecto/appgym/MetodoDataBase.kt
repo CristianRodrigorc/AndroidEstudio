@@ -1,11 +1,13 @@
 package com.cristianproyecto.appgym
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class MetodoDataBase(context: Context) :SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION){
-    companion object{
+class MetodoDataBase(context: Context) :
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    companion object {
         const val DATABASE_NAME = "GymApp.db"
         const val DATABASE_VERSION = 1
 
@@ -63,6 +65,52 @@ class MetodoDataBase(context: Context) :SQLiteOpenHelper(context,DATABASE_NAME,n
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+        // Eliminar tablas si ya existen
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_USER_DATA")
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
+        onCreate(db)
+    }
+
+
+    fun insertUser(
+        username: String,
+        password: String,
+        name: String,
+        lastName: String,
+        date: String,
+        email: String
+    ): Long {
+        val db = this.writableDatabase
+        val valores = ContentValues()
+        valores.put(COLUMN_USERNAME, username)
+        valores.put(COLUMN_PASSWORD, password)
+        valores.put(COLUMN_NAME, name)
+        valores.put(COLUMN_LASTNAME, lastName)
+        valores.put(COLUMN_DATE, date)
+        valores.put(COLUMN_EMAIL, email)
+        return db.insert(TABLE_USERS, null, valores)
+    }
+
+    fun insertUserData(
+        idUser: Int,
+        size: Int,
+        weigth: Int,
+        actividadFisica: String,
+        diasEntrenar: String,
+        problemaSalud: String,
+        preferenciaHorario: String,
+        motivacion: String
+    ): Long{
+        val db =this.writableDatabase
+        val valores = ContentValues()
+        valores.put(COLUMN_USER_ID,idUser)
+        valores.put(COLUMN_SIZE,size)
+        valores.put(COLUMN_WEIGTH,weigth)
+        valores.put(COLUMN_PHYSICAL_ACTIVITY,actividadFisica)
+        valores.put(COLUMN_DAYS_TRAINING,diasEntrenar)
+        valores.put(COLUMN_HEALTH_PROBLEMS,problemaSalud)
+        valores.put(COLUMN_PREFERENCE_SCHEDULE,preferenciaHorario)
+        valores.put(COLUMN_MOTIVATION,motivacion)
+        return db.insert(TABLE_USER_DATA,null,valores)
     }
 }
