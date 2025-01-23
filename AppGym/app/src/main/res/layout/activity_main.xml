@@ -48,7 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="540dp"
         android:layout_marginEnd="8dp"
-        android:onClick="clickOption"
         android:text="@string/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +58,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="595dp"
         android:layout_marginEnd="8dp"
-        android:onClick="clickOption"
         android:text="@string/btnCreateAccount"
         app:layout_constrainedHeight="false"
         app:layout_constraintEnd_toEndOf="parent"

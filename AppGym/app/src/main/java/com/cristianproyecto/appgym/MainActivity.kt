@@ -8,6 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    //Instanciamos la clase de los métodos
+    private val navigationMethods = NavigationMethods();
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,9 +20,12 @@ class MainActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
 
+        navigationMethods.cambiarScreen(btnLogin,this,LoginScreen::class.java)
+        navigationMethods.cambiarScreen(btnRegister,this,RegisterScreen::class.java)
+
 
     }
-
+/*
     fun clickOption(view: View) {
         when(view.id) {
             R.id.btnLogin -> {
@@ -31,4 +38,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+ */
 }

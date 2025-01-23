@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AppGym</string>
     <!-- Strings used for PrincipalScreen -->
-    <string name="titlePrincipalWindow">My AppGym</string>
+    <string name="titlePrincipalWindow">My GymApp</string>
     <string name="sloganPrincipalWindow">We will help you achieve your goals.</string>
     <string name="textPrincipalWindow">¡Welcome to your zone of strength and wellness! Log in to transform your day!</string>
     <string name="btnLogin">Sing in</string>
@@ -25,6 +25,8 @@
     <string name="tvWeight">Weight</string>
     <string name="tvActividadFisica">How often do you exercise currently?</string>
     <string name="tvDiasEntrenar">How many days a week would you like to train?</string>
+    <string name="tvProblemaSalud">Do you have any health conditions we should know about?</string>
+    <string name="tvPreferenciaHorario">What times do you prefer to train?</string>
     <string name="tvMotivacion">Motivation</string>
     <string name="btnGuardar">Save</string>
 
