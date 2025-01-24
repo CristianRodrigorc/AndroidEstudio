@@ -11,7 +11,6 @@ import com.cristianproyecto.appgym.util.MetodoDataBase
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-     */
+*/
 
 /*
     //Primera instancia de la base de datos para crearla
@@ -52,5 +51,12 @@ class MainActivity : AppCompatActivity() {
     }else{
         Toast.makeText(this,"Error al crear la DB... ", Toast.LENGTH_SHORT).show()
     }
-
 */
+/*
+INSERT INTO tabla_usuarios (username, password, name, lastname, date, email, sex)
+VALUES ('usuarioEjemplo', 'password123', 'Juan', 'Pérez', '1990-05-10', 'juan.perez@email.com', 'Masculino');
+
+INSERT INTO tabla_datos_usuarios (id_user, size, weigth, actividad_fisica, dias_entrenar, problemas_salud, preferencia_horario, motivacion)
+VALUES (1, 180, 75, 'Gimnasio', 'Lunes, Miércoles, Viernes', 'Ninguno', 'Mañana', 'Mejorar mi salud y forma física');
+
+ */

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         const val DATABASE_NAME = "GymApp.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
 
         //Datos tabla_usuarios
         const val TABLE_USERS = "tabla_usuarios"
@@ -20,6 +20,7 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         const val COLUMN_LASTNAME = "lastname"
         const val COLUMN_DATE = "date"
         const val COLUMN_EMAIL = "email"
+        const val COLUMN_SEX = "sex"
 
 
         //Datos tabla_datos_usuarios
@@ -43,7 +44,8 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
                 $COLUMN_NAME TEXT NOT NULL,
                 $COLUMN_LASTNAME TEXT NOT NULL,
                 $COLUMN_DATE DATE NOT NULL,
-                $COLUMN_EMAIL TEXT NOT NULL
+                $COLUMN_EMAIL TEXT NOT NULL,
+                $COLUMN_SEX TEXT NOT NULL
             )
         """
         db.execSQL(createUsersTableQuery)
@@ -65,10 +67,12 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Eliminar tablas si ya existen
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_USER_DATA")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
-        onCreate(db)
+        if(oldVersion<2) {
+            // Eliminar tablas si ya existen
+            db.execSQL("DROP TABLE IF EXISTS $TABLE_USER_DATA")
+            db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
+            onCreate(db)
+        }
     }
 
 
@@ -78,7 +82,8 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         name: String,
         lastName: String,
         date: String,
-        email: String
+        email: String,
+        sex: String
     ): Long {
         val db = this.writableDatabase
         val valores = ContentValues()
@@ -88,6 +93,7 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         valores.put(COLUMN_LASTNAME, lastName)
         valores.put(COLUMN_DATE, date)
         valores.put(COLUMN_EMAIL, email)
+        valores.put(COLUMN_SEX, sex)
         return db.insert(TABLE_USERS, null, valores)
     }
 

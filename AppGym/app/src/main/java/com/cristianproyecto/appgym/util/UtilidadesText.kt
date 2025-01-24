@@ -30,4 +30,14 @@ object UtilidadesText {
         return editText.text.toString()
     }
 
+    fun getInt(editText: EditText): Int{
+        return editText.text.toString().toIntOrNull() ?: -1
+    }
+
 }
+/*
+.toIntoOrNull():Este método intenta convertir la cadena de texto obtenida a un número entero (Int).
+Si la conversión tiene éxito, devuelve el valor null
+?: -1: Este es el operador Elvis (?:), que se utiliza para manejar valores nulos.
+Si la expresión toIntOrNull() devuelve null. Se devolverá el numpero despues del ?
+ */
