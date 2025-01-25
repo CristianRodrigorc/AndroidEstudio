@@ -34,20 +34,24 @@ class RegisterScreen : AppCompatActivity() {
 
 
         etDateSS.setOnClickListener{UtilidadesText.mostrarCalendarioET(this,etDateSS)}
-        val sexSelect =  UtilidadesRadioGroup.getOptionBtn(this, rgSexSS)
+        //val sexSelect =  UtilidadesRadioGroup.getOptionBtn(this, rgSexSS)
 
 
         UtilidadesBotones.cambiarScreen(
             btnRegisterSS,
             this,
             UserDataScreen::class.java,
-            UtilidadesText.getEditText(etNameSS),
-            UtilidadesText.getEditText(etLastNameSS),
-            UtilidadesText.getEditText(etEmailSS),
-            UtilidadesText.getEditText(etUsernameSS),
-            UtilidadesText.getEditText(etPasswordSS),
-            UtilidadesText.getEditText(etDateSS),
-            sexSelect)
+            etNameSS,
+            etLastNameSS,
+            etEmailSS,
+            etUsernameSS,
+            etPasswordSS,
+            etDateSS,
+            rgSexSS)
         UtilidadesBotones.cambiarScreen(btnBackSS,this, MainActivity::class.java)
     }
 }
+
+/*
+El error que tenía era que capturaba el valor desde que se creaba la ventana y en ese momento los edit text estaban vacíos
+ */

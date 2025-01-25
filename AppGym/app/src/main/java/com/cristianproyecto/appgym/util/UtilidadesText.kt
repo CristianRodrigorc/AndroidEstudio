@@ -27,7 +27,7 @@ object UtilidadesText {
     }
 
     fun getEditText(editText: EditText):String{
-        return editText.text.toString()
+        return editText.text.toString().trim()
     }
 
     fun getInt(editText: EditText): Int{

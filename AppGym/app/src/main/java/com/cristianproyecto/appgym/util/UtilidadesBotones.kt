@@ -2,6 +2,9 @@ package com.cristianproyecto.appgym.util
 
 import android.content.Intent
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cristianproyecto.appgym.screens.UserDataScreen
@@ -24,32 +27,40 @@ object UtilidadesBotones {
         btn: Button,
         currentActivity: AppCompatActivity,
         targetActivity: Class<out AppCompatActivity>,
-        name: String,
-        lastName: String,
-        email: String,
-        username: String,
-        password: String,
-        date: String,
-        sex: String
+        name: EditText,
+        lastName: EditText,
+        email: EditText,
+        username: EditText,
+        password: EditText,
+        date: EditText,
+        sex: RadioGroup
     ) {
         btn.setOnClickListener {
-            if (stringValido(name) &&
-                stringValido(lastName) &&
-                esCorreoValido(email) &&
-                stringValido(username) &&
-                stringValido(password) &&
-                stringValido(date) &&
-                stringValido(sex)
+            val nameT = UtilidadesText.getEditText(name)
+            val lastNameT = UtilidadesText.getEditText(lastName)
+            val emailT = UtilidadesText.getEditText(email)
+            val usernameT = UtilidadesText.getEditText(username)
+            val passwordT = UtilidadesText.getEditText(password)
+            val dateT = UtilidadesText.getEditText(date)
+            val sexT = UtilidadesRadioGroup.getOptionBtn(currentActivity,sex)
+
+            if (stringValido(nameT) &&
+                stringValido(lastNameT) &&
+                esCorreoValido(emailT) &&
+                stringValido(usernameT) &&
+                stringValido(passwordT) &&
+                stringValido(dateT) &&
+                stringValido(sexT)
             ) {
 
                 val intent = Intent(currentActivity, targetActivity)
-                intent.putExtra("Name", name)
-                intent.putExtra("LastName", lastName)
-                intent.putExtra("Email", email)
-                intent.putExtra("UserName", username)
-                intent.putExtra("PassWord", password)
-                intent.putExtra("Date", date)
-                intent.putExtra("Sex", sex)
+                intent.putExtra("Name", nameT)
+                intent.putExtra("LastName", lastNameT)
+                intent.putExtra("Email", emailT)
+                intent.putExtra("UserName", usernameT)
+                intent.putExtra("PassWord", passwordT)
+                intent.putExtra("Date", dateT)
+                intent.putExtra("Sex", sexT)
                 currentActivity.startActivity(intent)
             } else {
                 Toast.makeText(
@@ -72,21 +83,24 @@ object UtilidadesBotones {
         password: String,
         date: String,
         sex: String,
-        size: Int,
-        weight: Int,
-        spnNivel: String,
-        spnDiasEntrenar: String,
-        problemaSalud: String,
-        spnPreferenciaHorario: String,
-        spnMotivacion: String,
+        size: EditText,
+        weight: EditText,
+        spnNivel: Spinner,
+        spnDiasEntrenar: Spinner,
+        problemaSalud: EditText,
+        spnPreferenciaHorario: Spinner,
+        spnMotivacion: Spinner,
     ) {
         btn.setOnClickListener {
-            if (intValido(size) && intValido(weight)) {
-                Toast.makeText(
-                    currentActivity,
-                    "El valor de $size y $weight no puede ser 0 o estar vacío...",
-                    Toast.LENGTH_SHORT
-                ).show()
+            val sizeT = UtilidadesText.getInt(size)
+            val weightT = UtilidadesText.getInt(weight)
+            val spnNivelT = UtilidadesSpinner.getSpinnerSelect(spnNivel)
+            val spnDiasEntrenarT = UtilidadesSpinner.getSpinnerSelect(spnDiasEntrenar)
+            val problemaSaludT = UtilidadesText.getEditText(problemaSalud)
+            val spnPreferenciaHorarioT = UtilidadesSpinner.getSpinnerSelect(spnPreferenciaHorario)
+            val spnMotivacionT = UtilidadesSpinner.getSpinnerSelect(spnMotivacion)
+
+            if (intValido(sizeT) && intValido(weightT)) {
                 val metodoDataBase = MetodoDataBase(currentActivity)
                 val userId =
                     metodoDataBase.insertUser(username, password, name, lastName, date, email, sex)
@@ -94,12 +108,12 @@ object UtilidadesBotones {
                 if (userId > 0) {
                     val resultado = metodoDataBase.insertUserData(
                         userId.toInt(),
-                        size, weight,
-                        spnNivel,
-                        spnDiasEntrenar,
-                        problemaSalud,
-                        spnPreferenciaHorario,
-                        spnMotivacion
+                        sizeT, weightT,
+                        spnNivelT,
+                        spnDiasEntrenarT,
+                        problemaSaludT,
+                        spnPreferenciaHorarioT,
+                        spnMotivacionT
                     )
                     if (resultado > 0) {
                         Toast.makeText(

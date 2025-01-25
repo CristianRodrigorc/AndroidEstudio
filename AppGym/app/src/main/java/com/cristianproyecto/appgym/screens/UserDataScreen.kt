@@ -62,17 +62,13 @@ class UserDataScreen : AppCompatActivity() {
             password,
             date,
             sex,
-            UtilidadesText.getInt(etSizeDU),
-            UtilidadesText.getInt(etWeightDU),
-            UtilidadesSpinner.getSpinnerSelect(spnNivelDU),
-            UtilidadesSpinner.getSpinnerSelect(spnDiasEntrenarDU),
-            UtilidadesText.getEditText(etProblemaSaludDU),
-            UtilidadesSpinner.getSpinnerSelect(spnPreferenciaHorarioDU),
-            UtilidadesSpinner.getSpinnerSelect(spnMotivacionDU),
+            etSizeDU,
+            etWeightDU,
+            spnNivelDU,
+            spnDiasEntrenarDU,
+            etProblemaSaludDU,
+            spnPreferenciaHorarioDU,
+            spnMotivacionDU,
         )
-
-
-
-
     }
 }
