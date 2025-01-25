@@ -11,8 +11,9 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/titlePrincipalWindow"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -60,6 +61,36 @@
         android:layout_marginEnd="8dp"
         android:text="@string/btnCreateAccount"
         app:layout_constrainedHeight="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spnLenguaje"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switchTemaMain"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:background="#6EA8D5"
+        android:drawableStart="@drawable/baseline_light_mode_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCLenguaje"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="120dp"
+        android:drawableLeft="@drawable/languaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

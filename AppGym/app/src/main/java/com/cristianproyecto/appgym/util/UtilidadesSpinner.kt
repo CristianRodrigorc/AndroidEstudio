@@ -23,6 +23,6 @@ object UtilidadesSpinner {
     }
 
     fun getSpinnerSelect(spinner: Spinner): String{
-        return spinner.selectedItem.toString();
+        return spinner.selectedItem.toString().trim();
     }
 }

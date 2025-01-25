@@ -1,16 +1,20 @@
 package com.cristianproyecto.appgym.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
+import android.widget.Spinner
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.cristianproyecto.appgym.R
 import com.cristianproyecto.appgym.util.UtilidadesBotones
-import com.cristianproyecto.appgym.util.MetodoDataBase
+import com.cristianproyecto.appgym.util.UtilidadesInterfaz
+import com.cristianproyecto.appgym.util.UtilidadesSpinner
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,27 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnRegister = findViewById<Button>(R.id.btnRegister)
+        val spnLenguaje = findViewById<Spinner>(R.id.spnLenguaje)
+        val switchTemaMain = findViewById<Switch>(R.id.switchTemaMain)
+        val btnCLenguaje = findViewById<Button>(R.id.btnCLenguaje)
 
+
+        UtilidadesSpinner.cargarValoresSpinner(this, spnLenguaje, R.array.lenguajes)
         UtilidadesBotones.cambiarScreen(btnLogin, this, LoginScreen::class.java)
         UtilidadesBotones.cambiarScreen(btnRegister, this, RegisterScreen::class.java)
 
-
+        btnCLenguaje.setOnClickListener { UtilidadesInterfaz.cambiarLanguaje(this,spnLenguaje) }
     }
 }
-/*
-        fun clickOption(view: View) {
-            when(view.id) {
-                R.id.btnLogin -> {
-                    val i = Intent(this, LoginScreen::class.java)
-                    startActivity(i)
-                }
-                R.id.btnRegister ->{
-                    val i = Intent(this,RegisterScreen::class.java)
-                    startActivity(i)
-                }
-            }
-        }
-*/
 
 /*
     //Primera instancia de la base de datos para crearla

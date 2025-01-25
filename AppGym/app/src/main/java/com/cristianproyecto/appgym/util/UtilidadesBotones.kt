@@ -7,7 +7,7 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.cristianproyecto.appgym.screens.UserDataScreen
+import com.cristianproyecto.appgym.R
 
 
 object UtilidadesBotones {
@@ -42,33 +42,85 @@ object UtilidadesBotones {
             val usernameT = UtilidadesText.getEditText(username)
             val passwordT = UtilidadesText.getEditText(password)
             val dateT = UtilidadesText.getEditText(date)
-            val sexT = UtilidadesRadioGroup.getOptionBtn(currentActivity,sex)
+            val sexT = UtilidadesRadioGroup.getOptionBtn(currentActivity, sex)
+            val dbMethods = MetodoDataBase(currentActivity)
 
-            if (stringValido(nameT) &&
-                stringValido(lastNameT) &&
-                esCorreoValido(emailT) &&
-                stringValido(usernameT) &&
-                stringValido(passwordT) &&
-                stringValido(dateT) &&
-                stringValido(sexT)
-            ) {
+            if (stringValido(nameT)) {
+                if (stringValido(lastNameT)) {
+                    if (esCorreoValido(emailT)) {
+                        if (stringValido(usernameT)) {
+                            if (dbMethods.comprobarUsernamePassword(usernameT)) {
+                                if (stringValido(passwordT)) {
+                                    if (stringValido(dateT)) {
+                                        if (stringValido(sexT)) {
 
-                val intent = Intent(currentActivity, targetActivity)
-                intent.putExtra("Name", nameT)
-                intent.putExtra("LastName", lastNameT)
-                intent.putExtra("Email", emailT)
-                intent.putExtra("UserName", usernameT)
-                intent.putExtra("PassWord", passwordT)
-                intent.putExtra("Date", dateT)
-                intent.putExtra("Sex", sexT)
-                currentActivity.startActivity(intent)
+                                            val intent = Intent(currentActivity, targetActivity)
+                                            intent.putExtra("Name", nameT)
+                                            intent.putExtra("LastName", lastNameT)
+                                            intent.putExtra("Email", emailT)
+                                            intent.putExtra("UserName", usernameT)
+                                            intent.putExtra("PassWord", passwordT)
+                                            intent.putExtra("Date", dateT)
+                                            intent.putExtra("Sex", sexT)
+                                            currentActivity.startActivity(intent)
+
+                                        } else {
+                                            Toast.makeText(
+                                                currentActivity,
+                                                currentActivity.getString(R.string.errorSexoNoSelect),
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
+                                    } else {
+                                        Toast.makeText(
+                                            currentActivity,
+                                            "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvDate)}...",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                } else {
+                                    Toast.makeText(
+                                        currentActivity,
+                                        "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvContra)}...",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            } else {
+                                Toast.makeText(
+                                    currentActivity,
+                                    currentActivity.getString(R.string.errorUsuarioExiste),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            Toast.makeText(
+                                currentActivity,
+                                "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvEmail)}...",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                            currentActivity,
+                            "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvEmail)}...",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        currentActivity,
+                        "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvLastName)}...",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
                 Toast.makeText(
                     currentActivity,
-                    "Datos inválidos. Verifica los campos...",
+                    "${currentActivity.getString(R.string.errorDatosIngresados)} ${currentActivity.getString(R.string.tvName)}...",
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
         }
     }
 
@@ -158,28 +210,7 @@ object UtilidadesBotones {
     }
 
     fun esCorreoValido(correo: String): Boolean {
-        val regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.com$".toRegex()
+        val regex = Regex("[\\w-.]+@([\\w-]+.)+[\\w-]{2,4}")
         return correo != null && correo.matches(regex)
     }
 }
-
-/*
-Explicación de la Regex:
-^: Comienza la cadena.
-[A-Za-z0-9._%+-]+: Acepta letras, números y ciertos caracteres (., _, %, +, -) antes del @.
-@: Debe contener un @.
-[A-Za-z0-9.-]+: Acepta letras, números, . o - después del @.
-\\.com$: Debe terminar en .com.
-$: Fin de la cadena.
- */
-
-
-/*
-JAVA
-    public void cambiarScreen(Button btn, AppCompatActivity currentActivity, Class<? extends AppCompatActivity> targetActivity) {
-    btn.setOnClickListener(view -> {
-        Intent intent = new Intent(currentActivity, targetActivity);
-        currentActivity.startActivity(intent);
-    });
-}
- */

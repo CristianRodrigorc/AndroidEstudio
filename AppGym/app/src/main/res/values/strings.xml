@@ -1,30 +1,36 @@
 <resources>
     <string name="app_name">AppGym</string>
     <!-- Strings used for PrincipalScreen -->
-    <string name="titlePrincipalWindow">My GymApp</string>
-    <string name="sloganPrincipalWindow">We will help you achieve your goals.</string>
-    <string name="textPrincipalWindow">¡Welcome to your zone of strength and wellness! Log in to transform your day!</string>
-    <string name="btnLogin">Sing in</string>
-    <string name="btnCreateAccount">Create Account</string>
+    <string name="titlePrincipalWindow" translatable="false">My GymApp</string>
+    <string name="sloganPrincipalWindow" translatable="false">We will help you achieve your goals.</string>
+    <string name="textPrincipalWindow" translatable="false">¡Welcome to your zone of strength and wellness! Log in to transform your day!</string>
+    <string name="btnLogin" translatable="false">Sing in</string>
+    <string name="btnCreateAccount" translatable="false">Create Account</string>
+    <string-array name="lenguajes">
+        <item>en</item>
+        <item>es</item>
+    </string-array>
+    <string name="switchWhite" translatable="false">White</string>
+    <string name="switchDark" translatable="false">Dark</string>
 
     <!-- Strings used for RegisterScreen -->
-    <string name="tvName">Name</string>
-    <string name="tvLastName">Last Name</string>
-    <string name="tvEmail">Email</string>
-    <string name="tvUser">Username</string>
-    <string name="tvContra">Password</string>
-    <string name="tvDate">Date of Birth</string>
-    <string name="etDate">Select your date of birth</string>
-    <string name="btnMale">Male</string>
-    <string name="btnFemale">Female</string>
-    <string name="btnGroup">Sex</string>
-    <string name="btnVolver">Back</string>
-    <string name="btnRegistrar">Register</string>
+    <string name="tvName" translatable="false">Name</string>
+    <string name="tvLastName" translatable="false">Last Name</string>
+    <string name="tvEmail" translatable="false">Email</string>
+    <string name="tvUser" translatable="false">Username</string>
+    <string name="tvContra" translatable="false">Password</string>
+    <string name="tvDate" translatable="false">Date of Birth</string>
+    <string name="etDate" translatable="false">Select your date of birth</string>
+    <string name="btnMale" translatable="false">Male</string>
+    <string name="btnFemale" translatable="false">Female</string>
+    <string name="btnGroup" translatable="false">Sex</string>
+    <string name="btnVolver" translatable="false">Back</string>
+    <string name="btnRegistrar" translatable="false">Register</string>
 
     <!-- Strings used for DataUserScreen -->
-    <string name="tvSizeDU">Size</string>
-    <string name="tvWeight">Weight</string>
-    <string name="tvActividadFisica">How often do you exercise currently?</string>
+    <string name="tvSizeDU" translatable="false">Size</string>
+    <string name="tvWeight" translatable="false">Weight</string>
+    <string name="tvActividadFisica" translatable="false">How often do you exercise currently?</string>
     <string-array name="niveles_actividad">
         <item>Daily</item>
         <item>Several times a week</item>
@@ -32,35 +38,38 @@
         <item>Occasionally</item>
         <item>Never</item>
     </string-array>
-    <string name="tvDiasEntrenar">How many days a week would you like to train?</string>
+    <string name="tvDiasEntrenar" translatable="false">How many days a week would you like to train?</string>
     <string-array name="dias_entrenar">
         <item>1-2 days</item>
         <item>3-4 days</item>
         <item>5-6 days</item>
         <item>7 days</item>
     </string-array>
-    <string name="tvProblemaSalud">Do you have any health conditions we should know about?</string>
-    <string name="tvPreferenciaHorario">What times do you prefer to train?</string>
+    <string name="tvProblemaSalud" translatable="false">Do you have any health conditions we should know about?</string>
+    <string name="tvPreferenciaHorario" translatable="false">What times do you prefer to train?</string>
     <string-array name="preferencia_Horario">
         <item>Morning</item>
         <item>Afternoon</item>
         <item>Evening</item>
     </string-array>
-    <string name="tvMotivacion">What motivates you to keep training?</string>
+    <string name="tvMotivacion" translatable="false">What motivates you to keep training?</string>
     <string-array name="motivaciones">
         <item>Improve my health</item>
         <item>Achieve a physical goal</item>
         <item>Aesthetics / Physical changes</item>
         <item>Socialize / Create a routine</item>
     </string-array>
-    <string name="btnGuardar">Save</string>
+    <string name="btnGuardar" translatable="false">Save</string>
 
 
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
+    <string name="errorDatosIngresados">Error entering the</string>
+    <string name="errorUsuarioExiste">Error, this user is already registered</string>
+    <string name="errorSexoNoSelect">Error selecting gender, you must select an option</string>
 
 </resources>
