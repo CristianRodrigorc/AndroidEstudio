@@ -4,7 +4,7 @@
     <string name="titlePrincipalWindow" translatable="false">My GymApp</string>
     <string name="sloganPrincipalWindow" translatable="false">We will help you achieve your goals.</string>
     <string name="textPrincipalWindow" translatable="false">¡Welcome to your zone of strength and wellness! Log in to transform your day!</string>
-    <string name="btnLogin" translatable="false">Sing in</string>
+    <string name="btnLogin" translatable="false">Sign in</string>
     <string name="btnCreateAccount" translatable="false">Create Account</string>
     <string-array name="lenguajes">
         <item>en</item>

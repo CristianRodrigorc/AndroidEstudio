@@ -36,6 +36,9 @@ class RegisterScreen : AppCompatActivity() {
         etDateSS.setOnClickListener{UtilidadesText.mostrarCalendarioET(this,etDateSS)}
         //val sexSelect =  UtilidadesRadioGroup.getOptionBtn(this, rgSexSS)
 
+        btnRegisterSS.setOnClickListener{
+
+        }
 
         UtilidadesBotones.cambiarScreen(
             btnRegisterSS,
