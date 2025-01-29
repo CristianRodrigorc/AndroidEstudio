@@ -43,39 +43,6 @@ object UtilidadesText {
         }
     }
 
-
-    /*
-    setupFocusChangeListener(myEditText) { inputText ->
-    if (inputText.isNotEmpty()) {
-        // Acción si el texto no está vacío
-        Toast.makeText(this, "Texto ingresado: $inputText", Toast.LENGTH_SHORT).show()
-    } else {
-        // Acción si el campo está vacío
-        Toast.makeText(this, "Por favor, llena este campo", Toast.LENGTH_SHORT).show()
-    }
-}
-
-
-
-
-    val nameEditText = findViewById<EditText>(R.id.etName)
-    val emailEditText = findViewById<EditText>(R.id.etEmail)
-
-    // Configurar focus listener para el campo de nombre
-    setupFocusChangeListener(nameEditText) { name ->
-        if (name.isEmpty()) {
-            nameEditText.error = "El nombre no puede estar vacío"
-        }
-    }
-
-    // Configurar focus listener para el campo de email
-    setupFocusChangeListener(emailEditText) { email ->
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailEditText.error = "Por favor, ingresa un email válido"
-        }
-    }
-     */
-
 }
 /*
 .toIntoOrNull():Este método intenta convertir la cadena de texto obtenida a un número entero (Int).
