@@ -64,7 +64,7 @@
         "repeticiones": "3 series de 10 repeticiones"
       },
       {
-        "nombre": "Pull-over con mancuerna",
+        "nombre": "Pull-over con polea",
         "repeticiones": "3 series de 12 repeticiones"
       },
       {
@@ -118,12 +118,12 @@
         "repeticiones": "3 series de 12 repeticiones"
       },
       {
-        "nombre": "Plancha",
+        "nombre": "Encogimientos alternos",
         "repeticiones": "3 series de 30-60 segundos"
       },
       {
-        "nombre": "Bicicleta abdominal",
-        "repeticiones": "3 series de 15 repeticiones por lado"
+        "nombre": "Elevaciones de cadera",
+        "repeticiones": "3 series de 15 repeticiones "
       }
     ]
   }
