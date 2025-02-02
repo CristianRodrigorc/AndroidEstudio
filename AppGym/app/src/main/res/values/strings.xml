@@ -72,4 +72,13 @@
     <string name="errorUsuarioExiste">Error, this user is already registered</string>
     <string name="errorSexoNoSelect">Error selecting gender, you must select an option</string>
 
+
+    <!-- Strings used for Screen for UsersScreen -->
+    <string name="dayMonday">Monday</string>
+    <string name="dayTuesday">Tuesday</string>
+    <string name="dayWednesday">Wednesday</string>
+    <string name="dayThursday">Thursday</string>
+    <string name="dayFriday">Friday</string>
+    <string name="daySaturday">Saturday</string>
+    <string name="daySunday">Sunday</string>
 </resources>

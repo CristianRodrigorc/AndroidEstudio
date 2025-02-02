@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
         UtilidadesSpinner.cargarValoresSpinner(this, spnLenguaje, R.array.lenguajes)
-        UtilidadesBotones.cambiarScreen(btnLogin, this, LoginScreen::class.java)
+        UtilidadesBotones.cambiarScreen(btnLogin, this, UsersScreen::class.java)
         UtilidadesBotones.cambiarScreen(btnRegister, this, RegisterScreen::class.java)
 
         btnCLenguaje.setOnClickListener { UtilidadesInterfaz.cambiarLanguaje(this,spnLenguaje) }

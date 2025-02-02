@@ -43,6 +43,8 @@ object UtilidadesText {
         }
     }
 
+
+
 }
 /*
 .toIntoOrNull():Este método intenta convertir la cadena de texto obtenida a un número entero (Int).

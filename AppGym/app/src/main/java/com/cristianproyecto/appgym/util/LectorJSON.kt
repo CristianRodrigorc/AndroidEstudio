@@ -1,0 +1,52 @@
+package com.cristianproyecto.appgym.util
+
+import android.content.Context
+import android.util.Log
+import com.cristianproyecto.appgym.model.Ejercicios
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.InputStream
+
+object LectorJSON {
+
+
+    fun obtenerJsonGson(context: Context): Ejercicios? {
+        return try {
+            val jsonString = cargarArchivoDesdeAssets(context, "ejercicios.json") // Aquí se asume que tu archivo se llama ejercicios.json
+            val gson = Gson()
+            val type = object : TypeToken<Ejercicios>() {}.type
+            gson.fromJson(jsonString, type)
+        } catch (e: Exception) {
+            Log.e("GsonError", "Error al leer el archivo JSON", e)
+            null
+        }
+    }
+
+    private fun cargarArchivoDesdeAssets(context: Context, fileName: String): String {
+        val inputStream: InputStream = context.assets.open(fileName)
+        return inputStream.bufferedReader().use { it.readText() }
+    }
+}
+
+/*
+fun obtenerJson(context:Context): Ejercicios?{
+    return try {
+        val archivoJSON = context.assets.open("ejercicios.json")
+        val lector = InputStreamReader(archivoJSON)
+        val contenido = lector.readText()
+        Log.d("LectorJson","Contenido del JSON: $contenido")
+
+        val json = Json {ignoreUnknownKeys = true}
+        val ejercicios = json.decodeFromString<Ejercicios>(contenido)
+
+        Log.d("LectorJSON", "Deserialización exitosa: ${ejercicios.ejercicios.biceps.size} ejercicios de biceps")
+        ejercicios
+
+    }catch (e:Exception){
+        Log.e("LectorJSON", "Error al leer el archivo JSON", e)
+        e.printStackTrace()
+        null
+    }
+}
+ */
+
