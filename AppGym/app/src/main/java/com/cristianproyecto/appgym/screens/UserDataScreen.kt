@@ -7,14 +7,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import com.cristianproyecto.appgym.BaseActivity
 import com.cristianproyecto.appgym.R
 import com.cristianproyecto.appgym.util.MetodoDataBase
 import com.cristianproyecto.appgym.util.UtilidadesBotones
 import com.cristianproyecto.appgym.util.UtilidadesSpinner
-import com.cristianproyecto.appgym.util.UtilidadesText
 
-class UserDataScreen : AppCompatActivity() {
+class UserDataScreen : BaseActivity() {
 
 
     @SuppressLint("MissingInflatedId")

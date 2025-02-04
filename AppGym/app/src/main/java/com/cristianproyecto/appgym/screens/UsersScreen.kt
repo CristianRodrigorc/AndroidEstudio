@@ -6,16 +6,14 @@ import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import com.cristianproyecto.appgym.BaseActivity
 import com.cristianproyecto.appgym.R
 import com.cristianproyecto.appgym.util.LectorJSON
 import com.cristianproyecto.appgym.util.UtilidadesBotones
 import com.cristianproyecto.appgym.util.UtilidadesUsersScreen
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
-class UsersScreen : AppCompatActivity() {
+class UsersScreen : BaseActivity() {
     @SuppressLint("MissingInflatedId", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,164 +45,110 @@ class UsersScreen : AppCompatActivity() {
         lifecycle.addObserver(youtubeView)
         val ejerciciosJson = LectorJSON.obtenerJsonGson(this)
         val idVideoYTDefault = "40mFq3HDQso"
+        UtilidadesUsersScreen.cargarVideo(youtubeView, idVideoYTDefault)
 
-        if (ejerciciosJson != null) {
-            UtilidadesUsersScreen.llenarDiaLunes(
-                ejerciciosJson,
-                tvEjercicio1,
-                descEjercicio1,
-                swtEjercicio1,
-                tvEjercicio2,
-                descEjercicio2,
-                swtEjercicio2,
-                tvEjercicio3,
-                descEjercicio3,
-                swtEjercicio3,
-                tvEjercicio4,
-                descEjercicio4,
-                swtEjercicio4,
-                youtubeView)
-        }
+        val textViews = listOf(tvEjercicio1, tvEjercicio2, tvEjercicio3, tvEjercicio4)
+        val descripciones = listOf(descEjercicio1, descEjercicio2, descEjercicio3, descEjercicio4)
+        val switches = listOf(swtEjercicio1, swtEjercicio2, swtEjercicio3, swtEjercicio4)
 
-        UtilidadesUsersScreen.cargarVideo(youtubeView,idVideoYTDefault)
+        val videosPorDia = mapOf(
+            "Lunes" to listOf("3k0Iu_ogVtw", "oq42eVowbD4", "lG53BKnQlxY", "Is3JRhq37o4"),
+            "Martes" to listOf("aLtLLvffF6M", "vTdr4UKscRE", "gY-CqZD0Ktc", "uDjXYcXR0ys"),
+            "Miercoles" to listOf("8LR0mo8iD8s", "vw_pcm2ly5Y", "ItBASjwB_Wo", "SnNyF9g8dDE"),
+            "Jueves" to listOf("Vg1nmlJzGgM", "31vdmfx5pJs", "JddDALFiRbw", "SCsH7Z7qDwU"),
+            "Viernes" to listOf("ozCH5r2lP2E", "MetkFq2hMZs", "FyWvCXvCC-w", "Pe9fw_B-B34"),
+            "Sabado" to listOf("Xaa6rn3Hrh4", "DAMw-xGYNck", "9V8eNF-fkls", "bheSKL7AhGY"),
+            "Domingo" to listOf("QMvyEWQrmsY", "2ypB_CmVILM", "P60uxBkcaNI", "rMznoDrT5aI")
+        )
 
         btnLunes.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaLunes(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.biceps,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Lunes"]!!
+                )
             }
         }
 
         btnMartes.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaMartes(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.triceps,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Martes"]!!
+                )
             }
         }
 
         btnMiercoles.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaMiercoles(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.pecho,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Miercoles"]!!
+                )
             }
         }
 
         btnJueves.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaJueves(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.espalda,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Jueves"]!!
+                )
             }
         }
 
         btnViernes.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaViernes(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.piernas,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Viernes"]!!
+                )
             }
         }
 
         btnSabado.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaSabado(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.hombros,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Sabado"]!!
+                )
             }
         }
 
         btnDomingo.setOnClickListener {
-            if (ejerciciosJson != null) {
-                UtilidadesUsersScreen.llenarDiaDomingo(
-                    ejerciciosJson,
-                    tvEjercicio1,
-                    descEjercicio1,
-                    swtEjercicio1,
-                    tvEjercicio2,
-                    descEjercicio2,
-                    swtEjercicio2,
-                    tvEjercicio3,
-                    descEjercicio3,
-                    swtEjercicio3,
-                    tvEjercicio4,
-                    descEjercicio4,
-                    swtEjercicio4,
-                    youtubeView)
+            ejerciciosJson?.let {
+                UtilidadesUsersScreen.llenarDiaGenerico(
+                    it.ejercicios.abdomen,
+                    textViews,
+                    descripciones,
+                    switches,
+                    youtubeView,
+                    videosPorDia["Domingo"]!!
+                )
             }
         }
 

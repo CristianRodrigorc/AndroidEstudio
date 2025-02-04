@@ -7,12 +7,13 @@ import android.widget.EditText
 import android.widget.RadioGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.cristianproyecto.appgym.BaseActivity
 import com.cristianproyecto.appgym.R
 import com.cristianproyecto.appgym.util.UtilidadesBotones
 import com.cristianproyecto.appgym.util.UtilidadesRadioGroup
 import com.cristianproyecto.appgym.util.UtilidadesText
 
-class RegisterScreen : AppCompatActivity() {
+class RegisterScreen : BaseActivity() {
 
 
     @SuppressLint("MissingInflatedId")

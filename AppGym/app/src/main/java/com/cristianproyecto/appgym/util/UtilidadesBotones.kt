@@ -49,11 +49,10 @@ object UtilidadesBotones {
                 if (stringValido(lastNameT)) {
                     if (esCorreoValido(emailT)) {
                         if (stringValido(usernameT)) {
-                            if (dbMethods.comprobarUsernamePassword(usernameT)) {
+                            if (!dbMethods.comprobarUsernamePassword(usernameT)) {
                                 if (stringValido(passwordT)) {
                                     if (stringValido(dateT)) {
                                         if (stringValido(sexT)) {
-
                                             val intent = Intent(currentActivity, targetActivity)
                                             intent.putExtra("Name", nameT)
                                             intent.putExtra("LastName", lastNameT)
@@ -196,6 +195,36 @@ object UtilidadesBotones {
                     "Verifica que el tamaño y el peso sean válidos",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+        }
+    }
+
+
+    fun loginUsuario(
+        btn: Button,
+        currentActivity: AppCompatActivity,
+        usernameEditText: EditText,
+        passwordEditText: EditText,
+        targetActivity: Class<out AppCompatActivity>
+    ) {
+        btn.setOnClickListener {
+            val username = UtilidadesText.getEditText(usernameEditText).trim()
+            val password = UtilidadesText.getEditText(passwordEditText).trim()
+
+            if (stringValido(username) && stringValido(password)) {
+                val db = MetodoDataBase(currentActivity)
+                val loginExitoso = db.comprobarUserPass(username, password)
+
+                if (loginExitoso) {
+                    Toast.makeText(currentActivity, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(currentActivity, targetActivity)
+                    intent.putExtra("UserName", username)
+                    currentActivity.startActivity(intent)
+                } else {
+                    Toast.makeText(currentActivity, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(currentActivity, "Completa ambos campos", Toast.LENGTH_SHORT).show()
             }
         }
     }

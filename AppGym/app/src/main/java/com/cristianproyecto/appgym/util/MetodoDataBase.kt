@@ -146,7 +146,16 @@ class MetodoDataBase(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         return exist
     }
 
-
-
+    fun comprobarUserPass(username: String, password: String): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT 1 FROM $TABLE_USERS WHERE $COLUMN_USERNAME = ? AND $COLUMN_PASSWORD = ? LIMIT 1",
+            arrayOf(username, password)
+        )
+        val existe = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+        return existe
+    }
 
 }
