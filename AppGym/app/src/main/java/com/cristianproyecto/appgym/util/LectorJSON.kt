@@ -28,25 +28,3 @@ object LectorJSON {
     }
 }
 
-/*
-fun obtenerJson(context:Context): Ejercicios?{
-    return try {
-        val archivoJSON = context.assets.open("ejercicios.json")
-        val lector = InputStreamReader(archivoJSON)
-        val contenido = lector.readText()
-        Log.d("LectorJson","Contenido del JSON: $contenido")
-
-        val json = Json {ignoreUnknownKeys = true}
-        val ejercicios = json.decodeFromString<Ejercicios>(contenido)
-
-        Log.d("LectorJSON", "Deserialización exitosa: ${ejercicios.ejercicios.biceps.size} ejercicios de biceps")
-        ejercicios
-
-    }catch (e:Exception){
-        Log.e("LectorJSON", "Error al leer el archivo JSON", e)
-        e.printStackTrace()
-        null
-    }
-}
- */
-
