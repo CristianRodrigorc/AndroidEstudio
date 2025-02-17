@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Welcome</string>
+    <string name="welcome">Welcome</string>
+    <string name="descriptionMain">
+        Welcome to the news app, here you can see the most relevant news from the major cities around the world,
+        as well as world economy, politics, music, and cinema.
+    </string>
+
+</resources>

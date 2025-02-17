@@ -37,10 +37,13 @@ object UtilidadesUsersScreen {
 
             tvDescripcion.visibility = View.GONE
             switch.isChecked = false
+            //switch.setOnCheckedChangeListener { _, isChecked -> verDesc(tvDescripcion)}
+            //switch.setOnCheckedChangeListener { _, isChecked -> cargarVideo(VideoId)}
+
 
             tvEjercicio.setOnClickListener {
                 verDesc(tvDescripcion)
-                cargarVideo(videoId) // Ahora debería cargar correctamente el video
+                cargarVideo(videoId) 
             }
         }
     }
