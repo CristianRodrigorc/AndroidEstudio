@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cristian.appgym.ui.fragments.HomeFragment">
+
+    <!-- Fondo con imagen y sombra -->
+    <FrameLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageBG"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gym_background" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000" />
+    </FrameLayout>
+
+    <!-- Layout principal por encima de la imagen -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_large"
+        android:background="@android:color/transparent">
+
+        <!-- Guideline vertical al 20% -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titlePrincipalWindow"
+            android:textSize="@dimen/title_text_size"
+            style="@style/Title.AppGym"
+            app:layout_constraintTop_toTopOf="@id/guideline_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Guideline vertical al 30% -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_mid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <!-- Slogan -->
+        <TextView
+            android:id="@+id/tvSlogan"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sloganPrincipalWindow"
+            android:textSize="@dimen/subtitle_text_size"
+            style="@style/lyrics.home"
+            app:layout_constraintTop_toBottomOf="@id/guideline_mid"
+            android:layout_marginStart="@dimen/margin_text_home"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin_large" />
+
+        <!-- Texto de bienvenida -->
+        <TextView
+            android:id="@+id/tvWelcomeText"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:text="@string/textPrincipalWindow"
+            android:textSize="@dimen/subtitle_text_size"
+            style="@style/lyrics.home"
+            app:layout_constraintTop_toBottomOf="@id/tvSlogan"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_text_home"
+            android:layout_marginTop="@dimen/margin_large" />
+
+        <!-- Guideline vertical al 75% -->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <!-- Botón Login -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLogin"
+            style="@style/Button.AppGym"
+            app:layout_constraintTop_toTopOf="@id/guideline_bot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Botón Register -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnCreateAccount"
+            style="@style/Button.AppGym"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/margin_medium" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mis_datos"
+            android:icon="@drawable/ic_user"
+            android:title="Mis Datos" />
+        <item
+            android:id="@+id/nav_progreso"
+            android:icon="@drawable/ic_progress"
+            android:title="Progreso" />
+        <item
+            android:id="@+id/nav_rutinas"
+            android:icon="@drawable/ic_routine"
+            android:title="Rutinas" />
+        <item
+            android:id="@+id/nav_dieta"
+            android:icon="@drawable/ic_diet"
+            android:title="Dieta" />
+        <item
+            android:id="@+id/nav_entrenador"
+            android:icon="@drawable/ic_trainer"
+            android:title="Entrenador" />
+        <item
+            android:id="@+id/nav_clases"
+            android:icon="@drawable/ic_classes"
+            android:title="Clases" />
+        <item
+            android:id="@+id/nav_tienda"
+            android:icon="@drawable/ic_shop"
+            android:title="Tienda" />
+        <item
+            android:id="@+id/nav_comunidad"
+            android:icon="@drawable/ic_community"
+            android:title="Comunidad" />
+        <item
+            android:id="@+id/nav_clima"
+            android:icon="@drawable/ic_weather"
+            android:title="Clima" />
+        <item
+            android:id="@+id/nav_configuracion"
+            android:icon="@drawable/ic_settings"
+            android:title="Configuración" />
+    </group>
+</menu> 

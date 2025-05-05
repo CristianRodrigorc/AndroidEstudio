@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.cristian.appgym.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_home_to_createUser"
+            app:destination="@+id/registerUserFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.cristian.appgym.ui.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_login_to_user"
+            app:destination="@+id/userFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/registerUserFragment"
+        android:name="com.cristian.appgym.ui.fragments.RegisterFragment"
+        android:label="fragment_createUser"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerUser_to_home"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/userDataFragment"
+        android:name="com.cristian.appgym.ui.fragments.UserDataFragment"
+        android:label="fragment_userData"
+        tools:layout="@layout/fragment_user_data">
+        <action
+            android:id="@+id/action_userData_to_user"
+            app:destination="@+id/userFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.cristian.appgym.ui.fragments.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_user_to_home"
+            app:destination="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_user_to_userdata"
+            app:destination="@id/userDataFragment"/>
+        <action
+            android:id="@+id/action_user_to_recipes"
+            app:destination="@id/recipesFragment"/>
+        <action
+            android:id="@+id/action_user_to_weather"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.cristian.appgym.ui.fragments.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes">
+        <action
+            android:id="@+id/action_recipes_to_user"
+            app:destination="@id/userFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.cristian.appgym.ui.fragments.WeatherFragment"
+        android:label="Clima"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/action_weather_to_userdata"
+            app:destination="@id/userDataFragment" />
+        <action
+            android:id="@+id/action_weather_to_recipes"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_weather_to_settings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.cristian.appgym.ui.fragments.SettingsFragment"
+        android:label="Configuración"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_settings_to_user"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_settings_to_userdata"
+            app:destination="@id/userDataFragment" />
+        <action
+            android:id="@+id/action_settings_to_recipes"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_settings_to_weather"
+            app:destination="@id/weatherFragment" />
+    </fragment>
+
+</navigation>

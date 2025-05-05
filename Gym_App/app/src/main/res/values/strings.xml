@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">Gym App</string>
+    <!-- Strings used for PrincipalScreen -->
+    <string name="titlePrincipalWindow" translatable="false">My GymApp</string>
+    <string name="sloganPrincipalWindow" translatable="false">We will help you\nachieve your goals.</string>
+    <string name="textPrincipalWindow" translatable="false">¡Welcome to your zone of strength and wellness! Log in to transform your day!</string>
+    <string name="btnLogin" translatable="false">Log in</string>
+    <string name="btnCreateAccount" translatable="false">Create Account</string>
+    <string-array name="lenguajes">
+        <item>en</item>
+        <item>es</item>
+    </string-array>
+    <string name="switchWhite" translatable="false">White</string>
+    <string name="switchDark" translatable="false">Dark</string>
+
+    <!-- Strings used for RegisterScreen -->
+    <string name="tvName" translatable="false">Name</string>
+    <string name="tvLastName" translatable="false">Last Name</string>
+    <string name="tvEmail" translatable="false">Email</string>
+    <string name="tvUser" translatable="false">Username</string>
+    <string name="tvContra" translatable="false">Password</string>
+    <string name="tvDate" translatable="false">Date of Birth</string>
+    <string name="etDate" translatable="false">Select your date of birth</string>
+    <string name="btnMale" translatable="false">Male</string>
+    <string name="btnFemale" translatable="false">Female</string>
+    <string name="btnGroup" translatable="false">Sex</string>
+    <string name="btnVolver" translatable="false">Back</string>
+    <string name="btnRegistrar" translatable="false">Register</string>
+
+    <!-- Strings used for DataUserScreen -->
+    <string name="tvSizeDU" translatable="false">Size</string>
+    <string name="tvWeight" translatable="false">Weight</string>
+    <string name="tvActividadFisica" translatable="false">How often do you exercise currently?</string>
+    <string-array name="niveles_actividad">
+        <item>Daily</item>
+        <item>Several times a week</item>
+        <item>Weekly</item>
+        <item>Occasionally</item>
+        <item>Never</item>
+    </string-array>
+    <string name="tvDiasEntrenar" translatable="false">How many days a week would you like to train?</string>
+    <string-array name="dias_entrenar">
+        <item>1-2 days</item>
+        <item>3-4 days</item>
+        <item>5-6 days</item>
+        <item>7 days</item>
+    </string-array>
+    <string name="tvProblemaSalud" translatable="false">Do you have any health conditions we should know about?</string>
+    <string name="tvPreferenciaHorario" translatable="false">What times do you prefer to train?</string>
+    <string-array name="preferencia_Horario">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+    </string-array>
+    <string name="tvMotivacion" translatable="false">What motivates you to keep training?</string>
+    <string-array name="motivaciones">
+        <item>Improve my health</item>
+        <item>Achieve a physical goal</item>
+        <item>Aesthetics / Physical changes</item>
+        <item>Socialize / Create a routine</item>
+    </string-array>
+    <string name="btnGuardar" translatable="false">Save</string>
+
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
+
+    <string name="errorDatosIngresados">Error entering the</string>
+    <string name="errorUsuarioExiste">Error, this user is already registered</string>
+    <string name="errorSexoNoSelect">Error selecting gender, you must select an option</string>
+
+
+    <!-- Strings used for Screen for UsersScreen -->
+    <string name="dayMonday">Monday</string>
+    <string name="dayTuesday">Tuesday</string>
+    <string name="dayWednesday">Wednesday</string>
+    <string name="dayThursday">Thursday</string>
+    <string name="dayFriday">Friday</string>
+    <string name="daySaturday">Saturday</string>
+    <string name="daySunday">Sunday</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Errores-->
+    <string name="errorCompletarCampos">Error en los campos</string>
+
+    <!-- Recipes Fragment -->
+    <string name="recipes_title">Fitness Recipes</string>
+    <string name="search_hint">Search recipes...</string>
+    <string name="filter_all">All</string>
+    <string name="filter_keto">Keto</string>
+    <string name="filter_vegan">Vegan</string>
+    <string name="filter_protein">Protein</string>
+    <string name="view_recipe">View Recipe</string>
+    
+    <!-- Recipe Details -->
+    <string name="calories">Calories</string>
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbs</string>
+    <string name="fat">Fat</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="kcal">kcal</string>
+    <string name="grams">g</string>
+
+    <string name="settings">Configuración</string>
+    <string name="language">Idioma</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="theme">Tema</string>
+    <string name="change_theme">Cambiar tema</string>
+    <string name="back">Volver</string>
+    <string name="problemas_de_salud">¿Tienes problemas de salud?</string>
+</resources>

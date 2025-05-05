@@ -1,0 +1,130 @@
+package com.cristian.appgym.ui.fragments
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.cristian.appgym.R
+import com.cristian.appgym.databinding.FragmentUserDataBinding
+import com.cristian.appgym.model.UserDataRequest
+import com.cristian.appgym.repository.UserRepository
+import com.cristian.appgym.utils.Result
+import com.cristian.appgym.utils.SessionManager
+import com.cristian.appgym.network.RetrofitClient
+import com.cristian.appgym.util.UtilidadesSpinner
+import kotlinx.coroutines.launch
+
+class UserDataFragment : Fragment() {
+    private var _binding: FragmentUserDataBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var userRepository: UserRepository
+    private lateinit var sessionManager: SessionManager
+
+    @SuppressLint("MissingInflatedId")
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentUserDataBinding.inflate(inflater, container, false)
+        userRepository = UserRepository(RetrofitClient.apiService)
+        sessionManager = SessionManager(requireContext())
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Inicializar las vistas
+        val etSizeDU = binding.etSizeDU
+        val etWeightDU = binding.etWeightDU
+        val spnNivelDU = binding.spnNivelDU
+        val spnDiasEntrenarDU = binding.spnDiasEntrenarDU
+        val etProblemaSaludDU = binding.etProblemaSaludDU
+        val spnPreferenciaHorarioDU = binding.spnPreferenciaHorarioDU
+        val spnMotivacionDU = binding.spnMotivacionDU
+        val btnGuardarDU = binding.btnGuardarDU
+
+        // Cargar valores a los spinners
+        UtilidadesSpinner.cargarValoresSpinner(this, spnNivelDU, R.array.niveles_actividad)
+        UtilidadesSpinner.cargarValoresSpinner(this, spnDiasEntrenarDU, R.array.dias_entrenar)
+        UtilidadesSpinner.cargarValoresSpinner(this, spnPreferenciaHorarioDU, R.array.preferencia_Horario)
+        UtilidadesSpinner.cargarValoresSpinner(this, spnMotivacionDU, R.array.motivaciones)
+
+        // Inicializar spinners con la primera opción seleccionada
+        spnNivelDU.setSelection(0, false)
+        spnDiasEntrenarDU.setSelection(0, false)
+        spnPreferenciaHorarioDU.setSelection(0, false)
+        spnMotivacionDU.setSelection(0, false)
+
+        btnGuardarDU.setOnClickListener {
+            guardarDatosUsuario()
+        }
+    }
+
+    private fun guardarDatosUsuario() {
+        val size = binding.etSizeDU.text.toString().toDoubleOrNull()
+        val weight = binding.etWeightDU.text.toString().toDoubleOrNull()
+        val physicalActivity = binding.spnNivelDU.selectedItem.toString()
+        val daysTraining = binding.spnDiasEntrenarDU.selectedItem.toString().toIntOrNull()
+        val healthProblems = binding.etProblemaSaludDU.text.toString()
+        val preferenceSchedule = binding.spnPreferenciaHorarioDU.selectedItem.toString()
+        val motivation = binding.spnMotivacionDU.selectedItem.toString()
+
+        if (size == null || weight == null || daysTraining == null) {
+            Toast.makeText(context, "Por favor, ingrese valores válidos para altura, peso y días de entrenamiento", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (physicalActivity.isEmpty() || healthProblems.isEmpty() || 
+            preferenceSchedule.isEmpty() || motivation.isEmpty()) {
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        binding.progressBar.visibility = View.VISIBLE
+        binding.btnGuardarDU.isEnabled = false
+
+        val userDataRequest = UserDataRequest(
+            userId = sessionManager.getUserId().toLong(),
+            size = size,
+            weight = weight,
+            physicalActivity = physicalActivity,
+            daysTraining = daysTraining,
+            healthProblems = healthProblems,
+            preferenceSchedule = preferenceSchedule,
+            motivation = motivation
+        )
+
+        lifecycleScope.launch {
+            try {
+                when (val result = userRepository.guardarUserData(userDataRequest)) {
+                    is Result.Success -> {
+                        Toast.makeText(context, "Datos guardados exitosamente", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_userData_to_user)
+                    }
+                    is Result.Error -> {
+                        Toast.makeText(context, "Error al guardar los datos: ${result.message}", Toast.LENGTH_SHORT).show()
+                    }
+                    is Result.Loading -> {
+                        // Ya estamos mostrando el ProgressBar
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            } finally {
+                binding.progressBar.visibility = View.GONE
+                binding.btnGuardarDU.isEnabled = true
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

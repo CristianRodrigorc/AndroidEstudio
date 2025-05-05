@@ -1,0 +1,9 @@
+<resources>
+      <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_text_size">40sp</dimen>
+    <dimen name="subtitle_text_size">18sp</dimen>
+    <dimen name="margin_large">34dp</dimen>
+    <dimen name="margin_medium">24dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="margin_text_home">24dp</dimen>
+   </resources>
