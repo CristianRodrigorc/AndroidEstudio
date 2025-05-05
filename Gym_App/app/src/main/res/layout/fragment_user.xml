@@ -226,139 +226,193 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
+                <TextView
+                    android:id="@+id/tvDia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Día de Entrenamiento"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginBottom="16dp"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"/>
+
                 <LinearLayout
-                    android:id="@+id/layoutEjercicio1"
+                    android:id="@+id/containerEjercicio1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/rounded_background"
-                    android:padding="12dp"
+                    android:padding="16dp"
                     android:layout_marginBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/tvEjercicio1"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvEjercicio1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ejercicio 1"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvRepeticiones1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="3 series x 12 repeticiones"
+                            android:textSize="14sp"
+                            android:textColor="#666666"/>
+
+                    </LinearLayout>
 
                     <CheckBox
                         android:id="@+id/chkEjercicio1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text=""/>
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/descEjercicio1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
                 <LinearLayout
-                    android:id="@+id/layoutEjercicio2"
+                    android:id="@+id/containerEjercicio2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/rounded_background"
-                    android:padding="12dp"
+                    android:padding="16dp"
                     android:layout_marginBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/tvEjercicio2"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvEjercicio2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ejercicio 2"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvRepeticiones2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="3 series x 12 repeticiones"
+                            android:textSize="14sp"
+                            android:textColor="#666666"/>
+
+                    </LinearLayout>
 
                     <CheckBox
                         android:id="@+id/chkEjercicio2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text=""/>
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/descEjercicio2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
                 <LinearLayout
-                    android:id="@+id/layoutEjercicio3"
+                    android:id="@+id/containerEjercicio3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/rounded_background"
-                    android:padding="12dp"
+                    android:padding="16dp"
                     android:layout_marginBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/tvEjercicio3"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvEjercicio3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ejercicio 3"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvRepeticiones3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="3 series x 12 repeticiones"
+                            android:textSize="14sp"
+                            android:textColor="#666666"/>
+
+                    </LinearLayout>
 
                     <CheckBox
                         android:id="@+id/chkEjercicio3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text=""/>
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/descEjercicio3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
                 <LinearLayout
-                    android:id="@+id/layoutEjercicio4"
+                    android:id="@+id/containerEjercicio4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/rounded_background"
-                    android:padding="12dp"
+                    android:padding="16dp"
                     android:layout_marginBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/tvEjercicio4"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="16sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvEjercicio4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ejercicio 4"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tvRepeticiones4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="3 series x 12 repeticiones"
+                            android:textSize="14sp"
+                            android:textColor="#666666"/>
+
+                    </LinearLayout>
 
                     <CheckBox
                         android:id="@+id/chkEjercicio4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text=""/>
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/descEjercicio4"
+                <Button
+                    android:id="@+id/btnReset"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    android:visibility="gone" />
-
-                <CheckBox
-                    android:id="@+id/checkboxProblemasSalud"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/problemas_de_salud" />
+                    android:text="Reiniciar Progreso"
+                    android:layout_marginTop="16dp"/>
 
             </LinearLayout>
         </ScrollView>

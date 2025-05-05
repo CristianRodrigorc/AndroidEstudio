@@ -22,26 +22,26 @@ object UtilidadesUsersScreen {
     fun llenarDiaGenerico(
         ejerciciosDelDia: List<Ejercicio>,
         textViews: List<TextView>,
-        descripciones: List<TextView>,
+        descripciones: List<TextView>? = null,
         checkboxes: List<CheckBox>,
         youtubeView: YouTubePlayerView,
         videoIds: List<String>
     ) {
         textViews.forEachIndexed { index, tvEjercicio ->
-            val tvDescripcion = descripciones[index]
+            val tvDescripcion = descripciones?.getOrNull(index)
             val checkbox = checkboxes[index]
             val videoId = videoIds.getOrNull(index) ?: ""
 
             ejerciciosDelDia.getOrNull(index)?.let { ejercicio ->
                 tvEjercicio.text = ejercicio.nombre
-                tvDescripcion.text = ejercicio.repeticiones
+                tvDescripcion?.text = ejercicio.repeticiones
             }
 
-            tvDescripcion.visibility = View.GONE
+            tvDescripcion?.visibility = View.GONE
             checkbox.isChecked = false
 
             tvEjercicio.setOnClickListener {
-                verDesc(tvDescripcion)
+                tvDescripcion?.let { verDesc(it) }
                 cargarVideo(videoId)
             }
         }
