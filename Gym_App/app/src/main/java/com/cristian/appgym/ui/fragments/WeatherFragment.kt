@@ -120,31 +120,31 @@ class WeatherFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 findNavController().navigate(R.id.action_weather_to_userdata)
             }
             R.id.nav_progreso -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_rutinas -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_dieta -> {
                 findNavController().navigate(R.id.action_weather_to_recipes)
             }
             R.id.nav_entrenador -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_clases -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_tienda -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_comunidad -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_clima -> {
                 // Ya estamos en la sección de clima
             }
             R.id.nav_configuracion -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.close()

@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
         val password = binding.etPassLoginS.text.toString()
 
         if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_login_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -68,17 +68,17 @@ class LoginFragment : Fragment() {
                     if (usuario != null && usuario.id_user != null) {
                         // Guardar la sesión del usuario
                         sessionManager.saveUserSession(usuario.id_user.toInt(), usuario.username)
-                        Toast.makeText(context, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show()
                         // Navegar a la pantalla de usuario
                         findNavController().navigate(R.id.action_login_to_user)
                     } else {
-                        Toast.makeText(context, "Error: Usuario no válido", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.error_login_user), Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
-                Toast.makeText(context, "Error de conexión: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_login_connection, e.message), Toast.LENGTH_SHORT).show()
             } finally {
                 // Ocultar ProgressBar y habilitar botón
                 binding.progressBarLogin.visibility = View.GONE

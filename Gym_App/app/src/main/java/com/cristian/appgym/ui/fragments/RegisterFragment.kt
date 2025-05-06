@@ -69,17 +69,17 @@ class RegisterFragment : Fragment() {
         // Validaciones básicas
         if (email.isEmpty() || username.isEmpty() || password.isEmpty() || 
             name.isEmpty() || lastName.isEmpty() || dateStr.isEmpty() || sex.isEmpty()) {
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_complete_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(context, "Por favor, ingrese un email válido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_invalid_email), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (password.length < 6) {
-            Toast.makeText(context, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_password_length), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -95,7 +95,7 @@ class RegisterFragment : Fragment() {
                         if (emailResult.data) {
                             binding.progressBar.visibility = View.GONE
                             binding.btnRegisterSS.isEnabled = true
-                            Toast.makeText(context, "El email ya está registrado", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, getString(R.string.error_email_exists), Toast.LENGTH_SHORT).show()
                             return@launch
                         }
                     }
@@ -116,7 +116,7 @@ class RegisterFragment : Fragment() {
                         if (usernameResult.data) {
                             binding.progressBar.visibility = View.GONE
                             binding.btnRegisterSS.isEnabled = true
-                            Toast.makeText(context, "El nombre de usuario ya está en uso", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, getString(R.string.error_username_exists), Toast.LENGTH_SHORT).show()
                             return@launch
                         }
                     }
@@ -131,11 +131,24 @@ class RegisterFragment : Fragment() {
                     }
                 }
 
-                // Convertir la fecha al formato PostgreSQL
+                // Convertir la fecha al formato PostgreSQL y validar edad
                 val date = try {
-                    LocalDate.parse(dateStr, dateFormatter)
+                    val birthDate = LocalDate.parse(dateStr, dateFormatter)
+                    val today = LocalDate.now()
+                    val age = today.year - birthDate.year - 
+                        (if (today.monthValue < birthDate.monthValue || 
+                            (today.monthValue == birthDate.monthValue && today.dayOfMonth < birthDate.dayOfMonth)) 1 else 0)
+                    
+                    if (age < 18) {
+                        Toast.makeText(context, getString(R.string.error_under_age), Toast.LENGTH_SHORT).show()
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnRegisterSS.isEnabled = true
+                        return@launch
+                    }
+                    
+                    birthDate
                 } catch (e: Exception) {
-                    Toast.makeText(context, "Formato de fecha inválido. Use YYYY-MM-DD", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(R.string.error_invalid_date), Toast.LENGTH_SHORT).show()
                     binding.progressBar.visibility = View.GONE
                     binding.btnRegisterSS.isEnabled = true
                     return@launch
@@ -154,7 +167,7 @@ class RegisterFragment : Fragment() {
 
                 when (val result = userRepository.crearUsuario(usuario)) {
                     is Result.Success -> {
-                        Toast.makeText(context, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.success_register), Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_registerUser_to_home)
                     }
                     is Result.Error -> {
@@ -165,7 +178,7 @@ class RegisterFragment : Fragment() {
                     }
                 }
             } catch (e: Exception) {
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_register, e.message), Toast.LENGTH_SHORT).show()
             } finally {
                 // Ocultar ProgressBar y habilitar botón
                 binding.progressBar.visibility = View.GONE

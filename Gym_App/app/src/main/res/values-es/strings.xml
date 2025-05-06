@@ -1,37 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">App de Gimnasio</string>
-    <!-- Strings usados para PrincipalScreen -->
-    <string name="titlePrincipalWindow" translatable="false">Mi GymApp</string>
-    <string name="sloganPrincipalWindow" translatable="false">Te ayudaremos a lograr tus metas.</string>
-    <string name="textPrincipalWindow" translatable="false">¡Bienvenido a tu zona de fuerza y bienestar! ¡Inicia sesión para transformar tu día!</string>
-    <string name="btnLogin" translatable="false">Iniciar sesión</string>
-    <string name="btnCreateAccount" translatable="false">Crear cuenta</string>
+
+    <!-- Pantalla Principal -->
+    <string name="titlePrincipalWindow">Mi GymApp</string>
+    <string name="sloganPrincipalWindow">Te ayudaremos a lograr tus metas.</string>
+    <string name="textPrincipalWindow">¡Bienvenido a tu zona de fuerza y bienestar! ¡Inicia sesión para transformar tu día!</string>
+    <string name="btnLogin">Iniciar sesión</string>
+    <string name="btnCreateAccount">Crear cuenta</string>
+
+    <!-- Configuración de Idioma -->
     <string-array name="lenguajes">
         <item>en</item>
         <item>es</item>
     </string-array>
-    <string name="switchWhite" translatable="false">Claro</string>
-    <string name="switchDark" translatable="false">Oscuro</string>
 
-    <!-- Strings usados para RegisterScreen -->
-    <string name="tvName" translatable="false">Nombre</string>
-    <string name="tvLastName" translatable="false">Apellido</string>
-    <string name="tvEmail" translatable="false">Correo electrónico</string>
-    <string name="tvUser" translatable="false">Nombre de usuario</string>
-    <string name="tvContra" translatable="false">Contraseña</string>
-    <string name="tvDate" translatable="false">Fecha de nacimiento</string>
-    <string name="etDate" translatable="false">Selecciona tu fecha de nacimiento</string>
-    <string name="btnMale" translatable="false">Hombre</string>
-    <string name="btnFemale" translatable="false">Mujer</string>
-    <string name="btnGroup" translatable="false">Sexo</string>
-    <string name="btnVolver" translatable="false">Volver</string>
-    <string name="btnRegistrar" translatable="false">Registrar</string>
+    <!-- Configuración de Tema -->
+    <string name="switchWhite">Claro</string>
+    <string name="switchDark">Oscuro</string>
 
-    <!-- Strings usados para DataUserScreen -->
-    <string name="tvSizeDU" translatable="false">Altura</string>
-    <string name="tvWeight" translatable="false">Peso</string>
-    <string name="tvActividadFisica" translatable="false">¿Con qué frecuencia haces ejercicio actualmente?</string>
+    <!-- Pantalla de Registro -->
+    <string name="tvName">Nombre</string>
+    <string name="tvLastName">Apellido</string>
+    <string name="tvEmail">Correo electrónico</string>
+    <string name="tvUser">Nombre de usuario</string>
+    <string name="tvContra">Contraseña</string>
+    <string name="tvDate">Fecha de nacimiento</string>
+    <string name="etDate">Selecciona tu fecha de nacimiento</string>
+    <string name="btnMale">Hombre</string>
+    <string name="btnFemale">Mujer</string>
+    <string name="btnGroup">Sexo</string>
+    <string name="btnVolver">Volver</string>
+    <string name="btnRegistrar">Registrar</string>
+
+    <!-- Mensajes de Validación de Registro -->
+    <string name="error_complete_fields">Por favor, complete todos los campos</string>
+    <string name="error_invalid_email">Por favor, ingrese un email válido</string>
+    <string name="error_password_length">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_email_exists">El email ya está registrado</string>
+    <string name="error_username_exists">El nombre de usuario ya está en uso</string>
+    <string name="error_invalid_date">Formato de fecha inválido. Use YYYY-MM-DD</string>
+    <string name="error_under_age">Debes ser mayor de 18 años para registrarte</string>
+    <string name="success_register">Usuario registrado exitosamente</string>
+    <string name="error_register">Error: %1$s</string>
+
+    <!-- Pantalla de Datos de Usuario -->
+    <string name="tvSizeDU">Altura</string>
+    <string name="tvWeight">Peso</string>
+    <string name="tvActividadFisica">¿Con qué frecuencia haces ejercicio actualmente?</string>
     <string-array name="niveles_actividad">
         <item>Diariamente</item>
         <item>Varias veces a la semana</item>
@@ -39,42 +55,42 @@
         <item>Ocasionalmente</item>
         <item>Nunca</item>
     </string-array>
-    <string name="tvDiasEntrenar" translatable="false">¿Cuántos días a la semana te gustaría entrenar?</string>
+    <string name="tvDiasEntrenar">¿Cuántos días a la semana te gustaría entrenar?</string>
     <string-array name="dias_entrenar">
         <item>1-2 días</item>
         <item>3-4 días</item>
         <item>5-6 días</item>
         <item>7 días</item>
     </string-array>
-    <string name="tvProblemaSalud" translatable="false">¿Tienes alguna condición de salud que debamos conocer?</string>
-    <string name="tvPreferenciaHorario" translatable="false">¿En qué horarios prefieres entrenar?</string>
+    <string name="tvProblemaSalud">¿Tienes alguna condición de salud que debamos conocer?</string>
+    <string name="tvPreferenciaHorario">¿En qué horarios prefieres entrenar?</string>
     <string-array name="preferencia_Horario">
         <item>Mañana</item>
         <item>Tarde</item>
         <item>Noche</item>
     </string-array>
-    <string name="tvMotivacion" translatable="false">¿Qué te motiva a seguir entrenando?</string>
+    <string name="tvMotivacion">¿Qué te motiva a seguir entrenando?</string>
     <string-array name="motivaciones">
         <item>Mejorar mi salud</item>
         <item>Lograr un objetivo físico</item>
         <item>Estética / Cambios físicos</item>
         <item>Socializar / Crear una rutina</item>
     </string-array>
-    <string name="btnGuardar" translatable="false">Guardar</string>
+    <string name="btnGuardar">Guardar</string>
 
+    <!-- Navegación -->
+    <string name="first_fragment_label">Primer Fragmento</string>
+    <string name="second_fragment_label">Segundo Fragmento</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
 
-    <!-- Strings usados para fragmentos de navegación -->
-    <string name="first_fragment_label" translatable="false">Primer Fragmento</string>
-    <string name="second_fragment_label" translatable="false">Segundo Fragmento</string>
-    <string name="next" translatable="false">Siguiente</string>
-    <string name="previous" translatable="false">Anterior</string>
+    <!-- Mensajes de Error -->
+    <string name="errorDatosIngresados">Error al ingresar los datos</string>
+    <string name="errorUsuarioExiste">Error, este usuario ya está registrado</string>
+    <string name="errorSexoNoSelect">Error al elegir el sexo, debe seleccionar una opción</string>
+    <string name="errorCompletarCampos">Error en los campos</string>
 
-    <string name="errorDatosIngresados">Error al ingresar el </string>
-    <string name="errorUsuarioExiste">Error, el este usuario ya está registrado</string>
-    <string name="errorSexoNoSelect">Error al elegir el sexo, debe seleccionar una opcion</string>
-
-
-    <!-- Strings usados para Ventana de UsersScreen -->
+    <!-- Días de la Semana -->
     <string name="dayMonday">Lunes</string>
     <string name="dayTuesday">Martes</string>
     <string name="dayWednesday">Miércoles</string>
@@ -83,11 +99,7 @@
     <string name="daySaturday">Sábado</string>
     <string name="daySunday">Domingo</string>
 
-
-    <!-- Errores-->
-    <string name="errorCompletarCampos">Error en los campos</string>
-
-    <!-- Recipes Fragment -->
+    <!-- Pantalla de Recetas -->
     <string name="recipes_title">Recetas Fitness</string>
     <string name="search_hint">Buscar recetas...</string>
     <string name="filter_all">Todas</string>
@@ -96,7 +108,7 @@
     <string name="filter_protein">Proteica</string>
     <string name="view_recipe">Ver Receta</string>
     
-    <!-- Recipe Details -->
+    <!-- Detalles de Receta -->
     <string name="calories">Calorías</string>
     <string name="protein">Proteínas</string>
     <string name="carbs">Carbohidratos</string>
@@ -106,6 +118,39 @@
     <string name="kcal">kcal</string>
     <string name="grams">g</string>
 
+    <!-- Configuración -->
     <string name="settings">Configuración</string>
-    <string name="hello_blank_fragment">Fragmento en blanco</string>
+    <string name="language">Idioma</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="theme">Tema</string>
+    <string name="change_theme">Cambiar tema</string>
+    <string name="back">Volver</string>
+
+    <!-- Pantalla de Inicio de Sesión -->
+    <string name="error_login_fields">Por favor, complete todos los campos</string>
+    <string name="error_login_invalid">Credenciales inválidas</string>
+    <string name="error_login_connection">Error de conexión: %1$s</string>
+    <string name="success_login">Inicio de sesión exitoso</string>
+    <string name="error_login_user">Error: Usuario no válido</string>
+
+    <!-- Pantalla de Datos de Usuario -->
+    <string name="error_userdata_fields">Por favor, ingrese valores válidos para altura, peso y días de entrenamiento</string>
+    <string name="error_userdata_complete">Por favor, complete todos los campos</string>
+    <string name="success_userdata">Datos guardados exitosamente</string>
+    <string name="error_userdata_save">Error al guardar los datos: %1$s</string>
+
+    <!-- Mensajes de Desarrollo -->
+    <string name="feature_development">Funcionalidad en desarrollo</string>
+
+    <!-- Navegación -->
+    <string name="nav_my_data">Mis Datos</string>
+    <string name="nav_progress">Progreso</string>
+    <string name="nav_routines">Rutinas</string>
+    <string name="nav_diet">Dieta</string>
+    <string name="nav_trainer">Entrenador</string>
+    <string name="nav_classes">Clases</string>
+    <string name="nav_shop">Tienda</string>
+    <string name="nav_community">Comunidad</string>
+    <string name="nav_weather">Clima</string>
+    <string name="nav_settings">Configuración</string>
 </resources>

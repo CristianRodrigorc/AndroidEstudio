@@ -154,28 +154,28 @@ class RecipesFragment : Fragment(), NavigationView.OnNavigationItemSelectedListe
                 findNavController().navigate(R.id.action_recipes_to_user)
             }
             R.id.nav_progreso -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_rutinas -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_dieta -> {
                 // Ya estamos en la sección de dieta
             }
             R.id.nav_entrenador -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_clases -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_tienda -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_comunidad -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
             R.id.nav_configuracion -> {
-                Toast.makeText(context, "Funcionalidad en desarrollo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
             }
         }
         drawerLayout.close()

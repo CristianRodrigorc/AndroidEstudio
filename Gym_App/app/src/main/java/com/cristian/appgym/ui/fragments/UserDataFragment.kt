@@ -76,13 +76,13 @@ class UserDataFragment : Fragment() {
         val motivation = binding.spnMotivacionDU.selectedItem.toString()
 
         if (size == null || weight == null || daysTraining == null) {
-            Toast.makeText(context, "Por favor, ingrese valores válidos para altura, peso y días de entrenamiento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_userdata_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (physicalActivity.isEmpty() || healthProblems.isEmpty() || 
             preferenceSchedule.isEmpty() || motivation.isEmpty()) {
-            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.error_userdata_complete), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -104,18 +104,18 @@ class UserDataFragment : Fragment() {
             try {
                 when (val result = userRepository.guardarUserData(userDataRequest)) {
                     is Result.Success -> {
-                        Toast.makeText(context, "Datos guardados exitosamente", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.success_userdata), Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_userData_to_user)
                     }
                     is Result.Error -> {
-                        Toast.makeText(context, "Error al guardar los datos: ${result.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, getString(R.string.error_userdata_save, result.message), Toast.LENGTH_SHORT).show()
                     }
                     is Result.Loading -> {
                         // Ya estamos mostrando el ProgressBar
                     }
                 }
             } catch (e: Exception) {
-                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.error_userdata_save, e.message), Toast.LENGTH_SHORT).show()
             } finally {
                 binding.progressBar.visibility = View.GONE
                 binding.btnGuardarDU.isEnabled = true
