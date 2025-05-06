@@ -1,6 +1,7 @@
 package com.cristian.appgym.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -59,17 +60,26 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         // Agregar el observador del ciclo de vida
         lifecycle.addObserver(youtubePlayerView)
 
-        // Inicializar el reproductor de YouTube
-        youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo("uNN62f55EV0", 0f)
-                youTubePlayer.mute()
-            }
+        // Inicializar el reproductor de YouTube con manejo de errores
+        try {
+            youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    try {
+                        youTubePlayer.loadVideo("uNN62f55EV0", 0f)
+                        youTubePlayer.mute()
+                    } catch (e: Exception) {
+                        Log.e("UserFragment", "Error al cargar el video: ${e.message}")
+                    }
+                }
 
-            override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
-                Toast.makeText(context, "Error al cargar el video", Toast.LENGTH_SHORT).show()
-            }
-        })
+                override fun onError(youTubePlayer: YouTubePlayer, error: PlayerConstants.PlayerError) {
+                    Log.e("UserFragment", "Error en el reproductor: $error")
+                    Toast.makeText(context, getString(R.string.error_video_load), Toast.LENGTH_SHORT).show()
+                }
+            })
+        } catch (e: Exception) {
+            Log.e("UserFragment", "Error al inicializar el reproductor: ${e.message}")
+        }
 
         setupNavigationDrawer()
         setupCheckboxes()

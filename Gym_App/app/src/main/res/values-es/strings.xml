@@ -89,6 +89,7 @@
     <string name="errorUsuarioExiste">Error, este usuario ya está registrado</string>
     <string name="errorSexoNoSelect">Error al elegir el sexo, debe seleccionar una opción</string>
     <string name="errorCompletarCampos">Error en los campos</string>
+    <string name="error_video_load">Error al cargar el video</string>
 
     <!-- Días de la Semana -->
     <string name="dayMonday">Lunes</string>

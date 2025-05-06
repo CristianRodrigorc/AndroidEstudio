@@ -152,4 +152,7 @@
     <string name="nav_community">Community</string>
     <string name="nav_weather">Weather</string>
     <string name="nav_settings">Settings</string>
+
+    <!-- Mensajes de Error -->
+    <string name="error_video_load">Error al cargar el video</string>
 </resources>
