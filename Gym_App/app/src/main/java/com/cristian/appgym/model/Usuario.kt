@@ -30,5 +30,6 @@ data class Usuario(
     @SerializedName("sex")
     val sex: String,
     
+    @SerializedName("userData")
     val userData: UserData? = null
 )

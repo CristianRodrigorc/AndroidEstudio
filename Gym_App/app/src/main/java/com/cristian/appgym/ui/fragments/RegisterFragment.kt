@@ -133,7 +133,7 @@ class RegisterFragment : Fragment() {
 
                 // Convertir la fecha al formato PostgreSQL
                 val date = try {
-                    LocalDate.parse(dateStr, dateFormatter).format(dateFormatter)
+                    LocalDate.parse(dateStr, dateFormatter)
                 } catch (e: Exception) {
                     Toast.makeText(context, "Formato de fecha inválido. Use YYYY-MM-DD", Toast.LENGTH_SHORT).show()
                     binding.progressBar.visibility = View.GONE
@@ -148,7 +148,7 @@ class RegisterFragment : Fragment() {
                     password = password,
                     name = name,
                     lastname = lastName,
-                    date = date,
+                    date = date.format(dateFormatter), // Convertir LocalDate a String
                     sex = sex
                 )
 
