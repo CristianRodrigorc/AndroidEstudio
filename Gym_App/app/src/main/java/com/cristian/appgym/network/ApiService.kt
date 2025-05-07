@@ -7,6 +7,16 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
+    // Endpoints básicos de usuario
+    @GET("api/usuarios/{id}")
+    suspend fun obtenerUsuario(@Path("id") id: Long): Response<Usuario>
+
+    @GET("api/usuarios/data/{userId}")
+    suspend fun obtenerUserData(@Path("userId") userId: Long): Response<UserData>
+
+    @POST("api/usuarios/data/save")
+    suspend fun guardarUserData(@Body userData: UserDataRequest): Response<Void>
+
     // Endpoints de verificación
     @GET("api/usuarios/check-email/{email}")
     suspend fun verificarEmail(@Path("email") email: String): Response<Boolean>
@@ -27,12 +37,8 @@ interface ApiService {
     @GET("api/usuarios/email/{email}")
     suspend fun obtenerUsuarioPorEmail(@Path("email") email: String): Response<Usuario>
 
-    // Endpoints de datos de usuario
-    @POST("api/usuarios/data/save")
-    suspend fun guardarUserData(@Body userData: UserDataRequest): Response<Void>
-
-    @GET("api/usuarios/data/{id}")
-    suspend fun obtenerDatosUsuario(@Path("id") id: Long): Response<Usuario>
+    @GET("api/usuarios/data/user/{userId}")
+    suspend fun obtenerDatosUsuario(@Path("userId") userId: Long): Response<Usuario>
 }
 
 data class LoginRequest(

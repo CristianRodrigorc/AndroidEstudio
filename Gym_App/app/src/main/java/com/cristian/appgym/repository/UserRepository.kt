@@ -90,6 +90,34 @@ class UserRepository(private val apiService: ApiService) {
         }
     }
 
+    // Obtener datos básicos del usuario
+    suspend fun obtenerUsuario(id: Long): Result<Usuario> {
+        return try {
+            val response = apiService.obtenerUsuario(id)
+            if (response.isSuccessful && response.body() != null) {
+                Result.Success(response.body()!!)
+            } else {
+                Result.Error("No se pudieron obtener los datos del usuario")
+            }
+        } catch (e: Exception) {
+            Result.Error("Error de red: ${e.message}")
+        }
+    }
+
+    // Obtener datos adicionales del usuario
+    suspend fun obtenerUserData(userId: Long): Result<UserData> {
+        return try {
+            val response = apiService.obtenerUserData(userId)
+            if (response.isSuccessful && response.body() != null) {
+                Result.Success(response.body()!!)
+            } else {
+                Result.Error("No se pudieron obtener los datos adicionales del usuario")
+            }
+        } catch (e: Exception) {
+            Result.Error("Error de red: ${e.message}")
+        }
+    }
+
     // Guardar datos adicionales del usuario
     suspend fun guardarUserData(userData: UserDataRequest): Result<Unit> {
         return try {
@@ -112,27 +140,9 @@ class UserRepository(private val apiService: ApiService) {
                 val usuario = usuarioResult.data
                 val userId = usuario.id_user ?: usuario.userId
                 if (userId != null) {
-                    val userDataResult = obtenerDatosUsuario(userId)
+                    val userDataResult = obtenerUserData(userId)
                     if (userDataResult is Result.Success) {
-                        val userData = UserData(
-                            id = userDataResult.data.id_user,
-                            userId = userDataResult.data.userId,
-                            username = userDataResult.data.username,
-                            password = userDataResult.data.password,
-                            name = userDataResult.data.name,
-                            lastName = userDataResult.data.lastname,
-                            email = userDataResult.data.email,
-                            date = userDataResult.data.date,
-                            sex = userDataResult.data.sex,
-                            size = null,
-                            weight = null,
-                            physicalActivity = null,
-                            daysTraining = null,
-                            healthProblems = null,
-                            preferenceSchedule = null,
-                            motivation = null
-                        )
-                        Result.Success(UsuarioCompleto(usuario, userData))
+                        Result.Success(UsuarioCompleto(usuario, userDataResult.data))
                     } else {
                         Result.Error("Error al obtener datos adicionales del usuario")
                     }
@@ -144,20 +154,6 @@ class UserRepository(private val apiService: ApiService) {
             }
         } catch (e: Exception) {
             Result.Error("Error al obtener usuario completo: ${e.message}")
-        }
-    }
-
-    // Obtener datos de usuario
-    suspend fun obtenerDatosUsuario(id: Long): Result<Usuario> {
-        return try {
-            val response = apiService.obtenerDatosUsuario(id)
-            if (response.isSuccessful && response.body() != null) {
-                Result.Success(response.body()!!)
-            } else {
-                Result.Error("No se pudieron obtener los datos del usuario")
-            }
-        } catch (e: Exception) {
-            Result.Error("Error de red: ${e.message}")
         }
     }
 }

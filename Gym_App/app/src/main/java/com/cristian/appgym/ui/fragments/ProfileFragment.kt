@@ -13,6 +13,7 @@ import com.cristian.appgym.databinding.FragmentProfileBinding
 import com.cristian.appgym.network.RetrofitClient
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.SessionManager
+import com.cristian.appgym.utils.Result
 import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
@@ -77,36 +78,50 @@ class ProfileFragment : Fragment() {
             try {
                 val userId = sessionManager.getUserId()
                 if (userId != -1) {
-                    val result = userRepository.obtenerDatosUsuario(userId.toLong())
-                    when (result) {
-                        is com.cristian.appgym.utils.Result.Success -> {
-                            val usuario = result.data
+                    // Obtener datos básicos del usuario
+                    val userResult = userRepository.obtenerUsuario(userId.toLong())
+                    when (userResult) {
+                        is Result.Success -> {
+                            val usuario = userResult.data
                             // Datos básicos de la tabla usuarios
                             binding.tvName.text = usuario.name
                             binding.tvEmail.text = usuario.email
+                            binding.tvUserId.text = getString(R.string.user_id_format, usuario.id_user?.toString() ?: getString(R.string.default_value))
 
-                            // Datos de la tabla user_data
-                            usuario.userData?.let { userData ->
-                                binding.tvHeight.text = userData.size?.toString() ?: getString(R.string.default_value)
-                                binding.tvWeight.text = userData.weight?.toString() ?: getString(R.string.default_value)
-                                binding.tvActivityLevel.text = userData.actividadFisica ?: getString(R.string.default_value)
-                                binding.tvTrainingDays.text = userData.diasEntrenar ?: getString(R.string.default_value)
-                                binding.tvPreferredTime.text = userData.preferenciaHorario ?: getString(R.string.default_value)
-                                binding.tvHealthIssues.text = userData.problemasSalud ?: getString(R.string.default_value)
-                                binding.tvMotivation.text = userData.motivacion ?: getString(R.string.default_value)
-                            } ?: run {
-                                // Si no hay datos en user_data, mostrar valores por defecto
-                                binding.tvHeight.text = getString(R.string.default_value)
-                                binding.tvWeight.text = getString(R.string.default_value)
-                                binding.tvActivityLevel.text = getString(R.string.default_value)
-                                binding.tvTrainingDays.text = getString(R.string.default_value)
-                                binding.tvPreferredTime.text = getString(R.string.default_value)
-                                binding.tvHealthIssues.text = getString(R.string.default_value)
-                                binding.tvMotivation.text = getString(R.string.default_value)
+                            // Obtener datos adicionales
+                            val userDataResult = userRepository.obtenerUserData(userId.toLong())
+                            when (userDataResult) {
+                                is Result.Success -> {
+                                    val userData = userDataResult.data
+                                    binding.tvHeight.text = userData.size?.toString() ?: getString(R.string.default_value)
+                                    binding.tvWeight.text = userData.weight?.toString() ?: getString(R.string.default_value)
+                                    binding.tvActivityLevel.text = userData.physicalActivity ?: getString(R.string.default_value)
+                                    binding.tvTrainingDays.text = userData.daysTraining?.toString() ?: getString(R.string.default_value)
+                                    binding.tvPreferredTime.text = userData.preferenceSchedule ?: getString(R.string.default_value)
+                                    binding.tvHealthIssues.text = userData.healthProblems ?: getString(R.string.default_value)
+                                    binding.tvMotivation.text = userData.motivation ?: getString(R.string.default_value)
+                                }
+                                is Result.Error -> {
+                                    // Si hay error al obtener datos adicionales, mostrar valores por defecto
+                                    binding.tvHeight.text = getString(R.string.default_value)
+                                    binding.tvWeight.text = getString(R.string.default_value)
+                                    binding.tvActivityLevel.text = getString(R.string.default_value)
+                                    binding.tvTrainingDays.text = getString(R.string.default_value)
+                                    binding.tvPreferredTime.text = getString(R.string.default_value)
+                                    binding.tvHealthIssues.text = getString(R.string.default_value)
+                                    binding.tvMotivation.text = getString(R.string.default_value)
+                                    Toast.makeText(context, userDataResult.message, Toast.LENGTH_SHORT).show()
+                                }
+                                is Result.Loading -> {
+                                    // Ya estamos mostrando el ProgressBar
+                                }
                             }
                         }
-                        is com.cristian.appgym.utils.Result.Error -> {
-                            Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
+                        is Result.Error -> {
+                            Toast.makeText(context, userResult.message, Toast.LENGTH_SHORT).show()
+                        }
+                        is Result.Loading -> {
+                            // Ya estamos mostrando el ProgressBar
                         }
                     }
                 }
