@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLoginLoginS.setOnClickListener {
-            iniciarSesion()
+            login()
         }
 
         binding.btnHomeLoginS.setOnClickListener {
@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun iniciarSesion() {
+    private fun login() {
         val username = binding.etUsernameLoginS.text.toString()
         val password = binding.etPassLoginS.text.toString()
 
@@ -56,31 +56,35 @@ class LoginFragment : Fragment() {
             return
         }
 
-        // Mostrar ProgressBar y deshabilitar botón
-        binding.progressBarLogin.visibility = View.VISIBLE
-        binding.btnLoginLoginS.isEnabled = false
-
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             try {
+                binding.progressBarLogin.visibility = View.VISIBLE
+                binding.btnLoginLoginS.isEnabled = false
+
                 val response = RetrofitClient.apiService.login(LoginRequest(username, password))
+                
                 if (response.isSuccessful) {
-                    val usuario = response.body()
-                    if (usuario != null && usuario.id_user != null) {
+                    response.body()?.let { usuario ->
                         // Guardar la sesión del usuario
-                        sessionManager.saveUserSession(usuario.id_user.toInt(), usuario.username)
-                        Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show()
-                        // Navegar a la pantalla de usuario
-                        findNavController().navigate(R.id.action_login_to_user)
-                    } else {
-                        Toast.makeText(context, getString(R.string.error_login_user), Toast.LENGTH_SHORT).show()
+                        usuario.id_user?.let { id ->
+                            sessionManager.saveUserSession(id.toInt(), usuario.username)
+                            Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show()
+                            // Navegar a la pantalla de usuario
+                            findNavController().navigate(R.id.action_login_to_user)
+                        } ?: run {
+                            Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } else {
-                    Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
+                    when (response.code()) {
+                        401 -> Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
+                        404 -> Toast.makeText(context, getString(R.string.error_login_user), Toast.LENGTH_SHORT).show()
+                        else -> Toast.makeText(context, getString(R.string.error_login_connection, response.message()), Toast.LENGTH_SHORT).show()
+                    }
                 }
             } catch (e: Exception) {
                 Toast.makeText(context, getString(R.string.error_login_connection, e.message), Toast.LENGTH_SHORT).show()
             } finally {
-                // Ocultar ProgressBar y habilitar botón
                 binding.progressBarLogin.visibility = View.GONE
                 binding.btnLoginLoginS.isEnabled = true
             }
