@@ -1,5 +1,7 @@
 package com.cristian.appgym.ui.fragments
 
+import android.app.Dialog
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,8 +17,15 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentUserBinding
+import com.cristian.appgym.ui.adapters.AvatarAdapter
 import com.cristian.appgym.ui.viewmodel.UserViewModel
 import com.cristian.appgym.util.LectorJSON
 import com.cristian.appgym.util.UtilidadesBotones
@@ -39,6 +48,11 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     private var ejerciciosCompletados = 0
     private val totalEjercicios = 4
 
+    companion object {
+        private const val PREFS_NAME = "UserPrefs"
+        private const val KEY_AVATAR_SEED = "avatar_seed"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,6 +70,21 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         navigationView = binding.navigationView
         youtubePlayerView = binding.youtubeView
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+
+        // Configurar el NavigationView
+        navigationView.setNavigationItemSelectedListener(this)
+
+        // Configurar el botón de menú
+        binding.btnMenu.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(navigationView)) {
+                drawerLayout.closeDrawer(navigationView)
+            } else {
+                drawerLayout.openDrawer(navigationView)
+            }
+        }
+
+        // Cargar el avatar guardado
+        loadSavedAvatar()
 
         // Agregar el observador del ciclo de vida
         lifecycle.addObserver(youtubePlayerView)
@@ -81,24 +110,16 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             Log.e("UserFragment", "Error al inicializar el reproductor: ${e.message}")
         }
 
-        setupNavigationDrawer()
         setupCheckboxes()
         setupLogoutButton()
         setupToolbar()
         setupProgressBar()
         setupResetButton()
         setupDiaButtons()
+        setupAvatarSelection()
 
         // Mostrar el nombre de usuario
         binding.tvUsername.text = sessionManager.getUsername()
-    }
-
-    private fun setupNavigationDrawer() {
-        binding.btnMenu.setOnClickListener {
-            drawerLayout.open()
-        }
-
-        navigationView.setNavigationItemSelectedListener(this)
     }
 
     private fun setupLogoutButton() {
@@ -147,10 +168,6 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     }
 
     private fun setupToolbar() {
-        binding.btnMenu.setOnClickListener {
-            drawerLayout.open()
-        }
-
         binding.btnSettings.setOnClickListener {
             findNavController().navigate(R.id.settingsFragment)
         }
@@ -341,6 +358,48 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         btnViernes?.setOnClickListener(onClickListener)
         btnSabado?.setOnClickListener(onClickListener)
         btnDomingo?.setOnClickListener(onClickListener)
+    }
+
+    private fun setupAvatarSelection() {
+        binding.cardAvatar.setOnClickListener {
+            showAvatarSelectionDialog()
+        }
+    }
+
+    private fun loadSavedAvatar() {
+        val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, android.content.Context.MODE_PRIVATE)
+        val savedSeed = sharedPrefs.getString(KEY_AVATAR_SEED, null)
+        
+        if (savedSeed != null) {
+            val url = "https://api.dicebear.com/7.x/adventurer/png?seed=$savedSeed&size=128"
+            Glide.with(requireContext())
+                .load(url)
+                .into(binding.ivUserAvatar)
+        }
+    }
+
+    private fun showAvatarSelectionDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.dialog_avatar_selection)
+        
+        val recyclerView = dialog.findViewById<RecyclerView>(R.id.rvAvatars)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        
+        recyclerView.adapter = AvatarAdapter { selectedSeed ->
+            // Guardar el seed seleccionado
+            val sharedPrefs = requireContext().getSharedPreferences(PREFS_NAME, android.content.Context.MODE_PRIVATE)
+            sharedPrefs.edit().putString(KEY_AVATAR_SEED, selectedSeed).apply()
+            
+            // Actualizar el avatar del usuario
+            val url = "https://api.dicebear.com/7.x/adventurer/png?seed=$selectedSeed&size=128"
+            Glide.with(requireContext())
+                .load(url)
+                .into(binding.ivUserAvatar)
+            
+            dialog.dismiss()
+        }
+        
+        dialog.show()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
+    android:background="#FF5722"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="16dp"
@@ -12,19 +12,22 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:src="@android:drawable/ic_menu_myplaces"
-        android:contentDescription="Logo" />
+        android:contentDescription="Logo"
+        android:background="@drawable/circle_background" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Gym App"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/nav_header_subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Versión 1.0" />
+        android:text="Versión 1.0"
+        android:textColor="@android:color/white" />
 
-</LinearLayout> 
+</LinearLayout>
