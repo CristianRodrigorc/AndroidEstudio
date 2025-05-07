@@ -170,4 +170,26 @@
     <string name="user_avatar">User avatar</string>
     <string name="menu">Menu</string>
     <string name="logout">Logout</string>
+
+    <!-- Profile Fragment -->
+    <string name="user_avatar_description">Avatar del usuario</string>
+    <string name="menu_button_description">Menú</string>
+    <string name="profile_title">Perfil</string>
+    <string name="basic_info_title">Información Básica</string>
+    <string name="name_label">Nombre</string>
+    <string name="email_label">Email</string>
+    <string name="physical_info_title">Datos Físicos</string>
+    <string name="height_label">Altura</string>
+    <string name="weight_label">Peso</string>
+    <string name="training_info_title">Datos de Entrenamiento</string>
+    <string name="activity_level_label">Nivel de Actividad</string>
+    <string name="training_days_label">Días de Entrenamiento</string>
+    <string name="preferred_time_label">Horario Preferido</string>
+    <string name="health_info_title">Datos de Salud</string>
+    <string name="health_issues_label">Problemas de Salud</string>
+    <string name="motivation_label">Motivación</string>
+    <string name="edit_profile_button">Editar perfil</string>
+    <string name="logout_button">Cerrar sesión</string>
+    <string name="default_value">---</string>
+    <string name="user_id_format">ID: %1$s</string>
 </resources>

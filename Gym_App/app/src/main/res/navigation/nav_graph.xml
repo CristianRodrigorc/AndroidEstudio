@@ -67,6 +67,12 @@
         <action
             android:id="@+id/action_user_to_weather"
             app:destination="@id/weatherFragment" />
+        <action
+            android:id="@+id/action_user_to_settings"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_user_to_profile"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -112,6 +118,21 @@
         <action
             android:id="@+id/action_settings_to_weather"
             app:destination="@id/weatherFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.cristian.appgym.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_userDataFragment"
+            app:destination="@id/userDataFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

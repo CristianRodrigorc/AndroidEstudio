@@ -228,14 +228,15 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         val btnSabado = view?.findViewById<Button>(R.id.btnSabado)
         val btnDomingo = view?.findViewById<Button>(R.id.btnDomingo)
 
-        val tvEjercicio1 = view!!.findViewById<TextView>(R.id.tvEjercicio1)
-        val tvRepeticiones1 = view!!.findViewById<TextView>(R.id.tvRepeticiones1)
-        val tvEjercicio2 = view!!.findViewById<TextView>(R.id.tvEjercicio2)
-        val tvRepeticiones2 = view!!.findViewById<TextView>(R.id.tvRepeticiones2)
-        val tvEjercicio3 = view!!.findViewById<TextView>(R.id.tvEjercicio3)
-        val tvRepeticiones3 = view!!.findViewById<TextView>(R.id.tvRepeticiones3)
-        val tvEjercicio4 = view!!.findViewById<TextView>(R.id.tvEjercicio4)
-        val tvRepeticiones4 = view!!.findViewById<TextView>(R.id.tvRepeticiones4)
+        // Obtener las referencias de manera segura
+        val tvEjercicio1 = binding.tvEjercicio1
+        val tvRepeticiones1 = binding.tvRepeticiones1
+        val tvEjercicio2 = binding.tvEjercicio2
+        val tvRepeticiones2 = binding.tvRepeticiones2
+        val tvEjercicio3 = binding.tvEjercicio3
+        val tvRepeticiones3 = binding.tvRepeticiones3
+        val tvEjercicio4 = binding.tvEjercicio4
+        val tvRepeticiones4 = binding.tvRepeticiones4
 
         val ejerciciosJson = LectorJSON.obtenerJsonGson(requireContext())
         val idVideoYTDefault = "uNN62f55EV0"
@@ -403,40 +404,59 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_mis_datos -> {
-                findNavController().navigate(R.id.action_user_to_userdata)
+        return when (item.itemId) {
+            R.id.nav_profile -> {
+                binding.drawerLayout.close()
+                findNavController().navigate(R.id.action_user_to_profile)
+                true
             }
             R.id.nav_progreso -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_rutinas -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_dieta -> {
-                findNavController().navigate(R.id.action_user_to_recipes)
+                binding.drawerLayout.close()
+                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_entrenador -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_clases -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_tienda -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_comunidad -> {
+                binding.drawerLayout.close()
                 Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                true
             }
             R.id.nav_clima -> {
+                binding.drawerLayout.close()
                 findNavController().navigate(R.id.action_user_to_weather)
+                true
             }
             R.id.nav_configuracion -> {
-                Toast.makeText(context, getString(R.string.feature_development), Toast.LENGTH_SHORT).show()
+                binding.drawerLayout.close()
+                findNavController().navigate(R.id.action_user_to_settings)
+                true
             }
+            else -> false
         }
-        drawerLayout.close()
-        return true
     }
 
     override fun onDestroyView() {
