@@ -25,7 +25,7 @@
 
     <!-- Estilo para subtítulos con diseño de título -->
     <style name="Title.AppGym.Subtitle" parent="Title.AppGym">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/gym_primary</item>
     </style>
 
