@@ -12,18 +12,45 @@
         <item name="android:fontFamily">@font/play_regular</item>
     </style>
 
+    <!-- Estilo para títulos principales -->
+    <style name="Title.AppGym" parent="Text.AppGym">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowColor">#80000000</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+    <!-- Estilo para subtítulos con diseño de título -->
+    <style name="Title.AppGym.Subtitle" parent="Title.AppGym">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/gym_primary</item>
+    </style>
+
+    <!-- Estilo para títulos normales -->
     <style name="Text.AppGym.Title" parent="Text.AppGym">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/play_regular</item>
     </style>
 
+    <!-- Estilo para subtítulos -->
     <style name="Text.AppGym.Subtitle" parent="Text.AppGym">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/play_regular</item>
+    </style>
+
+    <!-- Estilo para subtítulos pequeños -->
+    <style name="Text.AppGym.SmallSubtitle" parent="Text.AppGym">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/play_regular</item>
     </style>
 
+    <!-- Estilo para texto normal -->
     <style name="Text.AppGym.Body" parent="Text.AppGym">
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/play_regular</item>
@@ -69,6 +96,21 @@
         <item name="rippleColor">@color/gym_primary</item>
     </style>
 
+    <!-- Estilo para botones de días -->
+    <style name="Button.AppGym.Day" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">2dp</item>
+        <item name="backgroundTint">@color/gym_accent</item>
+        <item name="rippleColor">@color/gym_primary</item>
+        <item name="android:fontFamily">@font/play_regular</item>
+    </style>
+
     <!-- Estilo para botones de acción -->
     <style name="Button.AppGym.Action" parent="Button.AppGym">
         <item name="backgroundTint">@color/gym_accent</item>
@@ -85,20 +127,5 @@
     <style name="Button.AppGym.Warning" parent="Button.AppGym">
         <item name="backgroundTint">@color/gym_warning</item>
         <item name="rippleColor">@color/gym_primary_dark</item>
-    </style>
-
-    <!-- Estilo para botones de días -->
-    <style name="Button.AppGym.Day" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:stateListAnimator">@null</item>
-        <item name="android:elevation">2dp</item>
-        <item name="backgroundTint">@color/gym_accent</item>
-        <item name="rippleColor">@color/gym_primary</item>
-        <item name="android:fontFamily">@font/play_regular</item>
     </style>
 </resources>

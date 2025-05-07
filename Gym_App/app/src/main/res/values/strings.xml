@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gym App</string>
 
@@ -154,5 +155,19 @@
     <string name="nav_settings">Settings</string>
 
     <!-- Mensajes de Error -->
-    <string name="error_video_load">Error al cargar el video</string>
+    <string name="error_video_load">Error loading video</string>
+
+    <!-- User Fragment -->
+    <string name="welcome">Welcome</string>
+    <string name="training_day">Training Day</string>
+    <string name="exercise">Exercise</string>
+    <string name="exercise_1">Exercise 1</string>
+    <string name="exercise_2">Exercise 2</string>
+    <string name="exercise_3">Exercise 3</string>
+    <string name="exercise_4">Exercise 4</string>
+    <string name="series_repetitions">3 sets x 12 repetitions</string>
+    <string name="reset_progress">Reset Progress</string>
+    <string name="user_avatar">User avatar</string>
+    <string name="menu">Menu</string>
+    <string name="logout">Logout</string>
 </resources>

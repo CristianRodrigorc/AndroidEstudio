@@ -154,4 +154,18 @@
     <string name="nav_community">Comunidad</string>
     <string name="nav_weather">Clima</string>
     <string name="nav_settings">Configuración</string>
+
+    <!-- User Fragment -->
+    <string name="welcome">Bienvenido</string>
+    <string name="training_day">Día de Entrenamiento</string>
+    <string name="exercise">Ejercicio</string>
+    <string name="exercise_1">Ejercicio 1</string>
+    <string name="exercise_2">Ejercicio 2</string>
+    <string name="exercise_3">Ejercicio 3</string>
+    <string name="exercise_4">Ejercicio 4</string>
+    <string name="series_repetitions">3 series x 12 repeticiones</string>
+    <string name="reset_progress">Reiniciar Progreso</string>
+    <string name="user_avatar">Avatar del usuario</string>
+    <string name="menu">Menú</string>
+    <string name="logout">Cerrar sesión</string>
 </resources>
