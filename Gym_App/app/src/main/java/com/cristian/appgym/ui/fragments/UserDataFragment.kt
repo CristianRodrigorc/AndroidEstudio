@@ -44,32 +44,32 @@ class UserDataFragment : Fragment() {
 
     private fun setupUI() {
         // Cargar valores a los spinners
-        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnNivelDU, R.array.niveles_actividad)
-        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnDiasEntrenarDU, R.array.dias_entrenar)
-        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnPreferenciaHorarioDU, R.array.preferencia_Horario)
-        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnMotivacionDU, R.array.motivaciones)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spinnerActividadFisica, R.array.niveles_actividad)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spinnerDiasEntrenar, R.array.dias_entrenar)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spinnerPreferenciaHorario, R.array.preferencia_Horario)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spinnerMotivacion, R.array.motivaciones)
 
         // Inicializar spinners con la primera opción seleccionada
-        binding.spnNivelDU.setSelection(0, false)
-        binding.spnDiasEntrenarDU.setSelection(0, false)
-        binding.spnPreferenciaHorarioDU.setSelection(0, false)
-        binding.spnMotivacionDU.setSelection(0, false)
+        binding.spinnerActividadFisica.setSelection(0, false)
+        binding.spinnerDiasEntrenar.setSelection(0, false)
+        binding.spinnerPreferenciaHorario.setSelection(0, false)
+        binding.spinnerMotivacion.setSelection(0, false)
     }
 
     private fun setupListeners() {
-        binding.btnGuardarDU.setOnClickListener {
+        binding.btnGuardar.setOnClickListener {
             guardarDatosUsuario()
         }
     }
 
     private fun guardarDatosUsuario() {
-        val size = binding.etSizeDU.text.toString().toDoubleOrNull()
-        val weight = binding.etWeightDU.text.toString().toDoubleOrNull()
-        val physicalActivity = binding.spnNivelDU.selectedItem.toString()
-        val daysTraining = binding.spnDiasEntrenarDU.selectedItem.toString().toIntOrNull()
-        val healthProblems = binding.etProblemaSaludDU.text.toString()
-        val preferenceSchedule = binding.spnPreferenciaHorarioDU.selectedItem.toString()
-        val motivation = binding.spnMotivacionDU.selectedItem.toString()
+        val size = binding.etHeight.text.toString().toDoubleOrNull()
+        val weight = binding.etWeight.text.toString().toDoubleOrNull()
+        val physicalActivity = binding.spinnerActividadFisica.selectedItem.toString()
+        val daysTraining = binding.spinnerDiasEntrenar.selectedItem.toString().toIntOrNull()
+        val healthProblems = binding.etProblemaSalud.text.toString()
+        val preferenceSchedule = binding.spinnerPreferenciaHorario.selectedItem.toString()
+        val motivation = binding.spinnerMotivacion.selectedItem.toString()
 
         if (size == null || weight == null || daysTraining == null) {
             Toast.makeText(context, getString(R.string.error_userdata_fields), Toast.LENGTH_SHORT).show()
@@ -83,7 +83,7 @@ class UserDataFragment : Fragment() {
         }
 
         binding.progressBar.visibility = View.VISIBLE
-        binding.btnGuardarDU.isEnabled = false
+        binding.btnGuardar.isEnabled = false
 
         val userDataRequest = UserDataRequest(
             userId = sessionManager.getUserId().toLong(),
@@ -101,7 +101,7 @@ class UserDataFragment : Fragment() {
                 when (val result = userRepository.guardarUserData(userDataRequest)) {
                     is Result.Success -> {
                         Toast.makeText(context, getString(R.string.success_userdata), Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_userData_to_profile)
+                        findNavController().navigate(R.id.action_userData_to_user)
                     }
                     is Result.Error -> {
                         Toast.makeText(context, getString(R.string.error_userdata_save, result.message), Toast.LENGTH_SHORT).show()
@@ -114,7 +114,7 @@ class UserDataFragment : Fragment() {
                 Toast.makeText(context, getString(R.string.error_userdata_save, e.message), Toast.LENGTH_SHORT).show()
             } finally {
                 binding.progressBar.visibility = View.GONE
-                binding.btnGuardarDU.isEnabled = true
+                binding.btnGuardar.isEnabled = true
             }
         }
     }
