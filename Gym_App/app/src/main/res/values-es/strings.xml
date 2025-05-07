@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">App de Gimnasio</string>
+    <string name="app_name">Gym App</string>
 
     <!-- Pantalla Principal -->
     <string name="titlePrincipalWindow">Mi GymApp</string>
-    <string name="sloganPrincipalWindow">Te ayudaremos a lograr tus metas.</string>
+    <string name="sloganPrincipalWindow">Te ayudaremos a\nalcanzar tus metas.</string>
     <string name="textPrincipalWindow">¡Bienvenido a tu zona de fuerza y bienestar! ¡Inicia sesión para transformar tu día!</string>
-    <string name="btnLogin">Iniciar sesión</string>
-    <string name="btnCreateAccount">Crear cuenta</string>
+    <string name="btnLogin">Iniciar Sesión</string>
+    <string name="btnCreateAccount">Crear Cuenta</string>
 
     <!-- Configuración de Idioma -->
     <string-array name="lenguajes">
@@ -22,61 +22,76 @@
     <!-- Pantalla de Registro -->
     <string name="tvName">Nombre</string>
     <string name="tvLastName">Apellido</string>
-    <string name="tvEmail">Correo electrónico</string>
-    <string name="tvUser">Nombre de usuario</string>
+    <string name="tvEmail">Correo</string>
+    <string name="tvUser">Usuario</string>
     <string name="tvContra">Contraseña</string>
-    <string name="tvDate">Fecha de nacimiento</string>
+    <string name="tvDate">Fecha de Nacimiento</string>
     <string name="etDate">Selecciona tu fecha de nacimiento</string>
-    <string name="btnMale">Hombre</string>
-    <string name="btnFemale">Mujer</string>
+    <string name="btnMale">Masculino</string>
+    <string name="btnFemale">Femenino</string>
     <string name="btnGroup">Sexo</string>
     <string name="btnVolver">Volver</string>
     <string name="btnRegistrar">Registrar</string>
 
     <!-- Mensajes de Validación de Registro -->
-    <string name="error_complete_fields">Por favor, complete todos los campos</string>
-    <string name="error_invalid_email">Por favor, ingrese un email válido</string>
+    <string name="error_complete_fields">Por favor completa todos los campos</string>
+    <string name="error_invalid_email">Por favor ingresa un correo válido</string>
     <string name="error_password_length">La contraseña debe tener al menos 6 caracteres</string>
-    <string name="error_email_exists">El email ya está registrado</string>
-    <string name="error_username_exists">El nombre de usuario ya está en uso</string>
-    <string name="error_invalid_date">Formato de fecha inválido. Use YYYY-MM-DD</string>
-    <string name="error_under_age">Debes ser mayor de 18 años para registrarte</string>
+    <string name="error_email_exists">El correo ya está registrado</string>
+    <string name="error_username_exists">El usuario ya está en uso</string>
+    <string name="error_invalid_date">Formato de fecha inválido. Usa AAAA-MM-DD</string>
+    <string name="error_under_age">Debes tener 18 años o más para registrarte</string>
     <string name="success_register">Usuario registrado exitosamente</string>
     <string name="error_register">Error: %1$s</string>
 
     <!-- Pantalla de Datos de Usuario -->
-    <string name="tvSizeDU">Altura</string>
-    <string name="tvWeight">Peso</string>
-    <string name="tvActividadFisica">¿Con qué frecuencia haces ejercicio actualmente?</string>
-    <string-array name="niveles_actividad">
-        <item>Diariamente</item>
-        <item>Varias veces a la semana</item>
-        <item>Semanalmente</item>
-        <item>Ocasionalmente</item>
-        <item>Nunca</item>
-    </string-array>
-    <string name="tvDiasEntrenar">¿Cuántos días a la semana te gustaría entrenar?</string>
-    <string-array name="dias_entrenar">
-        <item>1-2 días</item>
-        <item>3-4 días</item>
-        <item>5-6 días</item>
-        <item>7 días</item>
-    </string-array>
-    <string name="tvProblemaSalud">¿Tienes alguna condición de salud que debamos conocer?</string>
-    <string name="tvPreferenciaHorario">¿En qué horarios prefieres entrenar?</string>
-    <string-array name="preferencia_Horario">
-        <item>Mañana</item>
-        <item>Tarde</item>
-        <item>Noche</item>
-    </string-array>
-    <string name="tvMotivacion">¿Qué te motiva a seguir entrenando?</string>
-    <string-array name="motivaciones">
-        <item>Mejorar mi salud</item>
-        <item>Lograr un objetivo físico</item>
-        <item>Estética / Cambios físicos</item>
-        <item>Socializar / Crear una rutina</item>
-    </string-array>
+    <string name="user_data_title">Información Adicional</string>
+    <string name="tvHeight">Altura (cm)</string>
+    <string name="tvWeight">Peso (kg)</string>
+    <string name="tvActividadFisica">Nivel de Actividad Física</string>
+    <string name="tvDiasEntrenar">Días de Entrenamiento por Semana</string>
+    <string name="tvProblemaSalud">Problemas de Salud</string>
+    <string name="tvPreferenciaHorario">Horario Preferido de Entrenamiento</string>
+    <string name="tvMotivacion">Motivación Principal</string>
     <string name="btnGuardar">Guardar</string>
+    <string name="btnBack">Volver</string>
+
+    <!-- User Data Arrays -->
+    <string-array name="niveles_actividad">
+        <item>Principiante</item>
+        <item>Intermedio</item>
+        <item>Avanzado</item>
+    </string-array>
+
+    <string-array name="dias_entrenar">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="preferencia_Horario">
+        <item>Mañana (6:00 - 12:00)</item>
+        <item>Tarde (12:00 - 18:00)</item>
+        <item>Noche (18:00 - 22:00)</item>
+    </string-array>
+
+    <string-array name="motivaciones">
+        <item>Perder Peso</item>
+        <item>Ganar Músculo</item>
+        <item>Mejorar Salud</item>
+        <item>Aumentar Fuerza</item>
+        <item>Rendimiento Deportivo</item>
+    </string-array>
+
+    <!-- User Data Messages -->
+    <string name="error_userdata_fields">Por favor ingresa una altura y peso válidos</string>
+    <string name="error_userdata_complete">Por favor completa todos los campos</string>
+    <string name="error_userdata_save">Error al guardar datos: %1$s</string>
+    <string name="success_userdata">Datos guardados exitosamente</string>
 
     <!-- Navegación -->
     <string name="first_fragment_label">Primer Fragmento</string>
@@ -133,12 +148,6 @@
     <string name="error_login_connection">Error de conexión: %1$s</string>
     <string name="success_login">Inicio de sesión exitoso</string>
     <string name="error_login_user">Error: Usuario no válido</string>
-
-    <!-- Pantalla de Datos de Usuario -->
-    <string name="error_userdata_fields">Por favor, ingrese valores válidos para altura, peso y días de entrenamiento</string>
-    <string name="error_userdata_complete">Por favor, complete todos los campos</string>
-    <string name="success_userdata">Datos guardados exitosamente</string>
-    <string name="error_userdata_save">Error al guardar los datos: %1$s</string>
 
     <!-- Mensajes de Desarrollo -->
     <string name="feature_development">Funcionalidad en desarrollo</string>

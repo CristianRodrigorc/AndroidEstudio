@@ -29,7 +29,7 @@ class UserDataFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentUserDataBinding.inflate(inflater, container, false)
         userRepository = UserRepository(RetrofitClient.apiService)
         sessionManager = SessionManager(requireContext())
@@ -38,30 +38,26 @@ class UserDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI()
+        setupListeners()
+    }
 
-        // Inicializar las vistas
-        val etSizeDU = binding.etSizeDU
-        val etWeightDU = binding.etWeightDU
-        val spnNivelDU = binding.spnNivelDU
-        val spnDiasEntrenarDU = binding.spnDiasEntrenarDU
-        val etProblemaSaludDU = binding.etProblemaSaludDU
-        val spnPreferenciaHorarioDU = binding.spnPreferenciaHorarioDU
-        val spnMotivacionDU = binding.spnMotivacionDU
-        val btnGuardarDU = binding.btnGuardarDU
-
+    private fun setupUI() {
         // Cargar valores a los spinners
-        UtilidadesSpinner.cargarValoresSpinner(this, spnNivelDU, R.array.niveles_actividad)
-        UtilidadesSpinner.cargarValoresSpinner(this, spnDiasEntrenarDU, R.array.dias_entrenar)
-        UtilidadesSpinner.cargarValoresSpinner(this, spnPreferenciaHorarioDU, R.array.preferencia_Horario)
-        UtilidadesSpinner.cargarValoresSpinner(this, spnMotivacionDU, R.array.motivaciones)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnNivelDU, R.array.niveles_actividad)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnDiasEntrenarDU, R.array.dias_entrenar)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnPreferenciaHorarioDU, R.array.preferencia_Horario)
+        UtilidadesSpinner.cargarValoresSpinner(this, binding.spnMotivacionDU, R.array.motivaciones)
 
         // Inicializar spinners con la primera opción seleccionada
-        spnNivelDU.setSelection(0, false)
-        spnDiasEntrenarDU.setSelection(0, false)
-        spnPreferenciaHorarioDU.setSelection(0, false)
-        spnMotivacionDU.setSelection(0, false)
+        binding.spnNivelDU.setSelection(0, false)
+        binding.spnDiasEntrenarDU.setSelection(0, false)
+        binding.spnPreferenciaHorarioDU.setSelection(0, false)
+        binding.spnMotivacionDU.setSelection(0, false)
+    }
 
-        btnGuardarDU.setOnClickListener {
+    private fun setupListeners() {
+        binding.btnGuardarDU.setOnClickListener {
             guardarDatosUsuario()
         }
     }
@@ -105,7 +101,7 @@ class UserDataFragment : Fragment() {
                 when (val result = userRepository.guardarUserData(userDataRequest)) {
                     is Result.Success -> {
                         Toast.makeText(context, getString(R.string.success_userdata), Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_userData_to_user)
+                        findNavController().navigate(R.id.action_userData_to_profile)
                     }
                     is Result.Error -> {
                         Toast.makeText(context, getString(R.string.error_userdata_save, result.message), Toast.LENGTH_SHORT).show()

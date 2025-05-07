@@ -45,38 +45,53 @@
     <string name="error_register">Error: %1$s</string>
 
     <!-- User Data Screen -->
-    <string name="tvSizeDU">Height</string>
-    <string name="tvWeight">Weight</string>
-    <string name="tvActividadFisica">How often do you exercise currently?</string>
-    <string-array name="niveles_actividad">
-        <item>Daily</item>
-        <item>Several times a week</item>
-        <item>Weekly</item>
-        <item>Occasionally</item>
-        <item>Never</item>
-    </string-array>
-    <string name="tvDiasEntrenar">How many days a week would you like to train?</string>
-    <string-array name="dias_entrenar">
-        <item>1-2 days</item>
-        <item>3-4 days</item>
-        <item>5-6 days</item>
-        <item>7 days</item>
-    </string-array>
-    <string name="tvProblemaSalud">Do you have any health conditions we should know about?</string>
-    <string name="tvPreferenciaHorario">What times do you prefer to train?</string>
-    <string-array name="preferencia_Horario">
-        <item>Morning</item>
-        <item>Afternoon</item>
-        <item>Evening</item>
-    </string-array>
-    <string name="tvMotivacion">What motivates you to keep training?</string>
-    <string-array name="motivaciones">
-        <item>Improve my health</item>
-        <item>Achieve a physical goal</item>
-        <item>Aesthetics / Physical changes</item>
-        <item>Socialize / Create a routine</item>
-    </string-array>
+    <string name="user_data_title">Additional Information</string>
+    <string name="tvHeight">Height (cm)</string>
+    <string name="tvWeight">Weight (kg)</string>
+    <string name="tvActividadFisica">Physical Activity Level</string>
+    <string name="tvDiasEntrenar">Training Days per Week</string>
+    <string name="tvProblemaSalud">Health Issues</string>
+    <string name="tvPreferenciaHorario">Preferred Training Time</string>
+    <string name="tvMotivacion">Main Motivation</string>
     <string name="btnGuardar">Save</string>
+    <string name="btnBack">Back</string>
+
+    <!-- User Data Arrays -->
+    <string-array name="niveles_actividad">
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
+    </string-array>
+
+    <string-array name="dias_entrenar">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="preferencia_Horario">
+        <item>Morning (6:00 - 12:00)</item>
+        <item>Afternoon (12:00 - 18:00)</item>
+        <item>Evening (18:00 - 22:00)</item>
+    </string-array>
+
+    <string-array name="motivaciones">
+        <item>Lose Weight</item>
+        <item>Build Muscle</item>
+        <item>Improve Health</item>
+        <item>Increase Strength</item>
+        <item>Sports Performance</item>
+    </string-array>
+
+    <!-- User Data Messages -->
+    <string name="error_userdata_fields">Please enter valid height and weight</string>
+    <string name="error_userdata_complete">Please complete all fields</string>
+    <string name="error_userdata_save">Error saving data: %1$s</string>
+    <string name="success_userdata">Data saved successfully</string>
 
     <!-- Navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -132,12 +147,6 @@
     <string name="error_login_connection">Connection error: %1$s</string>
     <string name="success_login">Login successful</string>
     <string name="error_login_user">Error: Invalid user</string>
-
-    <!-- User Data Screen -->
-    <string name="error_userdata_fields">Please enter valid values for height, weight and training days</string>
-    <string name="error_userdata_complete">Please complete all fields</string>
-    <string name="success_userdata">Data saved successfully</string>
-    <string name="error_userdata_save">Error saving data: %1$s</string>
 
     <!-- Development Messages -->
     <string name="feature_development">Feature in development</string>
