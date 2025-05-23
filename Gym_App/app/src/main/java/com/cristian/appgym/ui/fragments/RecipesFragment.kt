@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentRecipesBinding
 import com.cristian.appgym.ui.adapters.RecipesAdapter
-import com.cristian.appgym.ui.models.Recipe
+import com.cristian.appgym.model.Recipe
 import com.google.android.material.navigation.NavigationView
 
 class RecipesFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener {

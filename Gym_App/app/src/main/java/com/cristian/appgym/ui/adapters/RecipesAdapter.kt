@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.ItemRecipeBinding
-import com.cristian.appgym.ui.models.Recipe
+import com.cristian.appgym.model.Recipe
 
 class RecipesAdapter(
     private val onRecipeClick: (Recipe) -> Unit

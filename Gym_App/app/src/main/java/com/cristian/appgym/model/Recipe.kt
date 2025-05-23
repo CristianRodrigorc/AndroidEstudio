@@ -1,4 +1,4 @@
-package com.cristian.appgym.ui.models
+package com.cristian.appgym.model
 
 data class Recipe(
     val id: Int,
@@ -11,4 +11,4 @@ data class Recipe(
     val type: String,
     val ingredients: List<String>,
     val instructions: String
-) 
+)
