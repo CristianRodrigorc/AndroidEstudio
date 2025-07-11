@@ -7,7 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.cristian.appgym.model.Ejercicio
+import com.cristian.appgym.model.model_ejercicio.Ejercicio
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -22,26 +22,26 @@ object UtilidadesUsersScreen {
     fun llenarDiaGenerico(
         ejerciciosDelDia: List<Ejercicio>,
         textViews: List<TextView>,
-        descripciones: List<TextView>? = null,
+        repeticiones: List<TextView>,
         checkboxes: List<CheckBox>,
         youtubeView: YouTubePlayerView,
         videoIds: List<String>
     ) {
         textViews.forEachIndexed { index, tvEjercicio ->
-            val tvDescripcion = descripciones?.getOrNull(index)
+            val tvRepeticion = repeticiones.getOrNull(index)
             val checkbox = checkboxes[index]
             val videoId = videoIds.getOrNull(index) ?: ""
 
             ejerciciosDelDia.getOrNull(index)?.let { ejercicio ->
                 tvEjercicio.text = ejercicio.nombre
-                tvDescripcion?.text = ejercicio.repeticiones
+                tvRepeticion?.text = ejercicio.repeticiones
             }
 
-            tvDescripcion?.visibility = View.GONE
+            tvRepeticion?.visibility = View.GONE
             checkbox.isChecked = false
 
             tvEjercicio.setOnClickListener {
-                tvDescripcion?.let { verDesc(it) }
+                tvRepeticion?.let { verDesc(it) }
                 cargarVideo(videoId)
             }
         }

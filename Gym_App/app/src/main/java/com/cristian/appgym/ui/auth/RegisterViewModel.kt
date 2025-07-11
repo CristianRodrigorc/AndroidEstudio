@@ -2,15 +2,15 @@ package com.cristian.appgym.ui.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cristian.appgym.data.AuthService
-import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.data.model.Usuario
+import com.cristian.appgym.network.ApiService
+import com.cristian.appgym.model.model_db.RegisterRequest
+import com.cristian.appgym.model.model_db.Usuario
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class RegisterViewModel(private val authService: AuthService) : ViewModel() {
+class RegisterViewModel(private val apiService: ApiService) : ViewModel() {
     private val _registerState = MutableStateFlow<RegisterState>(RegisterState.Idle)
     val registerState: StateFlow<RegisterState> = _registerState
 
@@ -23,7 +23,7 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
     fun checkEmail(email: String) {
         viewModelScope.launch {
             try {
-                val response = authService.checkEmail(email)
+                val response = apiService.checkEmail(email)
                 if (response.isSuccessful && response.body() != null) {
                     // Si encontramos un usuario, el email ya existe
                     _emailCheckState.value = true
@@ -40,7 +40,7 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
     fun checkUsername(username: String) {
         viewModelScope.launch {
             try {
-                val response = authService.checkUsername(username)
+                val response = apiService.checkUsername(username)
                 if (response.isSuccessful && response.body() != null) {
                     // Si encontramos un usuario, el username ya existe
                     _usernameCheckState.value = true
@@ -58,7 +58,7 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
         viewModelScope.launch {
             _registerState.value = RegisterState.Loading
             try {
-                val response = authService.register(request)
+                val response = apiService.register(request)
                 if (response.isSuccessful && response.body() != null) {
                     _registerState.value = RegisterState.Success(response.body()!!)
                 } else {

@@ -1,4 +1,4 @@
-package com.cristian.appgym.data
+package com.cristian.appgym.model.model_weather
 
 import android.Manifest
 import android.content.Context

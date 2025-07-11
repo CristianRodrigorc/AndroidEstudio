@@ -1,4 +1,4 @@
-package com.cristian.appgym.data
+package com.cristian.appgym.model.model_weather
 
 import retrofit2.http.GET
 import retrofit2.http.Query

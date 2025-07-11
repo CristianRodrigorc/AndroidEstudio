@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
-import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.model.UserDataRequest
+import com.cristian.appgym.model.model_db.RegisterRequest
+import com.cristian.appgym.model.model_db.UserDataRequest
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
 import kotlinx.coroutines.CoroutineScope
@@ -183,20 +183,15 @@ object UtilidadesBotones {
 
             if (stringValido(username) && stringValido(password)) {
                 CoroutineScope(Dispatchers.Main).launch {
-                    when (val result = userRepository.obtenerUsuarioPorUsername(username)) {
+                    when (val result = userRepository.loginByUsername(username, password)) {
                         is Result.Success -> {
-                            val usuario = result.data
-                            if (usuario.password == password) {
-                                Toast.makeText(fragment.requireContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                                val bundle = Bundle()
-                                bundle.putString("UserName", username)
-                                fragment.findNavController().navigate(navActionId, bundle)
-                            } else {
-                                Toast.makeText(fragment.requireContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
-                            }
+                            Toast.makeText(fragment.requireContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                            val bundle = Bundle()
+                            bundle.putString("UserName", username)
+                            fragment.findNavController().navigate(navActionId, bundle)
                         }
                         is Result.Error -> {
-                            Toast.makeText(fragment.requireContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(fragment.requireContext(), result.message, Toast.LENGTH_SHORT).show()
                         }
                         is Result.Loading -> {
                             // Mostrar progreso si es necesario

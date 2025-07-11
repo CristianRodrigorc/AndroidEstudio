@@ -1,12 +1,8 @@
-package com.cristian.appgym.data.model
+package com.cristian.appgym.model.model_db
 
 import com.google.gson.annotations.SerializedName
-import java.time.LocalDate
 
-data class Usuario(
-    @SerializedName("id")
-    val id: Long? = null,
-    
+data class RegisterRequest(
     @SerializedName("nombre")
     val nombre: String,
     
@@ -20,7 +16,7 @@ data class Usuario(
     val username: String,
     
     @SerializedName("password")
-    val password: String? = null,
+    val password: String,
     
     @SerializedName("fechaNacimiento")
     val fechaNacimiento: String? = null,

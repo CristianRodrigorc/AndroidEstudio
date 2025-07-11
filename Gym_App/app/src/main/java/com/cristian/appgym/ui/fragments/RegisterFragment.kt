@@ -11,9 +11,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentRegisterBinding
-import com.cristian.appgym.data.model.RegisterRequest
+import com.cristian.appgym.model.model_db.RegisterRequest
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
+import com.cristian.appgym.utils.SessionManager
 import com.cristian.appgym.network.RetrofitClient
 import com.cristian.appgym.util.UtilidadesText
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var userRepository: UserRepository
+    private lateinit var sessionManager: SessionManager
     private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
     override fun onCreateView(
@@ -33,6 +35,7 @@ class RegisterFragment : Fragment() {
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         userRepository = UserRepository(RetrofitClient.apiService)
+        sessionManager = SessionManager(requireContext())
         return binding.root
     }
 
@@ -167,6 +170,12 @@ class RegisterFragment : Fragment() {
 
                 when (val result = userRepository.crearUsuario(registerRequest)) {
                     is Result.Success -> {
+                        // Guardar sesión automáticamente después del registro exitoso
+                        sessionManager.saveUserSession(
+                            userId = result.data.id?.toInt() ?: 0,
+                            username = result.data.username
+                        )
+                        
                         Toast.makeText(context, getString(R.string.success_register), Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_registerUser_to_home)
                     }

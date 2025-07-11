@@ -4,17 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.data.model.Usuario
-import com.cristian.appgym.model.UsuarioCompleto
+import com.cristian.appgym.model.model_db.RegisterRequest
+import com.cristian.appgym.model.model_db.Usuario
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
-
-    private val _usuarioCompleto = MutableLiveData<UsuarioCompleto?>()
-    val usuarioCompleto: LiveData<UsuarioCompleto?> get() = _usuarioCompleto
 
     private val _usuario = MutableLiveData<Usuario?>()
     val usuario: LiveData<Usuario?> get() = _usuario
@@ -31,13 +27,36 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _usernameExists = MutableLiveData<Boolean>()
     val usernameExists: LiveData<Boolean> get() = _usernameExists
 
-    // Login
-    fun login(email: String, password: String) {
+    // Login por username
+    fun loginByUsername(username: String, password: String) {
         _isLoading.value = true
         _error.value = null
         
         viewModelScope.launch {
-            when (val result = userRepository.login(email, password)) {
+            when (val result = userRepository.loginByUsername(username, password)) {
+                is Result.Success -> {
+                    _usuario.value = result.data
+                    _error.value = null
+                }
+                is Result.Error -> {
+                    _usuario.value = null
+                    _error.value = result.message
+                }
+                is Result.Loading -> {
+                    // No necesitamos hacer nada aquí
+                }
+            }
+            _isLoading.value = false
+        }
+    }
+
+    // Login por email
+    fun loginByEmail(email: String, password: String) {
+        _isLoading.value = true
+        _error.value = null
+        
+        viewModelScope.launch {
+            when (val result = userRepository.loginByEmail(email, password)) {
                 is Result.Success -> {
                     _usuario.value = result.data
                     _error.value = null
@@ -106,24 +125,6 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
                 }
                 is Result.Loading -> {
                     // No necesitamos hacer nada aquí
-                }
-            }
-        }
-    }
-
-    fun obtenerUsuarioCompleto(email: String) {
-        viewModelScope.launch {
-            when (val result = userRepository.obtenerUsuarioCompleto(email)) {
-                is Result.Success -> {
-                    _usuarioCompleto.value = result.data
-                    _error.value = null
-                }
-                is Result.Error -> {
-                    _usuarioCompleto.value = null
-                    _error.value = result.message
-                }
-                is Result.Loading -> {
-                    // No necesitamos hacer nada aquí ya que estamos usando LiveData
                 }
             }
         }

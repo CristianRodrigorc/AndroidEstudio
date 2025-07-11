@@ -25,6 +25,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentUserBinding
+import com.cristian.appgym.model.model_ejercicio.Ejercicios
+import com.cristian.appgym.model.model_ejercicio.EjerciciosCategorias
 import com.cristian.appgym.ui.adapters.AvatarAdapter
 import com.cristian.appgym.ui.viewmodel.UserViewModel
 import com.cristian.appgym.util.LectorJSON
@@ -98,6 +100,7 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
                         youTubePlayer.mute()
                     } catch (e: Exception) {
                         Log.e("UserFragment", "Error al cargar el video: ${e.message}")
+                        Toast.makeText(context, "Error al cargar el video", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -108,6 +111,7 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
             })
         } catch (e: Exception) {
             Log.e("UserFragment", "Error al inicializar el reproductor: ${e.message}")
+            Toast.makeText(context, "Error al inicializar el reproductor", Toast.LENGTH_SHORT).show()
         }
 
         setupCheckboxes()
@@ -220,13 +224,13 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
     }
 
     private fun setupDiaButtons() {
-        val btnLunes = view?.findViewById<Button>(R.id.btnLunes)
-        val btnMartes = view?.findViewById<Button>(R.id.btnMartes)
-        val btnMiercoles = view?.findViewById<Button>(R.id.btnMiercoles)
-        val btnJueves = view?.findViewById<Button>(R.id.btnJueves)
-        val btnViernes = view?.findViewById<Button>(R.id.btnViernes)
-        val btnSabado = view?.findViewById<Button>(R.id.btnSabado)
-        val btnDomingo = view?.findViewById<Button>(R.id.btnDomingo)
+        val btnLunes = binding.btnLunes
+        val btnMartes = binding.btnMartes
+        val btnMiercoles = binding.btnMiercoles
+        val btnJueves = binding.btnJueves
+        val btnViernes = binding.btnViernes
+        val btnSabado = binding.btnSabado
+        val btnDomingo = binding.btnDomingo
 
         // Obtener las referencias de manera segura
         val tvEjercicio1 = binding.tvEjercicio1
@@ -238,8 +242,15 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
         val tvEjercicio4 = binding.tvEjercicio4
         val tvRepeticiones4 = binding.tvRepeticiones4
 
-        val ejerciciosJson = LectorJSON.obtenerJsonGson(requireContext())
+        val lectorJSON = LectorJSON(requireContext())
+        val ejerciciosJson = lectorJSON.leerEjercicios()
         val idVideoYTDefault = "uNN62f55EV0"
+        
+        // Verificar que se cargaron los ejercicios correctamente
+        if (ejerciciosJson == null) {
+            Log.e("UserFragment", "Error: No se pudieron cargar los ejercicios desde el JSON")
+            Toast.makeText(requireContext(), "Error al cargar los ejercicios", Toast.LENGTH_SHORT).show()
+        }
         
         // Cargar el video por defecto
         UtilidadesUsersScreen.cargarVideo(youtubePlayerView, idVideoYTDefault)
@@ -264,101 +275,94 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
         val onClickListener = View.OnClickListener { view ->
             resetProgress() // Reiniciar el progreso al cambiar de día
+            
+            // Verificar que los ejercicios estén cargados
+            if (ejerciciosJson == null) {
+                Toast.makeText(requireContext(), "Error: No se pudieron cargar los ejercicios", Toast.LENGTH_SHORT).show()
+                return@OnClickListener
+            }
+            
             when (view.id) {
                 R.id.btnLunes -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.biceps,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosLunes
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.biceps,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosLunes
+                    )
                 }
                 R.id.btnMartes -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.triceps,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosMartes
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.triceps,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosMartes
+                    )
                 }
                 R.id.btnMiercoles -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.pecho,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosMiercoles
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.pecho,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosMiercoles
+                    )
                 }
                 R.id.btnJueves -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.espalda,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosJueves
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.espalda,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosJueves
+                    )
                 }
                 R.id.btnViernes -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.piernas,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosViernes
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.piernas,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosViernes
+                    )
                 }
                 R.id.btnSabado -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.hombros,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosSabado
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.hombros,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosSabado
+                    )
                 }
                 R.id.btnDomingo -> {
-                    ejerciciosJson?.let {
-                        UtilidadesUsersScreen.llenarDiaGenerico(
-                            it.ejercicios.abdomen,
-                            textViews,
-                            repeticiones,
-                            switches,
-                            youtubePlayerView,
-                            videosDomingo
-                        )
-                    }
+                    UtilidadesUsersScreen.llenarDiaGenerico(
+                        ejerciciosJson.ejercicios.abdomen,
+                        textViews,
+                        repeticiones,
+                        switches,
+                        youtubePlayerView,
+                        videosDomingo
+                    )
                 }
             }
         }
 
-        btnLunes?.setOnClickListener(onClickListener)
-        btnMartes?.setOnClickListener(onClickListener)
-        btnMiercoles?.setOnClickListener(onClickListener)
-        btnJueves?.setOnClickListener(onClickListener)
-        btnViernes?.setOnClickListener(onClickListener)
-        btnSabado?.setOnClickListener(onClickListener)
-        btnDomingo?.setOnClickListener(onClickListener)
+        btnLunes.setOnClickListener(onClickListener)
+        btnMartes.setOnClickListener(onClickListener)
+        btnMiercoles.setOnClickListener(onClickListener)
+        btnJueves.setOnClickListener(onClickListener)
+        btnViernes.setOnClickListener(onClickListener)
+        btnSabado.setOnClickListener(onClickListener)
+        btnDomingo.setOnClickListener(onClickListener)
     }
 
     private fun setupAvatarSelection() {
@@ -461,7 +465,11 @@ class UserFragment : Fragment(), NavigationView.OnNavigationItemSelectedListener
 
     override fun onDestroyView() {
         super.onDestroyView()
-        youtubePlayerView.release()
+        try {
+            youtubePlayerView.release()
+        } catch (e: Exception) {
+            Log.e("UserFragment", "Error al liberar el reproductor: ${e.message}")
+        }
         _binding = null
     }
 }

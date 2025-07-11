@@ -1,4 +1,4 @@
-package com.cristian.appgym.model
+package com.cristian.appgym.model.model_db
 
 import com.google.gson.annotations.SerializedName
 
@@ -7,25 +7,27 @@ data class UserData(
     @SerializedName("userId")
     val userId: Long? = null,
     
-    // Campos adicionales para datos del usuario
+    // Datos físicos del usuario
     @SerializedName("size")
     val size: Double? = null,
     
     @SerializedName("weight")
     val weight: Double? = null,
     
+    // Datos de entrenamiento
     @SerializedName("actividadFisica")
     val physicalActivity: String? = null,
     
     @SerializedName("diasEntrenar")
     val daysTraining: Int? = null,
     
-    @SerializedName("problemasSalud")
-    val healthProblems: String? = null,
-    
     @SerializedName("preferenciaHorario")
     val preferenceSchedule: String? = null,
     
+    // Datos de salud
+    @SerializedName("problemasSalud")
+    val healthProblems: String? = null,
+    
     @SerializedName("motivacion")
     val motivation: String? = null
-)
+) 

@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentUserDataBinding
-import com.cristian.appgym.model.UserDataRequest
+import com.cristian.appgym.model.model_db.UserDataRequest
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
 import com.cristian.appgym.utils.SessionManager

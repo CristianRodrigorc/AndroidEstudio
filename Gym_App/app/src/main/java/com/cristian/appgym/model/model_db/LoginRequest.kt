@@ -1,4 +1,4 @@
-package com.cristian.appgym.data.model
+package com.cristian.appgym.model.model_db
 
 import com.google.gson.annotations.SerializedName
 

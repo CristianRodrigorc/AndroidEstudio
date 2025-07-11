@@ -4,28 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.cristian.appgym.databinding.FragmentHomeBinding
 import com.cristian.appgym.util.UtilidadesBotones
 import com.cristian.appgym.R
 
 class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflar el layout del fragmento
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Inicializar los elementos de la interfaz
-        val btnLogin = view.findViewById<Button>(R.id.btnLogin)
-        val btnRegister = view.findViewById<Button>(R.id.btnRegister)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        // Configurar los botones usando View Binding
+        UtilidadesBotones.cambiarScreenConNavController(binding.btnLogin, this, R.id.action_home_to_login)
+        UtilidadesBotones.cambiarScreenConNavController(binding.btnRegister, this, R.id.action_home_to_createUser)
+    }
 
-        // Configurar los botones
-        UtilidadesBotones.cambiarScreenConNavController(btnLogin, this, R.id.action_home_to_login)
-        UtilidadesBotones.cambiarScreenConNavController(btnRegister, this, R.id.action_home_to_createUser)
-
-        return view
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

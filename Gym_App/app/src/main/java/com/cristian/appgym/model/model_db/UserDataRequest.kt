@@ -1,4 +1,4 @@
-package com.cristian.appgym.model
+package com.cristian.appgym.model.model_db
 
 data class UserDataRequest(
     val userId: Long?,
@@ -9,4 +9,4 @@ data class UserDataRequest(
     val healthProblems: String?,
     val preferenceSchedule: String?,
     val motivation: String?
-)
+) 

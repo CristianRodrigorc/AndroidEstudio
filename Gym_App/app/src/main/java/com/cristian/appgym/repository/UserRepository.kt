@@ -1,19 +1,20 @@
 package com.cristian.appgym.repository
 
-import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.data.model.Usuario
-import com.cristian.appgym.model.UserData
-import com.cristian.appgym.model.UserDataRequest
-import com.cristian.appgym.model.UsuarioCompleto
+import com.cristian.appgym.model.model_db.RegisterRequest
+import com.cristian.appgym.model.model_db.Usuario
+import com.cristian.appgym.model.model_db.UserData
+import com.cristian.appgym.model.model_db.UserDataRequest
 import com.cristian.appgym.network.ApiService
 import com.cristian.appgym.utils.Result
 
 class UserRepository(private val apiService: ApiService) {
 
+    // ===== MÉTODOS DE VERIFICACIÓN =====
+    
     // Verificar si el email ya existe
     suspend fun verificarEmailExistente(email: String): Result<Boolean> {
         return try {
-            val response = apiService.verificarEmail(email)
+            val response = apiService.checkEmail(email)
             if (response.isSuccessful && response.body() != null) {
                 // Si encontramos un usuario con ese email, significa que ya existe
                 Result.Success(true)
@@ -29,7 +30,7 @@ class UserRepository(private val apiService: ApiService) {
     // Verificar si el username ya existe
     suspend fun verificarUsernameExistente(username: String): Result<Boolean> {
         return try {
-            val response = apiService.verificarUsername(username)
+            val response = apiService.checkUsername(username)
             if (response.isSuccessful && response.body() != null) {
                 // Si encontramos un usuario con ese username, significa que ya existe
                 Result.Success(true)
@@ -42,10 +43,12 @@ class UserRepository(private val apiService: ApiService) {
         }
     }
 
-    // Login - buscar usuario por email y verificar contraseña
-    suspend fun login(email: String, password: String): Result<Usuario> {
+    // ===== MÉTODOS DE AUTENTICACIÓN =====
+    
+    // Login por username
+    suspend fun loginByUsername(username: String, password: String): Result<Usuario> {
         return try {
-            val response = apiService.login(email)
+            val response = apiService.loginByUsername(username)
             if (response.isSuccessful && response.body() != null) {
                 val usuario = response.body()!!
                 // Verificar que la contraseña coincida
@@ -62,10 +65,32 @@ class UserRepository(private val apiService: ApiService) {
         }
     }
 
+    // Login por email
+    suspend fun loginByEmail(email: String, password: String): Result<Usuario> {
+        return try {
+            val response = apiService.loginByEmail(email)
+            if (response.isSuccessful && response.body() != null) {
+                val usuario = response.body()!!
+                // Verificar que la contraseña coincida
+                if (usuario.password == password) {
+                    Result.Success(usuario)
+                } else {
+                    Result.Error("Contraseña incorrecta")
+                }
+            } else {
+                Result.Error("Usuario no encontrado")
+            }
+        } catch (e: Exception) {
+            Result.Error("Error de red: ${e.message}")
+        }
+    }
+
+    // ===== MÉTODOS DE USUARIO =====
+    
     // Obtener usuario por username
     suspend fun obtenerUsuarioPorUsername(username: String): Result<Usuario> {
         return try {
-            val response = apiService.obtenerUsuarioPorUsername(username)
+            val response = apiService.getUserByUsername(username)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -79,7 +104,7 @@ class UserRepository(private val apiService: ApiService) {
     // Crear un nuevo usuario
     suspend fun crearUsuario(registerRequest: RegisterRequest): Result<Usuario> {
         return try {
-            val response = apiService.crearUsuario(registerRequest)
+            val response = apiService.register(registerRequest)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -93,7 +118,7 @@ class UserRepository(private val apiService: ApiService) {
     // Obtener usuario por email
     suspend fun obtenerUsuarioPorEmail(email: String): Result<Usuario> {
         return try {
-            val response = apiService.obtenerUsuarioPorEmail(email)
+            val response = apiService.getUserByEmail(email)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -104,10 +129,10 @@ class UserRepository(private val apiService: ApiService) {
         }
     }
 
-    // Obtener datos básicos del usuario
+    // Obtener datos básicos del usuario por ID
     suspend fun obtenerUsuario(id: Long): Result<Usuario> {
         return try {
-            val response = apiService.obtenerUsuario(id)
+            val response = apiService.getUserById(id)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -118,10 +143,12 @@ class UserRepository(private val apiService: ApiService) {
         }
     }
 
+    // ===== MÉTODOS DE DATOS ADICIONALES =====
+    
     // Obtener datos adicionales del usuario
     suspend fun obtenerUserData(userId: Long): Result<UserData> {
         return try {
-            val response = apiService.obtenerUserData(userId)
+            val response = apiService.getUserData(userId)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -135,7 +162,7 @@ class UserRepository(private val apiService: ApiService) {
     // Guardar datos adicionales del usuario
     suspend fun guardarUserData(userData: UserDataRequest): Result<Unit> {
         return try {
-            val response = apiService.guardarUserData(userData)
+            val response = apiService.saveUserData(userData)
             if (response.isSuccessful) {
                 Result.Success(Unit)
             } else {
@@ -143,31 +170,6 @@ class UserRepository(private val apiService: ApiService) {
             }
         } catch (e: Exception) {
             Result.Error("Error de red: ${e.message}")
-        }
-    }
-
-    // Obtener los datos completos del usuario
-    suspend fun obtenerUsuarioCompleto(email: String): Result<UsuarioCompleto> {
-        return try {
-            val usuarioResult = obtenerUsuarioPorEmail(email)
-            if (usuarioResult is Result.Success) {
-                val usuario = usuarioResult.data
-                val userId = usuario.id
-                if (userId != null) {
-                    val userDataResult = obtenerUserData(userId)
-                    if (userDataResult is Result.Success) {
-                        Result.Success(UsuarioCompleto(usuario, userDataResult.data))
-                    } else {
-                        Result.Error("Error al obtener datos adicionales del usuario")
-                    }
-                } else {
-                    Result.Error("El usuario no tiene un ID válido")
-                }
-            } else {
-                Result.Error("Error al obtener usuario")
-            }
-        } catch (e: Exception) {
-            Result.Error("Error al obtener usuario completo: ${e.message}")
         }
     }
 }

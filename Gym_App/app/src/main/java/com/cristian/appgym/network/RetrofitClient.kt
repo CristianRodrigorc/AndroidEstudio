@@ -1,6 +1,5 @@
 package com.cristian.appgym.network
 
-import com.cristian.appgym.data.AuthService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -33,7 +32,6 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())  // Convierte JSON a objetos Kotlin
         .build()
 
-    // Servicios para hacer peticiones al backend
+    // Servicio consolidado para todas las operaciones del backend
     val apiService: ApiService = retrofit.create(ApiService::class.java)
-    val authService: AuthService = retrofit.create(AuthService::class.java)
 }

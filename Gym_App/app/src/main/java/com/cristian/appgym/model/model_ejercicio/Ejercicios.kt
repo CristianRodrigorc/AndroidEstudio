@@ -1,4 +1,8 @@
-package com.cristian.appgym.model
+package com.cristian.appgym.model.model_ejercicio
+
+data class Ejercicios(
+    val ejercicios: EjerciciosCategorias
+)
 
 data class EjerciciosCategorias(
     val biceps: List<Ejercicio>,
@@ -8,4 +12,4 @@ data class EjerciciosCategorias(
     val piernas: List<Ejercicio>,
     val hombros: List<Ejercicio>,
     val abdomen: List<Ejercicio>
-)
+) 
