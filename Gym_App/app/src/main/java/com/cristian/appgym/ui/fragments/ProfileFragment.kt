@@ -83,10 +83,10 @@ class ProfileFragment : Fragment() {
                     when (userResult) {
                         is Result.Success -> {
                             val usuario = userResult.data
-                            // Datos básicos de la tabla usuarios
-                            binding.tvName.text = usuario.name
+                            // Datos básicos de la tabla usuarios - usando el nuevo modelo
+                            binding.tvName.text = "${usuario.nombre} ${usuario.apellidos}"
                             binding.tvEmail.text = usuario.email
-                            binding.tvUserId.text = getString(R.string.user_id_format, usuario.id_user?.toString() ?: getString(R.string.default_value))
+                            binding.tvUserId.text = getString(R.string.user_id_format, usuario.id?.toString() ?: getString(R.string.default_value))
 
                             // Obtener datos adicionales
                             val userDataResult = userRepository.obtenerUserData(userId.toLong())

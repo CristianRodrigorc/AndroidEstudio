@@ -1,8 +1,10 @@
 package com.cristian.appgym.network
 
+import com.cristian.appgym.data.model.LoginRequest
+import com.cristian.appgym.data.model.RegisterRequest
+import com.cristian.appgym.data.model.Usuario
 import com.cristian.appgym.model.UserData
 import com.cristian.appgym.model.UserDataRequest
-import com.cristian.appgym.model.Usuario
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -18,20 +20,20 @@ interface ApiService {
     suspend fun guardarUserData(@Body userData: UserDataRequest): Response<Void>
 
     // Endpoints de verificación
-    @GET("api/usuarios/check-email/{email}")
-    suspend fun verificarEmail(@Path("email") email: String): Response<Boolean>
+    @GET("api/usuarios/email/{email}")
+    suspend fun verificarEmail(@Path("email") email: String): Response<Usuario>
 
-    @GET("api/usuarios/check-username/{username}")
-    suspend fun verificarUsername(@Path("username") username: String): Response<Boolean>
+    @GET("api/usuarios/username/{username}")
+    suspend fun verificarUsername(@Path("username") username: String): Response<Usuario>
 
     // Endpoints de usuario
-    @POST("api/usuarios/register")
-    suspend fun crearUsuario(@Body usuario: Usuario): Response<Usuario>
+    @POST("api/usuarios")
+    suspend fun crearUsuario(@Body request: RegisterRequest): Response<Usuario>
 
-    @POST("api/usuarios/login")
-    suspend fun login(@Body loginRequest: LoginRequest): Response<Usuario>
+    @GET("api/usuarios/email/{email}")
+    suspend fun login(@Path("email") email: String): Response<Usuario>
 
-    @GET("api/usuarios/findByUsername/{username}")
+    @GET("api/usuarios/username/{username}")
     suspend fun obtenerUsuarioPorUsername(@Path("username") username: String): Response<Usuario>
 
     @GET("api/usuarios/email/{email}")
@@ -40,8 +42,3 @@ interface ApiService {
     @GET("api/usuarios/data/user/{userId}")
     suspend fun obtenerDatosUsuario(@Path("userId") userId: Long): Response<Usuario>
 }
-
-data class LoginRequest(
-    val username: String,
-    val password: String
-)

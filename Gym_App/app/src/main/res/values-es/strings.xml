@@ -148,6 +148,8 @@
     <string name="error_login_connection">Error de conexión: %1$s</string>
     <string name="success_login">Inicio de sesión exitoso</string>
     <string name="error_login_user">Error: Usuario no válido</string>
+    <string name="hint_email">Ingresa tu correo electrónico</string>
+    <string name="hint_username">Ingresa tu nombre de usuario</string>
 
     <!-- Mensajes de Desarrollo -->
     <string name="feature_development">Funcionalidad en desarrollo</string>
@@ -177,4 +179,6 @@
     <string name="user_avatar">Avatar del usuario</string>
     <string name="menu">Menú</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="default_value">---</string>
+    <string name="user_id_format">ID: %1$s</string>
 </resources>

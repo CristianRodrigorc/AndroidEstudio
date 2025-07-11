@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentRegisterBinding
-import com.cristian.appgym.model.Usuario
+import com.cristian.appgym.data.model.RegisterRequest
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
 import com.cristian.appgym.network.RetrofitClient
@@ -154,18 +154,18 @@ class RegisterFragment : Fragment() {
                     return@launch
                 }
 
-                // Crear el usuario
-                val usuario = Usuario(
+                // Crear el RegisterRequest
+                val registerRequest = RegisterRequest(
+                    nombre = name,
+                    apellidos = lastName,
                     email = email,
                     username = username,
                     password = password,
-                    name = name,
-                    lastname = lastName,
-                    date = date.format(dateFormatter), // Convertir LocalDate a String
-                    sex = sex
+                    fechaNacimiento = date.format(dateFormatter), // Convertir LocalDate a String
+                    sexo = sex
                 )
 
-                when (val result = userRepository.crearUsuario(usuario)) {
+                when (val result = userRepository.crearUsuario(registerRequest)) {
                     is Result.Success -> {
                         Toast.makeText(context, getString(R.string.success_register), Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_registerUser_to_home)

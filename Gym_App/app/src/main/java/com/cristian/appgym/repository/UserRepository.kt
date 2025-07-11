@@ -1,12 +1,12 @@
 package com.cristian.appgym.repository
 
+import com.cristian.appgym.data.model.RegisterRequest
+import com.cristian.appgym.data.model.Usuario
 import com.cristian.appgym.model.UserData
 import com.cristian.appgym.model.UserDataRequest
-import com.cristian.appgym.model.Usuario
 import com.cristian.appgym.model.UsuarioCompleto
 import com.cristian.appgym.network.ApiService
 import com.cristian.appgym.utils.Result
-import retrofit2.Response
 
 class UserRepository(private val apiService: ApiService) {
 
@@ -14,15 +14,12 @@ class UserRepository(private val apiService: ApiService) {
     suspend fun verificarEmailExistente(email: String): Result<Boolean> {
         return try {
             val response = apiService.verificarEmail(email)
-            if (response.isSuccessful) {
-                Result.Success(response.body() ?: false)
+            if (response.isSuccessful && response.body() != null) {
+                // Si encontramos un usuario con ese email, significa que ya existe
+                Result.Success(true)
             } else {
-                // Si es error 401, asumimos que el email no existe
-                if (response.code() == 401) {
-                    Result.Success(false)
-                } else {
-                    Result.Error("Error al verificar email: ${response.message()}")
-                }
+                // Si no encontramos usuario, el email no existe
+                Result.Success(false)
             }
         } catch (e: Exception) {
             Result.Error("Error de red: ${e.message}")
@@ -33,15 +30,32 @@ class UserRepository(private val apiService: ApiService) {
     suspend fun verificarUsernameExistente(username: String): Result<Boolean> {
         return try {
             val response = apiService.verificarUsername(username)
-            if (response.isSuccessful) {
-                Result.Success(response.body() ?: false)
+            if (response.isSuccessful && response.body() != null) {
+                // Si encontramos un usuario con ese username, significa que ya existe
+                Result.Success(true)
             } else {
-                // Si es error 401, asumimos que el username no existe
-                if (response.code() == 401) {
-                    Result.Success(false)
+                // Si no encontramos usuario, el username no existe
+                Result.Success(false)
+            }
+        } catch (e: Exception) {
+            Result.Error("Error de red: ${e.message}")
+        }
+    }
+
+    // Login - buscar usuario por email y verificar contraseña
+    suspend fun login(email: String, password: String): Result<Usuario> {
+        return try {
+            val response = apiService.login(email)
+            if (response.isSuccessful && response.body() != null) {
+                val usuario = response.body()!!
+                // Verificar que la contraseña coincida
+                if (usuario.password == password) {
+                    Result.Success(usuario)
                 } else {
-                    Result.Error("Error al verificar username: ${response.message()}")
+                    Result.Error("Contraseña incorrecta")
                 }
+            } else {
+                Result.Error("Usuario no encontrado")
             }
         } catch (e: Exception) {
             Result.Error("Error de red: ${e.message}")
@@ -63,9 +77,9 @@ class UserRepository(private val apiService: ApiService) {
     }
 
     // Crear un nuevo usuario
-    suspend fun crearUsuario(usuario: Usuario): Result<Usuario> {
+    suspend fun crearUsuario(registerRequest: RegisterRequest): Result<Usuario> {
         return try {
-            val response = apiService.crearUsuario(usuario)
+            val response = apiService.crearUsuario(registerRequest)
             if (response.isSuccessful && response.body() != null) {
                 Result.Success(response.body()!!)
             } else {
@@ -138,7 +152,7 @@ class UserRepository(private val apiService: ApiService) {
             val usuarioResult = obtenerUsuarioPorEmail(email)
             if (usuarioResult is Result.Success) {
                 val usuario = usuarioResult.data
-                val userId = usuario.id_user ?: usuario.userId
+                val userId = usuario.id
                 if (userId != null) {
                     val userDataResult = obtenerUserData(userId)
                     if (userDataResult is Result.Success) {

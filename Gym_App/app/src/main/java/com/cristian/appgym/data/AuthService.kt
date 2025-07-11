@@ -3,7 +3,6 @@ package com.cristian.appgym.data
 import com.cristian.appgym.data.model.LoginRequest
 import com.cristian.appgym.data.model.LoginResponse
 import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.data.model.RegisterResponse
 import com.cristian.appgym.data.model.Usuario
 import retrofit2.Response
 import retrofit2.http.Body
@@ -12,15 +11,19 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface AuthService {
-    @POST("api/usuarios/login")
-    suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
+    // Login - el backend actual no tiene endpoint específico de login, usaremos buscar por email
+    @GET("api/usuarios/email/{email}")
+    suspend fun login(@Path("email") email: String): Response<Usuario>
 
-    @POST("api/usuarios/register")
-    suspend fun register(@Body request: RegisterRequest): Response<RegisterResponse>
+    // Registro
+    @POST("api/usuarios")
+    suspend fun register(@Body request: RegisterRequest): Response<Usuario>
 
-    @GET("api/usuarios/check-email/{email}")
-    suspend fun checkEmail(@Path("email") email: String): Response<Boolean>
+    // Verificar email
+    @GET("api/usuarios/email/{email}")
+    suspend fun checkEmail(@Path("email") email: String): Response<Usuario>
 
-    @GET("api/usuarios/check-username/{username}")
-    suspend fun checkUsername(@Path("username") username: String): Response<Boolean>
+    // Verificar username
+    @GET("api/usuarios/username/{username}")
+    suspend fun checkUsername(@Path("username") username: String): Response<Usuario>
 } 

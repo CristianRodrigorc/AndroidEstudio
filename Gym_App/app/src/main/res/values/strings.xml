@@ -147,6 +147,8 @@
     <string name="error_login_connection">Connection error: %1$s</string>
     <string name="success_login">Login successful</string>
     <string name="error_login_user">Error: Invalid user</string>
+    <string name="hint_email">Enter your email</string>
+    <string name="hint_username">Enter your username</string>
 
     <!-- Development Messages -->
     <string name="feature_development">Feature in development</string>

@@ -3,33 +3,9 @@ package com.cristian.appgym.model
 import com.google.gson.annotations.SerializedName
 
 data class UserData(
-    // Campos básicos del usuario
-    @SerializedName("id_user")
-    val id: Long? = null,
-    
+    // ID del usuario al que pertenecen estos datos
     @SerializedName("userId")
     val userId: Long? = null,
-    
-    @SerializedName("username")
-    val username: String,
-    
-    @SerializedName("password")
-    val password: String,
-    
-    @SerializedName("name")
-    val name: String,
-    
-    @SerializedName("lastname")
-    val lastName: String,
-    
-    @SerializedName("email")
-    val email: String,
-    
-    @SerializedName("date")
-    val date: String,
-    
-    @SerializedName("sex")
-    val sex: String,
     
     // Campos adicionales para datos del usuario
     @SerializedName("size")

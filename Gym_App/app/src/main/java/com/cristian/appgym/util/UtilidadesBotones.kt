@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
-import com.cristian.appgym.model.Usuario
+import com.cristian.appgym.data.model.RegisterRequest
 import com.cristian.appgym.model.UserDataRequest
 import com.cristian.appgym.repository.UserRepository
 import com.cristian.appgym.utils.Result
@@ -59,18 +59,18 @@ object UtilidadesBotones {
                 stringValido(usernameT) && stringValido(passwordT) && 
                 stringValido(dateT) && stringValido(sexT)) {
 
-                val usuario = Usuario(
+                val registerRequest = RegisterRequest(
+                    nombre = nameT,
+                    apellidos = lastNameT,
+                    email = emailT,
                     username = usernameT,
                     password = passwordT,
-                    name = nameT,
-                    lastname = lastNameT,
-                    date = dateT,
-                    email = emailT,
-                    sex = sexT
+                    fechaNacimiento = dateT,
+                    sexo = sexT
                 )
 
                 CoroutineScope(Dispatchers.Main).launch {
-                    when (val result = userRepository.crearUsuario(usuario)) {
+                    when (val result = userRepository.crearUsuario(registerRequest)) {
                         is Result.Success -> {
                             val bundle = Bundle().apply {
                                 putString("Name", nameT)
@@ -204,7 +204,7 @@ object UtilidadesBotones {
                     }
                 }
             } else {
-                Toast.makeText(fragment.requireContext(), "Completa ambos campos", Toast.LENGTH_SHORT).show()
+                mostrarToast(fragment.requireContext(), R.string.errorCompletarCampos)
             }
         }
     }

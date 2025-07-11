@@ -10,10 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.cristian.appgym.R
 import com.cristian.appgym.databinding.FragmentLoginBinding
-import com.cristian.appgym.model.Usuario
-import com.cristian.appgym.network.LoginRequest
 import com.cristian.appgym.repository.UserRepository
-import com.cristian.appgym.utils.Result
 import com.cristian.appgym.network.RetrofitClient
 import com.cristian.appgym.utils.SessionManager
 import kotlinx.coroutines.launch
@@ -48,7 +45,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
-        val username = binding.etUsernameLoginS.text.toString()
+        val username = binding.etUsernameLoginS.text.toString() // El usuario ingresa su username
         val password = binding.etPassLoginS.text.toString()
 
         if (username.isEmpty() || password.isEmpty()) {
@@ -61,25 +58,32 @@ class LoginFragment : Fragment() {
                 binding.progressBarLogin.visibility = View.VISIBLE
                 binding.btnLoginLoginS.isEnabled = false
 
-                val response = RetrofitClient.apiService.login(LoginRequest(username, password))
+                // Usar el método de login por username del repository
+                val result = userRepository.obtenerUsuarioPorUsername(username)
                 
-                if (response.isSuccessful) {
-                    response.body()?.let { usuario ->
-                        // Guardar la sesión del usuario
-                        usuario.id_user?.let { id ->
-                            sessionManager.saveUserSession(id.toInt(), usuario.username)
-                            Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show()
-                            // Navegar a la pantalla de usuario
-                            findNavController().navigate(R.id.action_login_to_user)
-                        } ?: run {
+                when (result) {
+                    is com.cristian.appgym.utils.Result.Success -> {
+                        val usuario = result.data
+                        // Verificar que la contraseña coincida
+                        if (usuario.password == password) {
+                            // Guardar la sesión del usuario
+                            usuario.id?.let { id ->
+                                sessionManager.saveUserSession(id.toInt(), usuario.username)
+                                Toast.makeText(context, getString(R.string.success_login), Toast.LENGTH_SHORT).show()
+                                // Navegar a la pantalla de usuario
+                                findNavController().navigate(R.id.action_login_to_user)
+                            } ?: run {
+                                Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
                             Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
                         }
                     }
-                } else {
-                    when (response.code()) {
-                        401 -> Toast.makeText(context, getString(R.string.error_login_invalid), Toast.LENGTH_SHORT).show()
-                        404 -> Toast.makeText(context, getString(R.string.error_login_user), Toast.LENGTH_SHORT).show()
-                        else -> Toast.makeText(context, getString(R.string.error_login_connection, response.message()), Toast.LENGTH_SHORT).show()
+                    is com.cristian.appgym.utils.Result.Error -> {
+                        Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
+                    }
+                    is com.cristian.appgym.utils.Result.Loading -> {
+                        // No necesitamos hacer nada aquí
                     }
                 }
             } catch (e: Exception) {

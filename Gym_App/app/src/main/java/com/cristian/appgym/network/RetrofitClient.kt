@@ -1,5 +1,6 @@
 package com.cristian.appgym.network
 
+import com.cristian.appgym.data.AuthService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,26 +8,32 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    // URL del backend en Render
+    // CONFIGURACIÓN DE URL DEL BACKEND
     private const val BASE_URL = "https://backendgymapp.onrender.com/"
 
+    // Interceptor para logging - Muestra todas las peticiones HTTP en el log
+    // Útil para debugging: ver qué se envía y qué se recibe del backend
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+    // Configuración del cliente HTTP con timeouts y reintentos
     private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .connectTimeout(30, TimeUnit.SECONDS)
-        .readTimeout(30, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
-        .retryOnConnectionFailure(true)
+        .addInterceptor(loggingInterceptor)  // Agrega el logging para ver las peticiones
+        .connectTimeout(30, TimeUnit.SECONDS)  // Tiempo máximo para establecer conexión
+        .readTimeout(30, TimeUnit.SECONDS)     // Tiempo máximo para leer respuesta
+        .writeTimeout(30, TimeUnit.SECONDS)    // Tiempo máximo para escribir datos
+        .retryOnConnectionFailure(true)        // Reintenta si falla la conexión
         .build()
 
+    // Configuración de Retrofit para hacer peticiones HTTP
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(BASE_URL)  // URL base del backend
+        .client(okHttpClient)  // Usa el cliente HTTP configurado
+        .addConverterFactory(GsonConverterFactory.create())  // Convierte JSON a objetos Kotlin
         .build()
 
+    // Servicios para hacer peticiones al backend
     val apiService: ApiService = retrofit.create(ApiService::class.java)
+    val authService: AuthService = retrofit.create(AuthService::class.java)
 }

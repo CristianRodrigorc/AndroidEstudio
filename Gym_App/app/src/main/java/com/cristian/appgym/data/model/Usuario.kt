@@ -1,9 +1,30 @@
 package com.cristian.appgym.data.model
 
+import com.google.gson.annotations.SerializedName
+import java.time.LocalDate
+
 data class Usuario(
-    val id: Long,
+    @SerializedName("id")
+    val id: Long? = null,
+    
+    @SerializedName("nombre")
     val nombre: String,
-    val apellido: String,
+    
+    @SerializedName("apellidos")
+    val apellidos: String,
+    
+    @SerializedName("email")
     val email: String,
-    val username: String
+    
+    @SerializedName("username")
+    val username: String,
+    
+    @SerializedName("password")
+    val password: String? = null,
+    
+    @SerializedName("fechaNacimiento")
+    val fechaNacimiento: String? = null,
+    
+    @SerializedName("sexo")
+    val sexo: String? = null
 ) 

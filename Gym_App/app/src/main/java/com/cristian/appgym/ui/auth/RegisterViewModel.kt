@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cristian.appgym.data.AuthService
 import com.cristian.appgym.data.model.RegisterRequest
-import com.cristian.appgym.data.model.RegisterResponse
 import com.cristian.appgym.data.model.Usuario
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -25,10 +24,12 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = authService.checkEmail(email)
-                if (response.isSuccessful) {
-                    _emailCheckState.value = response.body()
+                if (response.isSuccessful && response.body() != null) {
+                    // Si encontramos un usuario, el email ya existe
+                    _emailCheckState.value = true
                 } else {
-                    _emailCheckState.value = null
+                    // Si no encontramos usuario, el email no existe
+                    _emailCheckState.value = false
                 }
             } catch (e: Exception) {
                 _emailCheckState.value = null
@@ -40,10 +41,12 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = authService.checkUsername(username)
-                if (response.isSuccessful) {
-                    _usernameCheckState.value = response.body()
+                if (response.isSuccessful && response.body() != null) {
+                    // Si encontramos un usuario, el username ya existe
+                    _usernameCheckState.value = true
                 } else {
-                    _usernameCheckState.value = null
+                    // Si no encontramos usuario, el username no existe
+                    _usernameCheckState.value = false
                 }
             } catch (e: Exception) {
                 _usernameCheckState.value = null
@@ -56,8 +59,8 @@ class RegisterViewModel(private val authService: AuthService) : ViewModel() {
             _registerState.value = RegisterState.Loading
             try {
                 val response = authService.register(request)
-                if (response.isSuccessful) {
-                    _registerState.value = RegisterState.Success(response.body()!!.usuario)
+                if (response.isSuccessful && response.body() != null) {
+                    _registerState.value = RegisterState.Success(response.body()!!)
                 } else {
                     _registerState.value = RegisterState.Error("Error al registrar usuario")
                 }
