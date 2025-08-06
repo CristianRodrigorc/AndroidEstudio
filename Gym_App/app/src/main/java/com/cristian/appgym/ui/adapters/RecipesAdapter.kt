@@ -1,45 +1,70 @@
 package com.cristian.appgym.ui.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cristian.appgym.databinding.ItemRecipeBinding
+import com.bumptech.glide.Glide
+import com.cristian.appgym.R
 import com.cristian.appgym.model.model_receta.Recipe
 
 class RecipesAdapter(
-    private val recipes: List<Recipe>,
+    private var recipes: List<Recipe> = emptyList(),
     private val onRecipeClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
 
-    class RecipeViewHolder(
-        private val binding: ItemRecipeBinding,
-        private val onRecipeClick: (Recipe) -> Unit
-    ) : RecyclerView.ViewHolder(binding.root) {
-        
+    inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val ivRecipeImage: ImageView = itemView.findViewById(R.id.ivRecipeImage)
+        private val tvRecipeTitle: TextView = itemView.findViewById(R.id.tvRecipeTitle)
+        private val tvRecipeType: TextView = itemView.findViewById(R.id.tvRecipeType)
+        private val tvCalories: TextView = itemView.findViewById(R.id.tvCalories)
+        private val tvProtein: TextView = itemView.findViewById(R.id.tvProtein)
+        private val tvCarbs: TextView = itemView.findViewById(R.id.tvCarbs)
+        private val tvFat: TextView = itemView.findViewById(R.id.tvFat)
+
         fun bind(recipe: Recipe) {
-            binding.tvRecipeTitle.text = recipe.name
-            // Aquí podrías cargar la imagen usando Glide o Picasso
-            // Glide.with(binding.root).load(recipe.image).into(binding.ivRecipeImage)
+            tvRecipeTitle.text = recipe.title
+            tvRecipeType.text = recipe.type ?: "Sin categoría"
             
-            // Configurar click listener
-            binding.btnViewRecipe.setOnClickListener {
+            // Mostrar información nutricional
+            recipe.calories?.let { tvCalories.text = "$it cal" }
+            recipe.protein?.let { tvProtein.text = "P: ${it}g" }
+            recipe.carbs?.let { tvCarbs.text = "C: ${it}g" }
+            recipe.fat?.let { tvFat.text = "G: ${it}g" }
+
+            // Cargar imagen con Glide
+            recipe.imageUrl?.let { url ->
+                Glide.with(itemView.context)
+                    .load(url)
+                    .placeholder(R.drawable.placeholder_recipe)
+                    .error(R.drawable.error_recipe)
+                    .into(ivRecipeImage)
+            } ?: run {
+                ivRecipeImage.setImageResource(R.drawable.placeholder_recipe)
+            }
+
+            itemView.setOnClickListener {
                 onRecipeClick(recipe)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val binding = ItemRecipeBinding.inflate(
-            LayoutInflater.from(parent.context), 
-            parent, 
-            false
-        )
-        return RecipeViewHolder(binding, onRecipeClick)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_recipe, parent, false)
+        return RecipeViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         holder.bind(recipes[position])
     }
 
-    override fun getItemCount() = recipes.size
+    override fun getItemCount(): Int = recipes.size
+
+    fun updateRecipes(newRecipes: List<Recipe>) {
+        recipes = newRecipes
+        notifyDataSetChanged()
+    }
 } 

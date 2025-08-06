@@ -4,6 +4,7 @@ import com.cristian.appgym.model.model_db.RegisterRequest
 import com.cristian.appgym.model.model_db.Usuario
 import com.cristian.appgym.model.model_db.UserData
 import com.cristian.appgym.model.model_db.UserDataRequest
+import com.cristian.appgym.model.model_receta.Recipe
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -22,11 +23,6 @@ interface ApiService {
     @POST("api/usuarios")
     suspend fun register(@Body request: RegisterRequest): Response<Usuario>
 
-
-
-
-    
-    
     // ===== ENDPOINTS DE VERIFICACIÓN =====
     
     // Verificar si email existe
@@ -60,4 +56,35 @@ interface ApiService {
     // Guardar datos adicionales del usuario
     @POST("api/usuarios/data/save")
     suspend fun saveUserData(@Body userData: UserDataRequest): Response<Void>
+
+    // ===== ENDPOINTS DE RECETAS =====
+    
+    // Obtener todas las recetas
+    @GET("api/recipes")
+    suspend fun getAllRecipes(): Response<List<Recipe>>
+    
+    // Obtener receta por ID
+    @GET("api/recipes/{id}")
+    suspend fun getRecipeById(@Path("id") id: Int): Response<Recipe>
+    
+    // Buscar recetas por título
+    @GET("api/recipes/search")
+    suspend fun searchRecipes(@Query("q") query: String): Response<List<Recipe>>
+    
+    // Obtener recetas por tipo
+    @GET("api/recipes/type/{type}")
+    suspend fun getRecipesByType(@Path("type") type: String): Response<List<Recipe>>
+    
+    // Obtener recetas por rango de calorías
+    @GET("api/recipes/calories")
+    suspend fun getRecipesByCaloriesRange(
+        @Query("min") min: Int = 0,
+        @Query("max") max: Int = 1000
+    ): Response<List<Recipe>>
+    
+    // Obtener recetas altas en proteína
+    @GET("api/recipes/high-protein")
+    suspend fun getHighProteinRecipes(
+        @Query("minProtein") minProtein: Int = 20
+    ): Response<List<Recipe>>
 }

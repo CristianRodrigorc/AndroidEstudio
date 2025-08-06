@@ -116,12 +116,14 @@
 
     <!-- Recipes Screen -->
     <string name="recipes_title">Fitness Recipes</string>
+    <string name="search_recipes">Search recipes...</string>
     <string name="search_hint">Search recipes...</string>
     <string name="filter_all">All</string>
     <string name="filter_keto">Keto</string>
     <string name="filter_vegan">Vegan</string>
     <string name="filter_protein">Protein</string>
     <string name="view_recipe">View Recipe</string>
+    <string name="no_recipes_found">No recipes found</string>
     
     <!-- Recipe Details -->
     <string name="calories">Calories</string>
@@ -203,4 +205,8 @@
     <string name="logout_button">Cerrar sesión</string>
     <string name="default_value">---</string>
     <string name="user_id_format">ID: %1$s</string>
+
+    <!-- Recetas -->
+    <string name="recipe_image">Imagen de la receta</string>
+    <string name="error_loading_recipes">Error al cargar las recetas</string>
 </resources>
